@@ -7,6 +7,8 @@ use App\Models\User;
 use Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Log;
 
 
 class Authentication extends Controller
@@ -57,37 +59,35 @@ class Authentication extends Controller
     }
 
     function registrationPost(Request $request){
-        $request->validate([
-            	'name' => 'required',
-            	'email' => 'required|email|unique:users',
-            	'password' => 'required|confirmed',
-		        'phone' => 'required',
-		        'address' => 'required'
-            
-
+        $validator = Validator::make($request->all(), [
+            'name' => 'required|string',
+            'email' => 'required|email',
+            'password' => 'required',
+            'phone' => 'required',
+            'address' => 'required'
         ]);
-    
-        $data['name'] = $request->name;
-        $data['email'] = $request->email;
-        $data['password'] = Hash::make($request->password);
-	$data['phone'] = $request->phone;
-	$data['address'] = $request->address;
-    
-        $user = User::create($data);
-    
-        if (!$user) {
 
-            return redirect(route('registration'))->with("error", "Registration failed. Try again.");
-        } else {
-
-            if ($request->is('api/*') || $request->wantsJson()) {
-
-                return response()->json($user, 201);
-            } else {
-
-                return redirect(route('login'))->with("success", "Registration successful. Login to access the app.");
-            }
+        if ($validator->fails()) {
+            return response()->json(['error' => $validator->errors()], 422);
         }
+
+        try {
+            Log::info('Before creating user record');
+            $user = User::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'password' => bcrypt($request->password),
+                'phone' => $request->phone,
+                'address' => $request->address,
+            ]);
+            Log::info('After creating user record');
+        } catch (\Exception $e) {
+            Log::error('Error creating user record: ' . $e->getMessage());
+            return response()->json(["error" => "Failed to create user"], 500);
+        }
+
+        return response()->json(["message" => "Successfully created the user's data"]);
+    }
     }
 
    
@@ -96,6 +96,6 @@ class Authentication extends Controller
         Auth::logout();
         return redirect(route('login'));    
     }
-}
+
 
 
