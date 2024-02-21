@@ -4,7 +4,8 @@ use App\Http\Controllers\about_controller;
 use App\Http\Controllers\components_controller;
 use App\Http\Controllers\contacts_controller;
 use App\Http\Controllers\index_controller;
-use App\Http\Controllers\loginregistration;
+use App\Http\Controllers\Authentication;
+use App\Http\Controllers\ResetPasswordController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -26,7 +27,15 @@ Route::get('/components',[components_controller::class, 'components'])->name('co
 Route::get('/about',[about_controller::class, 'about'])->name('about');
 Route::get('/contact',[contacts_controller::class, 'contact'])->name('contact');
 Route::get('/index',[index_controller::class, 'index'])->name('index');
-Route::get('/login',[loginregistration::class, 'login'])->name('login');
-Route::get('/registration',[loginregistration::class, 'registration'])->name('registration');
-Route::post('/login',[loginregistration::class, 'loginPost'])->name('loginpost');
-Route::post('/registration',[loginregistration::class, 'registrationPost'])->name('registrationpost');
+
+
+Route::get('/login',[Authentication::class, 'login'])->name('login');
+Route::post('/login',[Authentication::class,'loginPost'])->name('login.post');
+Route::get('/registration',[Authentication::class,'registration'])->name('registration');
+Route::post('/registration',[Authentication::class,'registrationPost'])->name('registration.post');
+Route::get('/logout',[Authentication::class,'logout'])->name('logout');
+
+Route::get('/reset-request', [ResetPasswordController::class, 'showResetRequestForm'])->name('reset.request.form');
+Route::post('/reset-request', [ResetPasswordController::class, 'showResetPasswordPost'])->name('reset.request.post');
+Route::get('/reset-password', [ResetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.form');
+Route::post('/reset-password', [ResetPasswordController::class, 'resetPasswordPost'])->name('reset.password.post');

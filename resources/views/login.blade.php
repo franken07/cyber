@@ -7,20 +7,38 @@
     <link rel="stylesheet" href="assets/login.css">
 </head>
 <body>
-    <div class="login-container">
-        <form action="{{route('loginpost')}}" method="POST" class="login-form">
-            <h2>Login</h2>
-            <div class="input-group">
-                <label for="username">Username</label>
-                <input type="text" id="username" name="username" required>
+<div class="container">
+        <div class="mt-5">
+            @if($errors->any())
+                <div class="col-12">
+                    @foreach($errors->all() as $error)
+                        <div class="alert alert-danger">{{$error}}</div>
+                    @endforeach
+                </div>
+            @endif
+
+            @if(session()->has('error'))
+                <div class="alert alert-danger">{{session('error')}}</div>
+            @endif
+
+            @if(session()->has('success'))
+                <div class="alert alert-success">{{session('success')}}</div>
+            @endif
+        </div>
+        <form action="{{route('login.post')}}" method="POST" class="ms-auto me-auto mt-3" style="width: 500px">
+            @csrf
+            <div class="mb-3">
+                <label class="form-label">Email</label>
+                <input type="email" class="form-control" name="email">
             </div>
-            <div class="input-group">
-                <label for="password">Password</label>
-                <input type="password" id="password" name="password" required>
+            <div class="mb-3">
+                <label class="form-label">Password</label>
+                <input type="password" class="form-control" name="password">
             </div>
-            <button type="submit">Login</button>
-            <a href="/forgot-password" class="forgot-password">Forgot Password?</a>
-            <p>Don't have an account? <a href="/sign-up">Sign Up</a></p>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <button><a href="{{route('index')}}">Forgot Password?</a></button>
+            </div>
         </form>
     </div>
 </body>
