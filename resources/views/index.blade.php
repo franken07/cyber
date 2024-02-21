@@ -317,14 +317,14 @@
 </section>
 
 
-<!--deals  -->
+<!--services  -->
 <section class="pricing1 cid-u3GZCsIcG9" id="pricing-cards-1-u3GZCsIcG9">
   <div class="container-fluid">
     <div class="row justify-content-center">
       <div class="col-12 content-head">
         <div class="mbr-section-head mb-5">
           <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-            <strong>Epic Deals</strong>
+            <strong>Services</strong>
           </h4>
         </div>
       </div>
@@ -334,7 +334,7 @@
         <div class="item-wrapper">
           <div class="item-head">
             <h5 class="item-title mbr-fonts-style mb-0 display-5">
-              <strong>Starter Pack</strong>
+              <strong>PC CLEANING</strong>
             </h5>
             <h6 class="item-subtitle mbr-fonts-style mt-0 mb-0 display-7">
               <strong>$99</strong>/One-Time Payment
@@ -343,14 +343,13 @@
           <div class="item-content">
             <p class="mbr-text mbr-fonts-style display-7">Kickstart your PC journey with essential components. Perfect for beginners looking to build their dream rig!</p>
           </div>
-          <div class="mbr-section-btn item-footer"><a href="" class="btn item-btn btn-primary display-7">Get Started</a></div>
         </div>
       </div>
       <div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
         <div class="item-wrapper">
           <div class="item-head">
             <h5 class="item-title mbr-fonts-style mb-0 display-5">
-              <strong>Gamer&#x27;s Paradise</strong>
+              <strong>Update and maintainance</strong>
             </h5>
             <h6 class="item-subtitle mbr-fonts-style mt-0 mb-0 display-7">
               <strong>$199</strong>/One-Time Payment
@@ -359,14 +358,13 @@
           <div class="item-content">
             <p class="mbr-text mbr-fonts-style display-7">Immerse yourself in the ultimate gaming experience. Unleash the power of high-performance gear and dominate the virtual battlefield!</p>
           </div>
-          <div class="mbr-section-btn item-footer"><a href="" class="btn item-btn btn-primary display-7">Get Started</a></div>
         </div>
       </div>
       <div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
         <div class="item-wrapper">
           <div class="item-head">
             <h5 class="item-title mbr-fonts-style mb-0 display-5">
-              <strong>Tech Enthusiast</strong>
+              <strong>Hard drive checking</strong>
             </h5>
             <h6 class="item-subtitle mbr-fonts-style mt-0 mb-0 display-7">
               <strong>$299</strong>/One-Time Payment
@@ -375,25 +373,23 @@
           <div class="item-content">
             <p class="mbr-text mbr-fonts-style display-7">For those who demand nothing but the best. Elevate your setup with premium parts and experience unparalleled performance!</p>
           </div>
-          <div class="mbr-section-btn item-footer"><a href="" class="btn item-btn btn-primary display-7">Get Started</a></div>
         </div>
       </div>
       <div class="item features-without-image col-12 col-md-6 col-lg-3 item-mb">
         <div class="item-wrapper">
           <div class="item-head">
             <h5 class="item-title mbr-fonts-style mb-0 display-5">
-              <strong>Master Builder</strong>
+              <strong>Consult</strong>
             </h5>
             <h6 class="item-subtitle mbr-fonts-style mt-0 mb-0 display-7">
-              <strong>$399</strong>/One-Time Payment
+              <strong>$49</strong>/One-Time Payment
             </h6>
           </div>
           <div class="item-content">
             <p class="mbr-text mbr-fonts-style display-7">Craft your masterpiece with top-of-the-line components. Unleash your creativity and build the PC of your dreams!</p>
           </div>
-          <div class="mbr-section-btn item-footer"><a href="" class="btn item-btn btn-primary display-7">Get Started</a></div>
         </div>
-      </div>
+      </div>  
     </div>
   </div>
 </section>
