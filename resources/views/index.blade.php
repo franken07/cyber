@@ -71,7 +71,7 @@
         </ul>
         <div class="navbar-buttons mbr-section-btn">
           <a class="btn btn-primary display-4" href="shop.html" style="background-color: yellow; color: black;">
-              <i class="fas fa-shopping-cart" style="font-size: 24px; margin-right: 10px;"></i>
+            <i class="fas fa-sign-in-alt" style="font-size: 24px; margin-right: 10px;"></i>
               CART
           </a>
       </div>
