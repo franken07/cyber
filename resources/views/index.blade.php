@@ -341,7 +341,7 @@
             </h6>
           </div>
           <div class="item-content">
-            <p class="mbr-text mbr-fonts-style display-7">Kickstart your PC journey with essential components. Perfect for beginners looking to build their dream rig!</p>
+            <p class="mbr-text mbr-fonts-style display-7">Revitalize your PC's performance with essential cleaning solutions. Ideal for beginners eager to maintain their dream setup in pristine condition!</p>
           </div>
         </div>
       </div>
@@ -356,7 +356,7 @@
             </h6>
           </div>
           <div class="item-content">
-            <p class="mbr-text mbr-fonts-style display-7">Immerse yourself in the ultimate gaming experience. Unleash the power of high-performance gear and dominate the virtual battlefield!</p>
+            <p class="mbr-text mbr-fonts-style display-7">Elevate and preserve your PC's performance with key updates and maintenance tools. Perfect for beginners aiming to keep their dream machine running smoothly!</p>
           </div>
         </div>
       </div>
@@ -371,7 +371,7 @@
             </h6>
           </div>
           <div class="item-content">
-            <p class="mbr-text mbr-fonts-style display-7">For those who demand nothing but the best. Elevate your setup with premium parts and experience unparalleled performance!</p>
+            <p class="mbr-text mbr-fonts-style display-7">Ensure your hard drive's health with thorough diagnostics. Ideal for beginners dedicated to keeping their dream system's storage in top condition!</p>
           </div>
         </div>
       </div>
@@ -386,7 +386,7 @@
             </h6>
           </div>
           <div class="item-content">
-            <p class="mbr-text mbr-fonts-style display-7">Craft your masterpiece with top-of-the-line components. Unleash your creativity and build the PC of your dreams!</p>
+            <p class="mbr-text mbr-fonts-style display-7">Seek expert advice for your PC needs. Perfect for beginners looking to navigate the complexities of building and maintaining their dream setup!</p>
           </div>
         </div>
       </div>  
