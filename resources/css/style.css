@@ -271,32 +271,3 @@
 	top: 0;
 	left: -2400px;
 }
-.fab-container {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  z-index: 100;
-}
-
-.fab {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 60px;
-  height: 60px;
-  background-color: #007bff; /* Change the color to match your design */
-  color: white;
-  border-radius: 50%;
-  text-decoration: none;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-  transition: background-color 0.3s, box-shadow 0.3s;
-}
-
-.fab:hover {
-  background-color: #0056b3; /* Darker shade for hover effect */
-  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-}
-
-.fab i {
-  font-size: 24px; /* Adjust icon size as needed */
-}

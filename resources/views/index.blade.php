@@ -89,11 +89,7 @@
 </style>
 
 
-<div class="fab-container">
-  <a href="/cart" class="fab">
-    <i class="fas fa-shopping-cart"></i>
-  </a>
-</div>
+
 
 <!-- bg text -->
 <section class="header16 cid-u3GZCsGLCS mbr-fullscreen mbr-parallax-background" id="hero-17-u3GZCsGLCS">
