@@ -60,7 +60,8 @@ class Authentication extends Controller
         $request->validate([
             	'name' => 'required',
             	'email' => 'required|email|unique:users',
-            	'password' => 'required|confirmed',
+            	'password' => 'required',
+                'password_confirmation' => 'required|same:password',
 		        'phone' => 'required',
 		        'address' => 'required'
             
@@ -70,6 +71,7 @@ class Authentication extends Controller
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['password'] = Hash::make($request->password);
+        $data['password_confirmation'] = $request->password_confirmation;
 	    $data['phone'] = $request->phone;
 	    $data['address'] = $request->address;
     
