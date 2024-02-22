@@ -349,7 +349,7 @@
         <div class="item-wrapper">
           <div class="item-head">
             <h5 class="item-title mbr-fonts-style mb-0 display-5">
-              <strong>Update and maintainance</strong>
+              <strong>Maintainance</strong>
             </h5>
             <h6 class="item-subtitle mbr-fonts-style mt-0 mb-0 display-7">
               <strong>$199</strong>/One-Time Payment
