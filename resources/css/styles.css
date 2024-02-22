@@ -932,4 +932,19 @@
 .socicon-zynga:before {
   content: "\e0a9";
 }
+.fab-contact {
+  display: flex; /* Align the icon and text */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 80px; /* Fixed width */
+  height: 80px; /* Fixed height */
+  background-color: yellow; /* Example color */
+  color: black; /* Text/icon color */
+  border-radius: 50%; /* Make it round */
+  text-decoration: none; /* Remove underline from the link */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: adds a shadow for depth */
+}
 
+.fab-contact:hover {
+  background-color: #fcd303; /* Slightly darker yellow on hover */
+}
