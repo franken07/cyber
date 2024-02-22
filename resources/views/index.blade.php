@@ -88,8 +88,13 @@
   }
 </style>
 
+<a style="padding:10px;display:block;" href="" target="_blank">Click here for complete tutorial</a>
 
+<!-- Code begins here -->
 
+<a href="#" class="float">
+<i class="fa fa-plus my-float"></i>
+</a>
 
 <!-- bg text -->
 <section class="header16 cid-u3GZCsGLCS mbr-fullscreen mbr-parallax-background" id="hero-17-u3GZCsGLCS">
