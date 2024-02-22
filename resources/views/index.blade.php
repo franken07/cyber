@@ -24,7 +24,7 @@
   <link rel="preload" as="style" href="assets/mobirise/css/additional.css"><link rel="stylesheet" href="assets/mobirise/css/additional.css" type="text/css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
-
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css">
   
   
 
@@ -87,6 +87,13 @@
     background-image: url("images/17.png");
   }
 </style>
+
+
+<div class="fab-container">
+  <a href="/cart" class="fab">
+    <i class="fas fa-shopping-cart"></i>
+  </a>
+</div>
 
 <!-- bg text -->
 <section class="header16 cid-u3GZCsGLCS mbr-fullscreen mbr-parallax-background" id="hero-17-u3GZCsGLCS">
