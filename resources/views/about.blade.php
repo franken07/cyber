@@ -133,7 +133,7 @@
                         </a>
                     </div>
                     <div class="soc-item">
-                        <a href="#" target="_blank">
+                        <a href="https://twitter.com/CyberServiceDen" target="_blank">
                             <span class="mbr-iconfont socicon-twitter socicon"></span>
                         </a>
                     </div>
