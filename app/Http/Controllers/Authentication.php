@@ -77,15 +77,15 @@ class Authentication extends Controller
     
         if (!$user) {
 
-            return redirect(route('registration'))->with("error", "Registration failed. Try again.");
-        } else {
+            return redirect()->route('registration')->with("error", "unable to create an account");
+            } else {
 
             if ($request->is('api/*') || $request->wantsJson()) {
 
                 return response()->json($user, 201);
             } else {
 
-                return redirect(route('login'))->with("success", "Registration successful. Login to access the app.");
+                return redirect()->route('login')->with("success", "Registration successful. Login to access the app.");
             }
         }
     }
