@@ -2632,3 +2632,26 @@ cid-u3GZCsGnbq {
 .bg-color {
   background-color: #ffffff; /* Light gray background, or any color you prefer */
 }
+.floating-action-button {
+  position: fixed; /* Stick to a fixed spot on the screen */
+  bottom: 20px; /* 20px from the bottom */
+  right: 20px; /* 20px from the right */
+  z-index: 999; /* Ensure it's on top of other content */
+}
+
+.fab-contact {
+  display: flex; /* Align the icon and text */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  width: 60px; /* Fixed width */
+  height: 60px; /* Fixed height */
+  background-color: yellow; /* Example color */
+  color: black; /* Text/icon color */
+  border-radius: 50%; /* Make it round */
+  text-decoration: none; /* Remove underline from the link */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Optional: adds a shadow for depth */
+}
+
+.fab-contact:hover {
+  background-color: #fcd303; /* Slightly darker yellow on hover */
+}

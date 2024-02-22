@@ -587,5 +587,10 @@
     })();
 
   </script>
+  <div class="floating-action-button">
+    <a href="contact.html" class="fab-contact">
+        <i class="fas fa-shopping-cart" style="font-size: 24px;"></i> <!-- Example icon -->
+    </a>
+</div>
 </body>
 </html>
