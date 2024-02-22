@@ -96,7 +96,6 @@
  <!--####################### Cards Starts Here ###################-->
 		<div class="row">
 			<div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/Intel-Core-i9-processor-14900K__10117.jpg">
@@ -113,11 +112,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/i7-14.jpg">
@@ -134,11 +131,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/amd_ryzen_9_7900x3d-img-1.png">
@@ -155,11 +150,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/AMD Ryzen 7 7700X.jpg">
@@ -176,11 +169,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/Intel Core i9-12900K.jpg">
@@ -197,11 +188,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/AMD Ryzen 7 5800X3D.png">
@@ -218,11 +207,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/Intel Core i5-10400.jpg">
@@ -239,11 +226,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/AMD Ryzen 3 3100.png">
@@ -260,7 +245,6 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 		</div>
 	</div>
@@ -283,7 +267,6 @@
  <!--####################### Cards Starts Here ###################-->
 		<div class="row">
 			<div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/rog4090.jpg">
@@ -300,11 +283,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/AMD Radeon RX 7900 XTX.jpg">
@@ -321,11 +302,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/NVIDIA GeForce RTX 4080.png">
@@ -342,11 +321,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/AMD Radeon RX 7900 XT.jpg">
@@ -363,11 +340,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/NVIDIA GeForce RTX 4070 Ti.jpg">
@@ -384,11 +359,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/NVIDIA GeForce RTX 3090 Ti.jpg">
@@ -405,11 +378,9 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
           <div class="item-wrapper">
             <div class="item-img mb-3">
               <img src="assets/images/AMD Radeon 6900 XT.jpg">
@@ -426,7 +397,6 @@
             </div>
             </div>
           </div>
-        </a>
       </div>
 
       <div class="item features-image col-12 col-md-6 col-lg-3">
