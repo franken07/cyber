@@ -70,8 +70,8 @@
         </ul>
         <div class="navbar-buttons mbr-section-btn">
           <a class="btn btn-primary display-4" href="shop.html" style="background-color: yellow; color: black;">
-              <i class="fas fa-shopping-cart" style="font-size: 24px; margin-right: 10px;"></i>
-              CART
+              <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i>
+              LOGIN
           </a>
       </div>
       </div>
@@ -160,5 +160,10 @@
     })();
 
   </script>
+  <!-- Floating cart button -->
+  <div class="floating-action-button">
+    <a href="cart route" class="fab-contact">
+        <i class="fas fa-shopping-cart" style="font-size: 24px;"></i> 
+    </a>
 </body>
 </html>

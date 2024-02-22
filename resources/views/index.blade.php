@@ -590,7 +590,7 @@
 
   <!-- Floating cart button -->
   <div class="floating-action-button">
-    <a href="contact.html" class="fab-contact">
+    <a href="cart route" class="fab-contact">
         <i class="fas fa-shopping-cart" style="font-size: 24px;"></i> 
     </a>
 </div>
