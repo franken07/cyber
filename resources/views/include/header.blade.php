@@ -45,7 +45,7 @@
           </a>
           @endguest
       </div>
-      <div class="d_flex" id="navbarNavAltMarkup">
+      <div class="d_flex" style="background-color: yellow; color: black;">
         <div class="navbar-nav ms-auto">
             @auth
                 <a class="nav-link" href="{{ route('logout')}}">LogOut</a>
