@@ -48,7 +48,7 @@
 
       <div class="navbar-buttons mbr-section-btn">
             @auth
-          <a class="btn btn-primary display-4" href="{{ route('login') }}" style="background-color: yellow; color: black;">
+          <a class="btn btn-primary display-4" href="{{ route('logout') }}" style="background-color: yellow; color: black;">
             <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i>
               LOGIN
           </a>
