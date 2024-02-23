@@ -38,22 +38,22 @@
           </li>
         </ul>
         <div class="navbar-buttons mbr-section-btn d-flex justify-content-end">
-    @guest    
-    <a class="btn btn-primary display-4" href="{{ route('login') }}" style="background-color: yellow; color: black;">
-        <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i> LOGIN
-    </a>
-    @endguest
+            @guest    
+          <a class="btn btn-primary display-4" href="{{ route('login') }}" style="background-color: yellow; color: black;">
+            <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i>
+              LOGIN
+          </a>
+          @endguest
+      </div>
 
-    @auth
-    <!-- Assuming you're using a POST request for logout -->
-    <form action="{{ route('logout') }}" method="POST" style="display:inline;">
-        @csrf
-        <button type="submit" class="btn btn-primary display-4" style="background-color: yellow; color: black;">
-            <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i> LOGOUT
-        </button>
-    </form>
-    @endauth
-</div>
+      <div class="navbar-buttons mbr-section-btn">
+            @auth
+          <a class="btn btn-primary display-4" href="{{ route('logout') }}" style="background-color: yellow; color: black;">
+            <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i>
+              LOGOUT
+          </a>
+          @endguest
+      </div>
       </div>
     </div>
   </nav>
