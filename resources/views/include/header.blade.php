@@ -47,11 +47,11 @@
       </div>
 
       <div class="navbar-buttons mbr-section-btn">
-        <a class="btn btn-primary display-4" style="background-color: yellow; color: black;">
         @auth
+        <a class="btn btn-primary display-4" style="background-color: yellow; color: black;">
                 <a class="nav-link" href="{{ route('logout')}}">LogOut</a>
+            </a>
             @endauth
-        </a>
        </div>
       </div>
     </div>
