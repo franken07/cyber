@@ -45,7 +45,7 @@
           </a>
           @endguest
       </div>
-      <div class="navbar-buttons mbr-section-btn" id="navbarNavAltMarkup">
+      <div class="d_flex" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
             @auth
                 <a class="nav-link" href="{{ route('logout')}}">LogOut</a>
