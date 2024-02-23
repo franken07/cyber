@@ -45,13 +45,14 @@
           </a>
           @endguest
       </div>
-      <div class="d_flex" style="background-color: yellow; color: black;">
-        <div class="navbar-nav ms-auto">
-            @auth
+
+      <div class="navbar-buttons mbr-section-btn">
+        <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
+        @auth
                 <a class="nav-link" href="{{ route('logout')}}">LogOut</a>
             @endauth
-        </div>
-        </div> 
+        </a>
+    <   /div>
       </div>
     </div>
   </nav>
