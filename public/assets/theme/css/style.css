@@ -2655,3 +2655,27 @@ cid-u3GZCsGnbq {
 .fab-contact:hover {
   background-color: #fcd303; /* Slightly darker yellow on hover */
 }
+
+/* Target the container within the footer for overall padding */
+.footer3 .container {
+  padding-top: 10px; /* Reduce the top padding */
+  padding-bottom: 10px; /* Reduce the bottom padding */
+}
+
+/* Reduce vertical padding/margin for direct children of .row within the footer */
+.footer3 .row > * {
+  margin-top: 5px; /* Adjust top margin of all direct children */
+  margin-bottom: 5px; /* Adjust bottom margin */
+}
+
+/* Specifically target the paragraph for copyright and adjust its margin */
+.footer3 p {
+  margin-top: 0; /* Reduce or remove top margin */
+  margin-bottom: 0; /* Reduce or remove bottom margin */
+}
+
+/* Adjust padding/margin for social icons if necessary */
+.footer3 .soc-item {
+  margin-right: 5px; /* Adjust right margin between icons if they're too spread out */
+  /* Add padding adjustments if needed */
+}
