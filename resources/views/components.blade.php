@@ -31,7 +31,8 @@
 </head>
 <body>
 
- 
+<!--navbar  -->
+@include('include.header')
 
 
  <!--####################### CPU Starts Here ###################-->
