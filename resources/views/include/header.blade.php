@@ -5,7 +5,7 @@
     <div class="container">
       <div class="navbar-brand">
         <span class="navbar-logo">
-          <a href="#">                            
+          <a href="{{ route('index') }}">                            
 						<img src="images/loko.png" style="height: 4.3rem;">
 					</a>
 				</span>
@@ -50,7 +50,7 @@
             @auth
           <a class="btn btn-primary display-4" href="{{ route('logout') }}" style="background-color: yellow; color: black;">
             <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i>
-              LOGIN
+              LOGOUT
           </a>
           @endguest
       </div>
