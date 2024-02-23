@@ -144,7 +144,7 @@ body {
 }
 /* Buttons */
 .btn {
-  padding: 1.25rem 2rem;
+  padding: 5rem 2rem;
   border-radius: 4px;
 }
 @media (max-width: 767px) {
