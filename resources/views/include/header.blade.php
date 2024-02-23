@@ -38,10 +38,12 @@
           </li>
         </ul>
         <div class="navbar-buttons mbr-section-btn">
+            @guest
           <a class="btn btn-primary display-4" href="{{ route('login') }}" style="background-color: yellow; color: black;">
             <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i>
               LOGIN
           </a>
+          @endguest
       </div>
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
