@@ -37,8 +37,8 @@
             <a class="nav-link link text-black display-4" href="{{ route('contact') }}">Contacts</a>
           </li>
         </ul>
-        <div class="navbar-buttons mbr-section-btn">
-            @guest
+        <div class="navbar-buttons mbr-section-btn d-flex justify-content-end">
+            @guest    
           <a class="btn btn-primary display-4" href="{{ route('login') }}" style="background-color: yellow; color: black;">
             <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i>
               LOGIN
