@@ -18,12 +18,12 @@
         <div class="hamburger">
           <span></span>
           <span></span>
-          <span></span>
+          <span></span>     
           <span></span>
         </div>
       </button>
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link link text-black display-4" href="{{ route('components') }}">Components</a>
           </li>
@@ -37,7 +37,7 @@
             <a class="nav-link link text-black display-4" href="{{ route('contact') }}">Contacts</a>
           </li>
         </ul>
-        <div class="navbar-buttons mbr-section-btn">
+        <div class="d-flex">
             @guest
           <a class="btn btn-primary display-4" href="{{ route('login') }}" style="background-color: yellow; color: black;">
             <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i>
@@ -48,7 +48,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav ms-auto">
             @auth
-                <a class="nav-link" href="{{ route('logout')}}">logout</a>
+                <a class="nav-link" href="{{ route('logout')}}">LogOut</a>
             @endauth
         </div>
         </div> 
