@@ -13,9 +13,6 @@ body {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: 100%; 
-    max-width: 600px; 
-    margin: auto; 
 }
 
 form {
@@ -140,9 +137,8 @@ button a:hover {
   }
   @media (max-width: 767px) {
     .container {
-        padding: 10px; /* Reduce padding on smaller screens */
-        margin: 10px; /* Add margin to avoid touching the screen edges */
-        max-width: 100%; /* Allow the container to fit the screen width */
+        padding: 10px; /* Adjust padding for smaller screens */
+        margin: 20px; /* Add margin to avoid elements touching screen edges */
     }
 
     .form-control, .btn {
