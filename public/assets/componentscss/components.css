@@ -1,0 +1,67 @@
+.product-listing .row {
+    margin-bottom: 20px;
+}
+
+/* Card styling */
+.product-listing .card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+}
+
+.product-listing .card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+/* Image styling */
+.product-listing .card-img-top {
+    width: 100%;
+    height: auto;
+    object-fit: cover; /* Adjust as needed; could be 'contain' for no cropping */
+}
+
+/* Title and price */
+.product-listing .card-title,
+.product-listing .card-text {
+    margin-bottom: 12px;
+}
+
+/* Highlight categories that are GPU, CPU, or monitors */
+.product-listing h2 {
+    color: #333; /* Adjust the color as needed */
+}
+
+.product-listing .alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+/* Button styling */
+.product-listing .btn-primary {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+.product-listing .btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+/* Adjust the form and button alignment and spacing */
+.product-listing .add-to-cart-form {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* Adjust the space between form elements if necessary */
+}
+
+/* Small screen adjustments */
+@media (max-width: 768px) {
+    .product-listing .col-md-4 {
+        flex: 0 0 100%;
+        max-width: 100%;
+    }
+}
