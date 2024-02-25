@@ -53,7 +53,7 @@
 
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-            <a href="{{ route('index') }}" class="btn btn-primary">Back</a>
+            <a href="{{ route('login') }}" class="btn btn-primary">Back</a>
         </form>
     </div>
 </body>
