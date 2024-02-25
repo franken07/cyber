@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <link rel="stylesheet" href="assets/login.css">
+    <link rel="stylesheet" href="assets/logincss/loginn.css">
 </head>
 <body>
 <div class="container">
@@ -37,7 +37,8 @@
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <button><a href="{{route('index')}}">Forgot Password?</a></button>
+                <a href="{{route('index')}}" class="btn btn-primary">Forgot Password?</a>
+                <a href="{{route('registration')}}" class="btn btn-primary">Sign Up</a>
             </div>
         </form>
     </div>

@@ -6,6 +6,7 @@ use App\Http\Controllers\contacts_controller;
 use App\Http\Controllers\index_controller;
 use App\Http\Controllers\Authentication;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\Productcontroller;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -39,3 +40,11 @@ Route::get('/reset-request', [ResetPasswordController::class, 'showResetRequestF
 Route::post('/reset-request', [ResetPasswordController::class, 'showResetPasswordPost'])->name('reset.request.post');
 Route::get('/reset-password', [ResetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.form');
 Route::post('/reset-password', [ResetPasswordController::class, 'resetPasswordPost'])->name('reset.password.post');
+
+
+Route::get('/admin',[Productcontroller::class, 'admin'])->name('admin');
+Route::post('/admin',[Productcontroller::class, 'addProduct'])->name('addProduct');
+Route::get('/components',[Productcontroller::class, 'components'])->name('components');
+Route::post('/cart', [Productcontroller::class, 'add'])->name('cart.add');
+Route::post('/checkout', [Productcontroller::class, 'checkout'])->name('checkout');
+Route::get('/cart', [Productcontroller::class, 'cart'])->name('cart');

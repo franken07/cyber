@@ -31,397 +31,33 @@
 </head>
 <body>
 
- <!-- Navbar  -->
-<section class="menu menu2 cid-u3GZCsGXbm" once="menu" id="menu-5-u3GZCsGXbm">
-  <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
-    <div class="container">
-      <div class="navbar-brand">
-        <span class="navbar-logo">
-          <a href="{{ route('index') }}">
-						<img src="assets/images/loko.png" style="height: 4.3rem;">
-					</a>
-				</span>
-      </div>
-      <button class="navbar-toggler" type="button" data-toggle="collapse"
-        data-bs-toggle="collapse" data-target="#navbarSupportedContent"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarNavAltMarkup" aria-expanded="false"
-        aria-label="Toggle navigation">
-        <div class="hamburger">
-          <span></span>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav nav-dropdown" data-app-modern-menu="true">
-          <li class="nav-item">
-            <a class="nav-link link text-black display-4" href="#cpu">CPU</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link text-black display-4" href="#gpu">GPU</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link text-black display-4" href="about.html">MONITOR</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link link text-black display-4" href="{{ route('contact') }}">Contacts</a>
-          </li>
-        </ul>
-        <div class="navbar-buttons mbr-section-btn">
-          <a class="btn btn-primary display-4" href="shop.html" style="background-color: yellow; color: black;">
-              <i class="fas fa-shopping-cart" style="font-size: 24px; margin-right: 10px;"></i>
-              CART
-          </a>
-      </div>
-      </div>
+<!--navbar  -->
+@include('include.header')
+
+
+<!--items   -->
+@foreach($productsBycategory as $category => $products)
+    <h2>{{ ucfirst($category) }}</h2>
+    <div class="row">
+        @foreach($products as $product)
+            <div class="col-md-4">
+                <div class="card mb-4">
+                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <p class="card-text">Price: ${{ $product->price }}</p>
+                        <p class="card-text">{{ $product->description }}</p>
+                        <form class="add-to-cart-form" action="{{ route('cart.add') }}" method="POST">
+                            @csrf
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        @endforeach
     </div>
-  </nav>
-</section>
-
-
- <!--####################### CPU Starts Here ###################-->
- <section class="people03 cid-u3GZCsGM5B bg-color" id="cpu" style="padding-top: 150px;">
-	<div class="container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-12 content-head">
-				<div class="mbr-section-head mb-5">
-					<h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-						<strong>Central Processing Unit</strong>
-					</h4>
-				</div>
-			</div>
-		</div>
- <!--####################### Cards Starts Here ###################-->
-		<div class="row">
-			<div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/Intel-Core-i9-processor-14900K__10117.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>Intel Core i9-14900K</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$589</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/i7-14.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>Intel Core i7-14700K</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$409</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/amd_ryzen_9_7900x3d-img-1.png">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>AMD Ryzen 9 7950X</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$699</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/AMD Ryzen 7 7700X.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>AMD Ryzen 7 7700X</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$399</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/Intel Core i9-12900K.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>Intel Core i9-12900K</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$589</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/AMD Ryzen 7 5800X3D.png">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>AMD Ryzen 7 5800X3D</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$449</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/Intel Core i5-10400.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>Intel Core i5-10400</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$182</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/AMD Ryzen 3 3100.png">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>AMD Ryzen 3 3100</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$99</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-		</div>
-	</div>
- </section>
-
-
-
-  <!--####################### GPU Starts Here ###################-->
- <section class="people03 cid-u3GZCsGM5B" id="gpu">
-	<div class="container-fluid">
-		<div class="row justify-content-center">
-			<div class="col-12 content-head">
-				<div class="mbr-section-head mb-5">
-					<h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
-						<strong>Graphics Processing Unit</strong>
-					</h4>
-				</div>
-			</div>
-		</div>
- <!--####################### Cards Starts Here ###################-->
-		<div class="row">
-			<div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/rog4090.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>NVIDIA GeForce RTX 4090</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$1599</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/AMD Radeon RX 7900 XTX.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>AMD Radeon RX 7900 XTX</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$999</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/NVIDIA GeForce RTX 4080.png">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>NVIDIA GeForce RTX 4080</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$1199</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/AMD Radeon RX 7900 XT.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>AMD Radeon RX 7900 XT</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$899</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/NVIDIA GeForce RTX 4070 Ti.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>NVIDIA GeForce RTX 4070 Ti</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$799</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/NVIDIA GeForce RTX 3090 Ti.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>NVIDIA GeForce RTX 3090 Ti</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$2000</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/AMD Radeon 6900 XT.jpg">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>AMD Radeon 6900 XT</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$999 </p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-      </div>
-
-      <div class="item features-image col-12 col-md-6 col-lg-3">
-        <a href="your-link-here" style="text-decoration: none; color: inherit; display: block;">
-          <div class="item-wrapper">
-            <div class="item-img mb-3">
-              <img src="assets/images/Intel Arc A770.png">
-            </div>
-            <div class="item-content align-left">
-              <h6 class="item-subtitle mbr-fonts-style display-5">
-                <strong>Intel Arc A770</strong>
-              </h6>
-              <p class="mbr-text mbr-fonts-style display-7">$329</p>
-              <div class="navbar-buttons mbr-section-btn">
-                <a class="btn btn-primary display-4" href="#feature" style="background-color: yellow; color: black;">
-                    ADD TO CART
-                </a>
-            </div>
-            </div>
-          </div>
-        </a>
-      </div>
-		</div>
-	</div>
-</section>
+@endforeach
 
 <!--footer -->  
 <section class="footer3 cid-u3GZCsJlbC" once="footers" id="footer-3-u3GZCsJlbC">
@@ -480,5 +116,10 @@
     })();
 
   </script>
+  <!-- Floating cart button -->
+  <div class="floating-action-button">
+    <a href="cart route" class="fab-contact">
+        <i class="fas fa-shopping-cart" style="font-size: 24px;"></i> 
+    </a>
 </body>
 </html>
