@@ -37,10 +37,9 @@
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <button><a href="{{route('index')}}">Forgot Password?</a></button>
-                <button><a href="{{route('registration')}}">Sign Up</a></button>
+                <a href="{{route('index')}}" class="btn btn-primary">Forgot Password?</a>
+                <a href="{{route('registration')}}" class="btn btn-primary">Sign Up</a>
             </div>
-            
         </form>
     </div>
 </body>
