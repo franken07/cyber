@@ -137,20 +137,25 @@ button a:hover {
   }
   @media (max-width: 767px) {
     .container {
-        width: auto; 
-        margin: 10px; /* Add some margin around the container */
-        padding: 10px; /* Reduce padding inside the container for more space */
+        padding: 10px; /* Adjust padding for smaller screens */
+        margin: 20px; /* Add margin to avoid elements touching screen edges */
+    }
+
+    .form-control, .btn {
+        font-size: 14px; /* Make text slightly smaller for better fit */
     }
 
     .btn {
-        padding: 12px 15px; /* Slightly bigger padding for easier tapping */
+        padding: 12px; /* Increase padding for easier interaction */
+        width: auto; /* Adjust width to fit content or container */
+        margin-top: 10px; /* Add some space above buttons for clarity */
     }
 
-    input.form-control, button.btn {
-        font-size: 14px; /* Slightly smaller font size to fit smaller screens */
+    label.form-label {
+        margin-bottom: 5px; /* Reduce space below labels to compact form */
     }
 
-    form {
-        margin-top: 10px;
+    .mb-3 {
+        margin-bottom: 10px; /* Adjust bottom margin for form elements */
     }
-  }
+}
