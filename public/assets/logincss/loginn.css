@@ -96,26 +96,6 @@ button a:hover {
 .btn-primary:hover {
     background-color: #0056b3; 
 }
-
-@media (max-width: 767px) {
-    .container {
-        width: auto; 
-        margin: 10px; /* Add some margin around the container */
-        padding: 10px; /* Reduce padding inside the container for more space */
-    }
-
-    .btn {
-        padding: 12px 15px; /* Slightly bigger padding for easier tapping */
-    }
-
-    input.form-control, button.btn {
-        font-size: 14px; /* Slightly smaller font size to fit smaller screens */
-    }
-
-    form {
-        margin-top: 10px;
-    }
-  }
   @media (min-width: 992px) and (max-width: 1200px) {
     .container {
         width: auto; 
