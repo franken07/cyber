@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Session;
 
 class Authentication extends Controller
 {
+
+    public function getalluser()
+    {
+        // Fetch all users
+        $users = User::all();
+
+        // Return all users
+        return response()->json($users);
+    }
     function indexs(){
 
 

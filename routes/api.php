@@ -23,6 +23,8 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/users', [Authentication::class, 'getalluser'])->name('getalluser');
+
 Route::get('/components',[components_controller::class, 'components'])->name('components');
 Route::get('/about',[about_controller::class, 'about'])->name('about');
 Route::get('/contact',[contacts_controller::class, 'contact'])->name('contact');
