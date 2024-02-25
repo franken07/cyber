@@ -70,13 +70,3 @@ button.btn {
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
-.btn-secondary {
-    width: 100%;
-    padding: 10px 0;
-    font-size: 16px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-}
