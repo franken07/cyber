@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/animatecss/animate.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/componentscss/components.css">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/additional.css"><link rel="stylesheet" href="assets/mobirise/css/additional.css" type="text/css">
@@ -38,7 +39,7 @@
 <!--items   -->
 @foreach($productsBycategory as $category => $products)
     <h2>{{ ucfirst($category) }}</h2>
-    <div class=">
+    <div class="product-listing">
         @foreach($products as $product)
             <div class="col-md-4">
                 <div class="card mb-4">
