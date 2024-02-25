@@ -79,6 +79,8 @@ button.btn {
     cursor: pointer;
     background-color: #007bff;
     color: white;
+    text-align: center; /* Explicitly center text */
+    display: inline-block; /* Ensure this is applied */
 }
 
 .btn-primary:hover {
