@@ -35,7 +35,6 @@
 <!--navbar  -->
 @include('include.header')
 
-
 <!--items   -->
 @foreach($productsBycategory as $category => $products)
     <h2>{{ ucfirst($category) }}</h2>
