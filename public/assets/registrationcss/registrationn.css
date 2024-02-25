@@ -81,6 +81,7 @@ button.btn {
     color: white;
     text-align: center; /* Explicitly center text */
     display: inline-block; /* Ensure this is applied */
+    margin-top: 20px
 }
 
 .btn-primary:hover {
