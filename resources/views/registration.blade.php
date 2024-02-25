@@ -53,6 +53,7 @@
 
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
+            <a href="{{route('index')}}" class="btn btn-secondary">Back to Home</a>
         </form>
     </div>
 </body>

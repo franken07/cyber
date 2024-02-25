@@ -70,3 +70,12 @@ button.btn {
     background-color: #f8d7da;
     border-color: #f5c6cb;
 }
+.btn-secondary {
+    background-color: #007bff; /* Bootstrap's secondary button color */
+    color: white;
+    padding: 10px 20px;
+    text-decoration: none; /* Removes underline from the anchor tag */
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
