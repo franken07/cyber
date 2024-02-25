@@ -38,7 +38,7 @@
 <!--items   -->
 @foreach($productsBycategory as $category => $products)
     <h2>{{ ucfirst($category) }}</h2>
-    <div class="row">
+    <div class=">
         @foreach($products as $product)
             <div class="col-md-4">
                 <div class="card mb-4">
