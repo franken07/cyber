@@ -11,6 +11,15 @@ use Illuminate\Support\Facades\Session;
 
 class Authentication extends Controller
 {
+
+    public function getalluser()
+    {
+        // Fetch all users
+        $users = User::all();
+
+        // Return all users
+        return response()->json($users);
+    }
     function indexs(){
 
 
@@ -35,13 +44,14 @@ class Authentication extends Controller
         $credentials = $request->only('email', 'password');
     
         if (Auth::attempt($credentials)) {
-
-            if ($request->is('api/*') || $request->wantsJson()) {
-
-                return response()->json(Auth::user());
-            } else {
-
-                return redirect()->intended(route('index'));
+            $user = Auth::user();
+    
+            if ($user->usertype === 0) {
+                // User is of type 0, redirect to index
+                return redirect()->route('index');
+            } elseif ($user->usertype === 1) {
+                // User is of type 1, redirect to admin page
+                return redirect()->route('admin');
             }
         }
     
