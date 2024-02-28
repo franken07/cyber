@@ -5,6 +5,10 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    background-image: url('images/17.png'); /* Update this path */
+    background-size: cover; /* Cover the entire page */
+    background-position: center; /* Center the background image */
+    background-repeat: no-repeat; /* Do not repeat the image */
 }
 
 .container {
