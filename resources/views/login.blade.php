@@ -11,8 +11,8 @@
     <!-- Logo Image -->
         <img src="images/loko.png" alt="Logo" class="logo">
     </div>
-    <H1>LOGIN</H1>
 <div class="container outer-container"> 
+    <h1>LOGIN</H1>
 <div class="container">
         <div class="mt-5">
             @if($errors->any())
