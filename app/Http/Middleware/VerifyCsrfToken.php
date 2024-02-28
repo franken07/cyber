@@ -25,6 +25,11 @@ class VerifyCsrfToken extends Middleware
         '/editproduct/*',           // Excluding GET request to /editproduct/{id}
         '/editproduct/*',           // Excluding PUT request to /editproduct/{id}
         '/admin/*',
+        '/login',               // Excluding GET request to /login
+        '/login',               // Excluding POST request to /login
+        '/registration',        // Excluding GET request to /registration
+        '/registration',        // Excluding POST request to /registration
+        '/logout',  
 
 
     ];
