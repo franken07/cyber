@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="assets/logincss/loginn.css">
 </head>
 <body>
+
+<div class="container">
+    <!-- Logo Image -->
+    <div class="logo-container">
+        <img src="images/loko.png" alt="Logo" class="logo">
+    </div>
 <div class="container outer-container">
 <div class="container">
         <div class="mt-5">
