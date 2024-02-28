@@ -21,5 +21,9 @@ class VerifyCsrfToken extends Middleware
         '/remove_cart/*',
         '/checkout',
         '/editproduct/*',
+        '/admin/*',
+        '/cart',
+        
+
     ];
 }
