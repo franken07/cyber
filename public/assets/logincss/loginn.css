@@ -142,7 +142,6 @@ button a:hover {
 }
 .outer-container {
     align-items: center;
-    flex-direction: column;
     background-color: yellow; /* Specific to the outer container */
     width: 700px; /* Example width */
     margin: auto; /* Center the container */
@@ -169,12 +168,4 @@ button a:hover {
     width: auto; /* or set a specific width */
     height: auto; /* maintain aspect ratio */
     /* Additional styling as needed */
-}
-.background-section {
-    background-image: url('images/17.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    height: auto; /* Set a specific height */
-    width: auto; /* Cover the width of its container */
 }
