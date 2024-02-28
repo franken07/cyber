@@ -144,7 +144,7 @@ button a:hover {
     width: 700px; /* Example width */
     margin: auto; /* Center the container */
     background-color: yellow; /* Just an example color */
-    padding: 20px; /* Space around the inner container */
+    padding: 60px; /* Space around the inner container */
 }
 
 .inner-container {
@@ -153,5 +153,5 @@ button a:hover {
     width: 700px; /* Larger size for the outer container */
     margin: auto; /* Center the container */
     background-color: yellow; /* Background color for outer container */
-    padding: 20px; /* Space around the inner container */
+    padding: 60px; /* Space around the inner container */
 }
