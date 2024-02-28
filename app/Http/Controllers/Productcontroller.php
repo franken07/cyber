@@ -42,30 +42,37 @@ class Productcontroller extends Controller
         return view('components', compact('productsBycategory'));
     }
     public function addProduct(Request $request)
-    {
-        // Validate the incoming request data
-        $validatedData = $request->validate([
-            'prod_name' => 'required|string|max:255',
-            'price' => 'required|numeric',
-            'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:25048', // Adjust max file size if needed
-            'category' => 'required|string',
-            'description' => 'nullable|string',
-        ]);
+{
+    // Validate the incoming request data
+    $validatedData = $request->validate([
+        'prod_name' => 'required|string|max:255',
+        'price' => 'required|numeric',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:25048', // Adjust max file size if needed
+        'category' => 'required|string',
+        'description' => 'nullable|string',
+    ]);
 
-        // Handle the file upload if an image is provided
-        if ($request->hasFile('image')) {
-            // Use storeAs to specify the file name
-            $imagePath= time().'.'.$request->image->extension();
-            $request->image->move(public_path('storage/product'), $imagePath);
-            $validatedData['image'] = $imagePath;
-        }
-    
-        // Create the product
-        Product::create($validatedData);
-    
-        // Redirect back with success message
-        return redirect('admin')->with('success', 'Product added successfully.');
+    // Handle the file upload if an image is provided
+    $imagePath = null;
+    if ($request->hasFile('image')) {
+        $imagePath = time().'.'.$request->image->extension();
+        $request->image->move(public_path('storage/product'), $imagePath);
     }
+
+    // Create the product
+    $productData = [
+        'prod_name' => $validatedData['prod_name'],
+        'price' => $validatedData['price'],
+        'category' => $validatedData['category'],
+        'description' => $validatedData['description'],
+        'image' => $imagePath,
+    ];
+
+    Product::create($productData);
+
+    // Redirect back with success message
+    return redirect('admin')->with('success', 'Product added successfully.');
+}
 
     public function editDeleteProducts()
     {
