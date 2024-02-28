@@ -157,11 +157,15 @@ button a:hover {
 
 .logo-wrapper {
     text-align: center;
-    margin-bottom: 20px; /* Adjust space below the logo as needed */
+    margin-bottom: 5px; /* Adjust space below the logo as needed */
 }
 
 .logo {
     width: auto; /* or set a specific width */
     height: auto; /* maintain aspect ratio */
-    /* Additional styling as needed */
+}
+.title {
+    text-align: center;
+    margin-top: 20px; /* Adjust top margin as needed */
+    margin-bottom: 20px; /* Provides some space before the next container */
 }
