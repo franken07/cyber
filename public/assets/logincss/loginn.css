@@ -150,4 +150,8 @@ button a:hover {
 .inner-container {
     background-color: rgb(255, 230, 0); /* Specific to the inner container */
     /* More specific styles for the inner container */
+    width: 700px; /* Larger size for the outer container */
+    margin: auto; /* Center the container */
+    background-color: yellow; /* Background color for outer container */
+    padding: 20px; /* Space around the inner container */
 }
