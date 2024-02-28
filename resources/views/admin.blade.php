@@ -106,8 +106,8 @@
                             <!-- List of GPU products with edit and delete options -->
                             @foreach($gpuProducts as $product)
                             <div class="product-item">
-                                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->name }}" style="max-width: 100px; max-height: 100px;">
-                                <p>{{ $product->name }} - ${{ $product->price }}</p>
+                                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}" style="max-width: 100px; max-height: 100px;">
+                                <p>{{ $product->prod_name }} - ${{ $product->price }}</p>
                                 <a href="{{ route('edit_product', ['id' => $product->id]) }}">Edit</a>
                                 <form action="{{ route('delete_product', ['productId' => $product->id]) }}" method="post">
                                     @csrf
@@ -134,8 +134,8 @@
                             <!-- List of CPU products with edit and delete options -->
                             @foreach($cpuProducts as $product)
                             <div class="product-item">
-                                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->name }}" style="max-width: 100px; max-height: 100px;">
-                                <p>{{ $product->name }} - ${{ $product->price }}</p>
+                                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}" style="max-width: 100px; max-height: 100px;">
+                                <p>{{ $product->prod_name }} - ${{ $product->price }}</p>
                                 <a href="{{ route('edit_product', ['id' => $product->id]) }}">Edit</a>
                                 <form action="{{ route('delete_product', ['productId' => $product->id]) }}" method="post">
                                     @csrf
@@ -162,8 +162,8 @@
                             <!-- List of Monitor products with edit and delete options -->
                             @foreach($monitorProducts as $product)
                             <div class="product-item">
-                                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->name }}" style="max-width: 100px; max-height: 100px;">
-                                <p>{{ $product->name }} - ${{ $product->price }}</p>
+                                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}" style="max-width: 100px; max-height: 100px;">
+                                <p>{{ $product->prod_name }} - ${{ $product->price }}</p>
                                 <a href="{{ route('edit_product', ['id' => $product->id]) }}">Edit</a>
                                 <form action="{{ route('delete_product', ['productId' => $product->id]) }}" method="post">
                                     @csrf
