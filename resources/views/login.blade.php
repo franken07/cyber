@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
     <link rel="stylesheet" href="assets/logincss/loginn.css">
-     <!-- Logo Image -->
-     <div class="logo-container">
-        <img src="images/loko.png" alt="Logo" class="logo">
-    </div>
 </head>
 <body>
+<div class="container">
+    <!-- Logo Image -->
+    <div class="logo-container">
+        <img src="images/loko.png" alt="Logo" class="logo">
+    </div>
 <div class="container outer-container"> 
 <div class="container">
         <div class="mt-5">
