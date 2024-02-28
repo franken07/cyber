@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="assets/logincss/loginn.css">
 </head>
 <body>
-<div class="container">
-        <div class="mt-5">
+    <div class="container">
+        <!-- Alerts for errors, success, etc. -->
+        <div class="alerts mt-5">
             @if($errors->any())
                 <div class="col-12">
                     @foreach($errors->all() as $error)
@@ -25,20 +26,22 @@
                 <div class="alert alert-success">{{session('success')}}</div>
             @endif
         </div>
-        <form action="{{route('login.post')}}" method="POST" class="ms-auto me-auto mt-3" style="width: 500px">
+
+        <!-- Form -->
+        <form action="{{route('login.post')}}" method="POST" class="login-form ms-auto me-auto mt-3" style="width: 500px">
             @csrf
-            <div class="mb-3">
+            <div class="form-group mb-3">
                 <label class="form-label">Email</label>
                 <input type="email" class="form-control" name="email">
             </div>
-            <div class="mb-3">
+            <div class="form-group mb-3">
                 <label class="form-label">Password</label>
                 <input type="password" class="form-control" name="password">
             </div>
-            <div class="mb-3">
+            <div class="form-actions mb-3">
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a href="{{route('index')}}" class="btn btn-primary">Forgot Password?</a>
-                <a href="{{route('registration')}}" class="btn btn-primary">Sign Up</a>
+                <a href="{{route('index')}}" class="btn btn-link">Forgot Password?</a>
+                <a href="{{route('registration')}}" class="btn btn-secondary">Sign Up</a>
             </div>
         </form>
     </div>
