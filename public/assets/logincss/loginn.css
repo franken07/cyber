@@ -9,10 +9,12 @@ body {
 }
 
 .container {
-    background: rgb(255, 217, 0);
+    background: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
 }
 
 form {
@@ -140,11 +142,15 @@ button a:hover {
     }
 }
 .outer-container {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
     background-color: yellow; /* Specific to the outer container */
     width: 700px; /* Example width */
     margin: auto; /* Center the container */
     background-color: yellow; /* Just an example color */
-    padding: 20px; /* Space around the inner container */
+    padding: 60px; /* Space around the inner container */
+    border-radius: 30px;
 }
 
 .inner-container {
@@ -153,5 +159,5 @@ button a:hover {
     width: 700px; /* Larger size for the outer container */
     margin: auto; /* Center the container */
     background-color: yellow; /* Background color for outer container */
-    padding: 20px; /* Space around the inner container */
+    padding: 60px; /* Space around the inner container */
 }
