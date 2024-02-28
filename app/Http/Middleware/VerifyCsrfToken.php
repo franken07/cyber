@@ -12,18 +12,20 @@ class VerifyCsrfToken extends Middleware
      * @var array<int, string>
      */
     protected $except = [
-        '/registration',
-        '/login',
-        '/admin',
-        '/users',
-        '/cart/*',
+        '/admin',          // Excluding GET request to /admin
+        '/admin',          // Excluding POST request to /admin
+        '/userPurchases',  // Excluding GET request to /userPurchases
         '/delivered/*',
-        '/remove_cart/*',
-        '/checkout',
-        '/editproduct/*',
+        '/cart/*',          // Excluding POST request to /cart/{id}
+        '/cart',            // Excluding GET request to /cart
+        '/remove_cart/*',   // Excluding GET and DELETE requests to /remove_cart/{id}
+        '/checkout',        // Excluding GET and POST requests to /checkout
+        '/checkoutprod',
+        '/admin',                   // Excluding GET request to /admin
+        '/editproduct/*',           // Excluding GET request to /editproduct/{id}
+        '/editproduct/*',           // Excluding PUT request to /editproduct/{id}
         '/admin/*',
-        '/cart',
-        
+
 
     ];
 }
