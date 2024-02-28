@@ -10,7 +10,7 @@ class Product extends Model
     protected $table = 'products'; // specify the table name if different from the model name
 
     protected $fillable = [
-        'name', 'image', 'price', 'category', 'description',
+        'prod_name', 'image', 'price', 'category', 'description',
     ];
 
     public function User()

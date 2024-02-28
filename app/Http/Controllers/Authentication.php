@@ -35,26 +35,27 @@ class Authentication extends Controller
     
     }
 
-    function loginPost(Request $request){
+    public function loginPost(Request $request)
+    {
         $request->validate([
             'email' => 'required',
             'password' => 'required',
         ]);
-    
+
         $credentials = $request->only('email', 'password');
-    
+
         if (Auth::attempt($credentials)) {
             $user = Auth::user();
-    
-            if ($user->usertype === 0) {
+
+            if ($user->usertype == 0) {
                 // User is of type 0, redirect to index
                 return redirect()->route('index');
-            } elseif ($user->usertype === 1) {
+            } elseif ($user->usertype == 1) {
                 // User is of type 1, redirect to admin page
                 return redirect()->route('admin');
             }
         }
-    
+
         return redirect(route('login'))->with("error", "Invalid credentials");
     }
     

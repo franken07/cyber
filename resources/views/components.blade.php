@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/animatecss/animate.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="stylesheet" href="assets/componentscss/components.css">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/additional.css"><link rel="stylesheet" href="assets/mobirise/css/additional.css" type="text/css">
@@ -28,14 +27,24 @@
   
   
 
-  <style>:root{ --background: #EBF1FF; --dominant-color: #3772FF; --primary-color: #FDCA40; --secondary-color: #DF2935; --success-color: #31D98B; --danger-color: #DB2F40; --warning-color: #FFC20B; --info-color: #18CEF2; --background-text: #000000; --dominant-text: #FFFFFF; --primary-text: #000000; --secondary-text: #FFFFFF; --success-text: #000000; --danger-text: #FFFFFF; --warning-text: #000000; --info-text: #000000;}</style>
+  <style>:root{ --background: #EBF1FF; --dominant-color: #3772FF; --primary-color: #FDCA40; --secondary-color: #DF2935; --success-color: #31D98B; --danger-color: #DB2F40; --warning-color: #FFC20B; --info-color: #18CEF2; --background-text: #000000; --dominant-text: #FFFFFF; --primary-text: #000000; --secondary-text: #FFFFFF; --success-text: #000000; --danger-text: #FFFFFF; --warning-text: #000000; --info-text: #000000;}
+
+.small-image {
+    width: 400px; /* Adjust the width as needed */
+    height: 400; /* Let the height adjust proportionally */
+}
+
+</style>
 </head>
 <body>
 
-<!--navbar  -->
 @include('include.header')
 
-<!--items   -->
+<h1>Product List</h1>
+
+
+<!-- components.blade.php -->
+
 @foreach($productsBycategory as $category => $products)
     <h2>{{ ucfirst($category) }}</h2>
     <div class="row">
@@ -45,12 +54,13 @@
                 <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->name }}</h5>
-                        <p class="card-text">Price: ₱{{ $product->price }}</p>
+                        <p class="card-text">Price: ${{ $product->price }}</p>
                         <p class="card-text">{{ $product->description }}</p>
-                        <form class="add-to-cart-form" action="{{ route('cart.add') }}" method="POST">
-                            @csrf
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        <form class="add-to-cart-form" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="quantity" value="1">
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <button type="submit" class="btn btn-primary">Add to Cart</button>
                         </form>
                     </div>
                 </div>
@@ -58,6 +68,9 @@
         @endforeach
     </div>
 @endforeach
+
+
+
 
 <!--footer -->  
 <section class="footer3 cid-u3GZCsJlbC" once="footers" id="footer-3-u3GZCsJlbC">
@@ -106,6 +119,7 @@
   <script src="assets/theme/js/script.js"></script>
   <script src="assets/formoid/formoid.min.js"></script>
   
+  
   <script>
 
     (function(){
@@ -116,10 +130,5 @@
     })();
 
   </script>
-  <!-- Floating cart button -->
-  <div class="floating-action-button">
-    <a href="cart route" class="fab-contact">
-        <i class="fas fa-shopping-cart" style="font-size: 24px;"></i> 
-    </a>
 </body>
 </html>
