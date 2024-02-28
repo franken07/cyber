@@ -165,23 +165,12 @@ public function deleteProduct(Request $request, $productId)
 
 public function addToCart(Request $request,$id)
 {
-    if (Auth::check()) { // Check if user is authenticated
+    if (Auth::id()) { // Check if user is authenticated
         $user = Auth::user();
         $product = Product::find($id);
 
-        // Check if the product already exists in the user's orders
-        $existingOrder = Order::where('user_id', $user->id)
-            ->where('product_id', $product->id)
-            ->first();
-
-        if ($existingOrder) {
-            // Update the quantity and price
-            $existingOrder->quantity += $request->quantity;
-            $existingOrder->price += $product->price * $request->quantity;
-            $existingOrder->save();
-        } else {
-            // Create a new order
-            $order = new Order;
+        $order = new Order;
+           
             $order->name = $user->name;
             $order->email = $user->email;
             $order->phone = $user->phone;
@@ -193,7 +182,8 @@ public function addToCart(Request $request,$id)
             $order->product_id = $product->id;
             $order->quantity = $request->quantity;
             $order->save();
-        }
+
+        
 
         return redirect('components')->with('success', 'Product added to cart successfully.');
     } else {
