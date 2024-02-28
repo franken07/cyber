@@ -64,7 +64,7 @@ class Productcontroller extends Controller
         Product::create($validatedData);
     
         // Redirect back with success message
-        return back()->with('success', 'Product added successfully.');
+        return redirect('admin')->with('success', 'Product added successfully.');
     }
 
     public function editDeleteProducts()
@@ -153,7 +153,7 @@ public function deleteProduct(Request $request, $productId)
     $product->delete();
 
     // Redirect back with success message
-    return back()->with('success', 'Product deleted successfully.');
+    return redirect('admin')->with('success', 'Product deleted successfully.');
 }
 
 public function addToCart(Request $request,$id)
