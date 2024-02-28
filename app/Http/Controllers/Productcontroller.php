@@ -195,7 +195,7 @@ public function addToCart(Request $request,$id)
             $order->save();
         }
 
-        return redirect('admin')->with('success', 'Product added to cart successfully.');
+        return redirect('components')->with('success', 'Product added to cart successfully.');
     } else {
         return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
