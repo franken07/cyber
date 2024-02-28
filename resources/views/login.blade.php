@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="assets/logincss/loginn.css">
 </head>
 <body>
-<div class="container outer-container">
+<div class="outer-container">
 <div class="container">
         <div class="mt-5">
             @if($errors->any())

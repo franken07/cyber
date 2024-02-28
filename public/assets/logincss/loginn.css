@@ -141,9 +141,13 @@ button a:hover {
 }
 .outer-container {
     background-color: yellow; /* Specific to the outer container */
+    width: 700px; /* Example width */
+    margin: auto; /* Center the container */
+    background-color: yellow; /* Just an example color */
+    padding: 20px; /* Space around the inner container */
 }
 
 .inner-container {
-    background-color: white; /* Specific to the inner container */
+    background-color: rgb(255, 230, 0); /* Specific to the inner container */
     /* More specific styles for the inner container */
 }
