@@ -9,12 +9,12 @@ body {
 }
 
 .container {
-    background: white;
+    background: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    width: fit-content;
-    margin: auto;
+    width: 100%;
+    max-width: 500px;
 }
 
 .mt-5, .mb-3 {
