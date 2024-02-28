@@ -53,7 +53,7 @@
                 <div class="card mb-4">
                 <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ $product->name }}</h5>
+                        <h5 class="card-title">{{ $product->prod_name }}</h5>
                         <p class="card-text">Price: ${{ $product->price }}</p>
                         <p class="card-text">{{ $product->description }}</p>
                         <form class="add-to-cart-form" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
