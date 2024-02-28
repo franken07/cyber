@@ -51,16 +51,16 @@
         @foreach($products as $product)
             <div class="col-md-4">
                 <div class="card mb-4">
-                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}">
+                    <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->prod_name }}</h5>
                         <p class="card-text">Price: ${{ $product->price }}</p>
                         <p class="card-text">{{ $product->description }}</p>
                         <form class="add-to-cart-form" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
-                        @csrf
-                        <input type="hidden" name="quantity" value="1">
-                        <input type="hidden" name="product_id" value="{{ $product->id }}">
-                        <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            @csrf
+                            <input type="number" name="quantity" value="1" min="1" class="form-control" required>
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
                         </form>
                     </div>
                 </div>
