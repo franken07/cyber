@@ -51,7 +51,7 @@
         @foreach($products as $product)
             <div class="col-md-4">
                 <div class="card mb-4">
-                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->name }}">
+                <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->name }}</h5>
                         <p class="card-text">Price: ${{ $product->price }}</p>
