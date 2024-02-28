@@ -16,7 +16,10 @@ class VerifyCsrfToken extends Middleware
         '/login',
         '/admin',
         '/users',
-        '/cart',
-        '/delivered'
+        '/cart/*',
+        '/delivered/*',
+        '/remove_cart/*',
+        '/checkout',
+        '/editproduct/*',
     ];
 }
