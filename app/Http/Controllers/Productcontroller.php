@@ -233,7 +233,7 @@ public function checkout(Request $request)
             $checkout->email = $order->email;
             $checkout->phone = $order->phone;
             $checkout->address = $order->address;
-            $checkout->User_id = $order->User_id;
+            $checkout->user_id = $order->user_id;
             $checkout->prod_name = $order->prod_name;
             $checkout->price = $order->price;
             $checkout->image = $order->image;

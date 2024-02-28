@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('image')->nullable();
             $table->decimal('price', 8, 2)->nullable();
             $table->string('product_id')->nullable();
-            $table->string('User_id')->nullable();
+            $table->string('user_id')->nullable();
             $table->integer('quantity')->nullable();
 
             $table->string('delivery_status')->nullable();
