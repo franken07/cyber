@@ -187,7 +187,7 @@
                 <table>
                     <thead>
                         <tr>
-                            <th>Names</th>
+                            <th>Name</th>
                             <th>Email</th>
                             <th>Phone</th>
                             <th>Address</th>
