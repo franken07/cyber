@@ -145,6 +145,7 @@ button a:hover {
     margin: auto; /* Center the container */
     background-color: yellow; /* Just an example color */
     padding: 60px; /* Space around the inner container */
+    border-radius: 30px;
 }
 
 .inner-container {
