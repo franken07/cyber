@@ -122,6 +122,25 @@ class Authentication extends Controller
         Auth::logout();
         return redirect(route('login'));    
     }
+
+    public function updateUserType(Request $request, $id) {
+        
+        $request->validate([
+            'usertype' => 'required|numeric', 
+        ]);
+    
+        $user = User::findOrFail($id);
+    
+
+        $user->usertype = $request->input('usertype');
+    
+
+        $user->save();
+    
+
+        return response()->json(['message' => 'User type updated successfully', 'user' => $user]);
+    }
+
 }
 
 

@@ -30,12 +30,13 @@ Route::get('/contact',[contacts_controller::class, 'contact'])->name('contact');
 Route::get('/index',[index_controller::class, 'index'])->name('index');
 Route::get('/components',[Productcontroller::class, 'components'])->name('components');
 
-
+Route::put('/users/{id}/update-usertype', [Authentication::class, 'updateUserType'])->name('users.update-usertype');
 Route::get('/login',[Authentication::class, 'login'])->name('login');
 Route::post('/login',[Authentication::class,'loginPost'])->name('login.post');
 Route::get('/registration',[Authentication::class,'registration'])->name('registration');
 Route::post('/registration',[Authentication::class,'registrationPost'])->name('registration.post');
 Route::get('/logout',[Authentication::class,'logout'])->name('logout');
+Route::get('/users', [Authentication::class, 'getalluser'])->name('users.getall');
 
 Route::get('/reset-request', [ResetPasswordController::class, 'showResetRequestForm'])->name('reset.request.form');
 Route::post('/reset-request', [ResetPasswordController::class, 'showResetPasswordPost'])->name('reset.request.post');
