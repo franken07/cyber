@@ -58,7 +58,7 @@ class Authentication extends Controller
                     return redirect()->route('index');
                 } elseif ($user->usertype == 1) {
                     // User is of type 1, redirect to admin page
-                    return redirect()->route('admin');
+                    return redirect()->route('edit_delete_products');
                 }
             }
         }
