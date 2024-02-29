@@ -174,7 +174,7 @@ public function addToCart(Request $request,$id)
             $order->name = $user->name;
             $order->email = $user->email;
             $order->phone = $user->phone;
-            $order->address = $user->address;
+            $order->address = $user->address;   
             $order->user_id = $user->id;
             $order->prod_name = $product->prod_name;
             $order->image = $product->image;
@@ -185,7 +185,7 @@ public function addToCart(Request $request,$id)
 
         
 
-        return redirect('components')->with('success', 'Product added to cart successfully.');
+        return redirect()->back()->with('success', 'Product added to cart successfully.');
     } else {
         return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
