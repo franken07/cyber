@@ -30,6 +30,7 @@ class VerifyCsrfToken extends Middleware
         '/registration',        // Excluding GET request to /registration
         '/registration',        // Excluding POST request to /registration
         '/logout',  
+        'users/*/update-usertype',
 
 
     ];
