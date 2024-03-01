@@ -164,36 +164,34 @@ public function deleteProduct(Request $request, $productId)
 }
 
 public function addToCart(Request $request, $id)
-{
-    if (Auth::check()) { // Check if user is authenticated
-        dd(Auth::check());
-        $user = Auth::user();
-        $product = Product::find($id);
+    {
+        if (Auth::check()) { // Check if user is authenticated
+            $user = Auth::user();
+            $product = Product::find($id);
 
-        if (!$product) {
-            return redirect()->back()->with('error', 'Product not found.');
+            if (!$product) {
+                return redirect()->back()->with('error', 'Product not found.');
+            }
+
+            $order = new Order;
+
+            $order->name = $user->name;
+            $order->email = $user->email;
+            $order->phone = $user->phone;
+            $order->address = $user->address;
+            $order->user_id = $user->id;
+            $order->prod_name = $product->prod_name;
+            $order->image = $product->image;
+            $order->price = $product->price * $request->quantity; // Calculate total price
+            $order->product_id = $product->id;
+            $order->quantity = $request->quantity;
+            $order->save();
+
+            return redirect()->back()->with('success', 'Product added to cart successfully.');
+        } else {
+            return redirect()->route('login')->with('error', 'Please log in to add products to your cart.');
         }
-
-        $order = new Order;
-
-        $order->name = $user->name;
-        $order->email = $user->email;
-        $order->phone = $user->phone;
-        $order->address = $user->address;
-        $order->user_id = $user->id;
-        $order->prod_name = $product->prod_name;
-        $order->image = $product->image;
-        $order->price = $product->price * $request->quantity; // Calculate total price
-        $order->product_id = $product->id;
-        $order->quantity = $request->quantity;
-        $order->save();
-
-        return redirect()->back()->with('success', 'Product added to cart successfully.');
-    } else {
-        dd(Auth::check());
-        return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
-}
 
 
 public function checkout(Request $request)
