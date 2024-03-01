@@ -171,7 +171,7 @@ public function addToCart(Request $request, $id)
 
         if (!$product) {
             return redirect()->back()->with('error', 'Product not found.');
-        }else{
+        }
 
         $order = new Order;
 
@@ -186,9 +186,8 @@ public function addToCart(Request $request, $id)
         $order->product_id = $product->id;
         $order->quantity = $request->quantity;
         $order->save();
-        }
+
         return redirect()->back()->with('success', 'Product added to cart successfully.');
-        
     } else {
         return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
