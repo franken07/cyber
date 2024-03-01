@@ -166,6 +166,7 @@ public function deleteProduct(Request $request, $productId)
 public function addToCart(Request $request, $id)
 {
     if (Auth::check()) { // Check if user is authenticated
+        dd(Auth::check());
         $user = Auth::user();
         $product = Product::find($id);
 
@@ -189,6 +190,7 @@ public function addToCart(Request $request, $id)
 
         return redirect()->back()->with('success', 'Product added to cart successfully.');
     } else {
+        dd(Auth::check());
         return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
 }
