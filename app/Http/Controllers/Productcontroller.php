@@ -166,7 +166,7 @@ public function deleteProduct(Request $request, $productId)
 public function addToCart(Request $request, $id)
 {
     if (Auth::check()) { // Check if user is authenticated
-        $user = Auth::user();
+        $user = Auth::User();
         $product = Product::find($id);
 
         if (!$product) {
