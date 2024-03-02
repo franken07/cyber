@@ -141,6 +141,15 @@ class Authentication extends Controller
         return response()->json(['message' => 'User type updated successfully', 'user' => $user]);
     }
 
+    public function usertypeZ()
+{
+    // Fetch users with usertype 0
+    $users = User::where('usertype', 0)->get();
+
+    // Return users with usertype 0
+    return response()->json($users);
+}
+
 }
 
 
