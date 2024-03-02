@@ -234,7 +234,7 @@
         </div>
 
 
-    <div class="container tab-pane fade">
+        <div id="allusers" class="container tab-pane fade">
         <h1>Users with usertype 0</h1>
         <table class="table">
             <thead>
