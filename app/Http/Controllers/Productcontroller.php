@@ -281,7 +281,7 @@ public function checkout(Request $request)
 
         $checkout->save();
 
-        return redirect()->back();
+        return redirect()->route('edit_delete_products');
 
     }
 }
