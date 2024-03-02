@@ -144,10 +144,10 @@ class Authentication extends Controller
     public function usertypeZ()
 {
     // Fetch users with usertype 0
-    $users = User::where('usertype', 0)->get();
+    $usertype = User::where('usertype', 0)->get();
 
     // Return users with usertype 0
-    return response()->json($users);
+    return response()->json($usertype);
 }
 
 }

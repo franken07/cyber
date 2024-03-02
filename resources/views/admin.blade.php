@@ -235,7 +235,7 @@
 
 
         <div id="allusers" class="container tab-pane fade">
-        <h1>Users with usertype 0</h1>
+        <h1>Users</h1>
         <table class="table">
             <thead>
                 <tr>
@@ -245,7 +245,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($users as $user)
+                @foreach ($usertype as $usertype)
                     <tr>
                         <td>{{ $user->name }}</td>
                         <td>{{ $user->email }}</td>
