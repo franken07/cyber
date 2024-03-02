@@ -68,6 +68,7 @@
                             <span class="close">&times;</span>
                             <p>Added to Cart!</p>
                          </div>
+                         </div>
                         </form>
                     </div>
                 </div>
