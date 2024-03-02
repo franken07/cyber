@@ -232,8 +232,6 @@
                 </table>
             @endif
         </div>
-
-
         <div id="allusers" class="container tab-pane fade">
         <h1>Users</h1>
         <table class="table">
