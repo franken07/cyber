@@ -58,7 +58,7 @@ class Authentication extends Controller
                     return redirect()->route('index');
                 } elseif ($user->usertype == 1) {
                     // User is of type 1, redirect to admin page
-                    return redirect()->route('admin');
+                    return redirect()->route('edit_delete_products');
                 }
             }
         }
@@ -122,6 +122,34 @@ class Authentication extends Controller
         Auth::logout();
         return redirect(route('login'));    
     }
+
+    public function updateUserType(Request $request, $id) {
+        
+        $request->validate([
+            'usertype' => 'required|numeric', 
+        ]);
+    
+        $user = User::findOrFail($id);
+    
+
+        $user->usertype = $request->input('usertype');
+    
+
+        $user->save();
+    
+
+        return response()->json(['message' => 'User type updated successfully', 'user' => $user]);
+    }
+
+    public function usertypeZ()
+{
+    // Fetch users with usertype 0
+    $usertype = User::where('usertype', 0)->get();
+
+    // Return users with usertype 0
+    return view('admin', compact('usertype'));
+}
+
 }
 
 

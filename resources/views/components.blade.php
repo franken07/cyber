@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/animatecss/animate.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
+  
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/additional.css"><link rel="stylesheet" href="assets/mobirise/css/additional.css" type="text/css">
@@ -60,7 +61,7 @@
                             @csrf
                             <input type="number" name="quantity" value="1" min="1" class="form-control" required>
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            <button type="submit" class="btn btn-primary">Add tso Cart</button>
                         </form>
                     </div>
                 </div>
@@ -117,6 +118,7 @@
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
   <script src="assets/ytplayer/index.js"></script>
   <script src="assets/theme/js/script.js"></script>
+
   <script src="assets/formoid/formoid.min.js"></script>
   
   

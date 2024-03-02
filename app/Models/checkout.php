@@ -7,5 +7,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class checkout extends Model
 {
-    use HasFactory;
+    protected $fillable = [
+        'name',
+        'email',
+        'phone',
+        'address',
+        'prod_name',
+        'image',
+        'price',
+        'product_id',
+        'user_id',
+        'quantity',
+        'delivery_status', // Add this field
+    ];
 }

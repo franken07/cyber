@@ -48,6 +48,15 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#userPurchases">User Purchases</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#allusers">Users</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#alladmin">Admin</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#statistic">Statistic</a>
+        </li>
     </ul>
     
     <!-- Tab panes -->
@@ -223,6 +232,29 @@
                 </table>
             @endif
         </div>
+        <div id="allusers" class="container tab-pane fade">
+        <h1>Users</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <!-- Add more columns if needed -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($usertype as $usertype)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->email }}</td>
+                        <!-- Display more user information if needed -->
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+@endsection
+
 
 
 

@@ -163,14 +163,30 @@ public function deleteProduct(Request $request, $productId)
     return redirect('admin')->with('success', 'Product deleted successfully.');
 }
 
-public function addToCart(Request $request,$id)
+public function addToCart(Request $request, $id)
 {
-    if (Auth::id()) { // Check if user is authenticated
+    // Validate the request data
+    $request->validate([
+        'quantity' => 'required|integer|min:1', 
+    ]);
+
+    if (Auth::check()) { 
         $user = Auth::user();
         $product = Product::find($id);
 
-        $order = new Order;
+       
+        $existingOrder = Order::where('user_id', $user->id)
+            ->where('product_id', $product->id)
+            ->first();
+
+        if ($existingOrder) {
            
+            $existingOrder->quantity += $request->quantity;
+            $existingOrder->price += $product->price * $request->quantity;
+            $existingOrder->save();
+        } else {
+           
+            $order = new Order;
             $order->name = $user->name;
             $order->email = $user->email;
             $order->phone = $user->phone;
@@ -178,18 +194,19 @@ public function addToCart(Request $request,$id)
             $order->user_id = $user->id;
             $order->prod_name = $product->prod_name;
             $order->image = $product->image;
-            $order->price = $product->price * $request->quantity; // Calculate total price
+            $order->price = $product->price * $request->quantity; 
             $order->product_id = $product->id;
             $order->quantity = $request->quantity;
             $order->save();
+        }
 
-        
-
-        return redirect('components')->with('success', 'Product added to cart successfully.');
+        return redirect()->back()->with('success', 'Product added to cart successfully.');
     } else {
         return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
 }
+  
+
 
 public function checkout(Request $request)
 {
@@ -264,7 +281,7 @@ public function checkout(Request $request)
 
         $checkout->save();
 
-        return redirect()->back();
+        return redirect()->route('edit_delete_products');
 
     }
 }
