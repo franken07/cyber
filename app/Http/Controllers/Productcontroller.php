@@ -163,24 +163,29 @@ public function deleteProduct(Request $request, $productId)
     return redirect('admin')->with('success', 'Product deleted successfully.');
 }
 
-public function addToCart(Request $request,$id)
+public function addToCart(Request $request, $id)
 {
-    if (Auth::check()) { // Check if user is authenticated
+    // Validate the request data
+    $request->validate([
+        'quantity' => 'required|integer|min:1', 
+    ]);
+
+    if (Auth::check()) { 
         $user = Auth::user();
         $product = Product::find($id);
 
-        // Check if the product already exists in the user's orders
+       
         $existingOrder = Order::where('user_id', $user->id)
             ->where('product_id', $product->id)
             ->first();
 
         if ($existingOrder) {
-            // Update the quantity and price
+           
             $existingOrder->quantity += $request->quantity;
             $existingOrder->price += $product->price * $request->quantity;
             $existingOrder->save();
         } else {
-            // Create a new order
+           
             $order = new Order;
             $order->name = $user->name;
             $order->email = $user->email;
@@ -189,7 +194,7 @@ public function addToCart(Request $request,$id)
             $order->user_id = $user->id;
             $order->prod_name = $product->prod_name;
             $order->image = $product->image;
-            $order->price = $product->price * $request->quantity; // Calculate total price
+            $order->price = $product->price * $request->quantity; 
             $order->product_id = $product->id;
             $order->quantity = $request->quantity;
             $order->save();
@@ -199,7 +204,8 @@ public function addToCart(Request $request,$id)
     } else {
         return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
-}   
+}
+  
 
 
 public function checkout(Request $request)
