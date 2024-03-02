@@ -169,10 +169,6 @@ public function addToCart(Request $request, $id)
             $user = Auth::user();
             $product = Product::find($id);
 
-            if (!$product) {
-                return redirect()->back()->with('error', 'Product not found.');
-            }
-
             $order = new Order;
 
             $order->name = $user->name;
