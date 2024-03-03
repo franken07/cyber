@@ -233,17 +233,17 @@
             @endif   
         </div> 
         <div id="allusers" class="container tab-pane fade">
-            <h2>Users</h2>
+            <h2>Users </h2>
             <!-- Display users with UserType 0 -->
-            @if(count($usertype) > 0)
+            @if(isset($usertype) && count($usertype) > 0)
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
+                            <th>phone</th>
+                            <th>address</th>
                             <!-- Add more columns if needed -->
                         </tr>
                     </thead>
@@ -261,10 +261,9 @@
                     </tbody>
                 </table>
             @else
-                <p>No users with User 0 found.</p>
+                <p>No users .</p>
             @endif
         </div>
-
     </div>
 </div>
 
