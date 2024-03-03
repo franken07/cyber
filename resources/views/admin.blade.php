@@ -235,7 +235,9 @@
         <div id="allusers" class="container tab-pane fade">
             <h2>Users </h2>
             <!-- Display users with UserType 0 -->
-            @if(count($usertype) > 0)
+            @if ($usertype->isEmpty())
+            <p>No users with UserType 0 found.</p>
+            @else
                 <table>
                     <thead>
                         <tr>
@@ -256,8 +258,6 @@
                         @endforeach
                     </tbody>
                 </table>
-            @else
-                <p>No users with UserType 0 found.</p>
             @endif
         </div>
     </div>
