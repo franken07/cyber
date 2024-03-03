@@ -230,43 +230,41 @@
                         @endforeach
                     </tbody>
                 </table>
+            @endif   
+        </div> 
+        <div id="allusers" class="container tab-pane fade">
+            <h2>Users</h2>
+            <!-- Display users with UserType 0 -->
+            @if(count($usertype) > 0)
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Address</th>
+                            <!-- Add more columns if needed -->
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($usertype as $user)
+                            <tr>
+                                <td>{{ $user->id }}</td>
+                                <td>{{ $user->name }}</td>
+                                <td>{{ $user->email }}</td>
+                                <td>{{ $user->phone }}</td>
+                                <td>{{ $user->address }}</td>
+                                <!-- Add more columns if needed -->
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @else
+                <p>No users with User 0 found.</p>
             @endif
         </div>
-        <div id="allusers" class="container tab-pane fade">
-        <h1>Users</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <!-- Add more columns if needed -->
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($usertype as $usertype)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <!-- Display more user information if needed -->
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-@endsection
 
-
-
-
-
-
-
-
-
-
-
-
-        
     </div>
 </div>
 
