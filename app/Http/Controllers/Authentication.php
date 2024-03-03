@@ -36,39 +36,40 @@ class Authentication extends Controller
     }
 
     public function loginPost(Request $request)
-    {
-        $request->validate([
-            'email' => 'required',
-            'password' => 'required',
-        ]);
-    
-        $credentials = $request->only('email', 'password');
-    
-        if (Auth::attempt($credentials)) {
-            $user = Auth::user();
-    
-            if ($request->expectsJson()) {
-                // API request
-                $token = $user->createToken('csd')->accessToken;
-                return response()->json(['token' => $token]);
-            } else {
-                // Web request
-                if ($user->usertype == 0) {
-                    // User is of type 0, redirect to index
-                    return redirect()->route('index');
-                } elseif ($user->usertype == 1) {
-                    // User is of type 1, redirect to admin page
-                    return redirect()->route('edit_delete_products');
-                }
+{
+    $request->validate([
+        'email' => 'required',
+        'password' => 'required',
+    ]);
+
+    $credentials = $request->only('email', 'password');
+
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();
+
+        if ($request->expectsJson()) {
+            // API request
+            $token = $user->createToken('csd')->accessToken;
+            return response()->json(['user' => $user, 'token' => $token]);
+        } else {
+            // Web request
+            if ($user->usertype == 0) {
+                // User is of type 0, redirect to index
+                return redirect()->route('index');
+            } elseif ($user->usertype == 1) {
+                // User is of type 1, redirect to admin page
+                return redirect()->route('edit_delete_products');
             }
         }
-    
-        if ($request->expectsJson()) {
-            return response()->json(['error' => 'Invalid credentials'], 401);
-        } else {
-            return redirect(route('login'))->with("error", "Invalid credentials");
-        }
     }
+
+    if ($request->expectsJson()) {
+        return response()->json(['error' => 'Invalid credentials'], 401);
+    } else {
+        return redirect(route('login'))->with("error", "Invalid credentials");
+    }
+}
+
     
 
     function registration(){
