@@ -148,7 +148,7 @@ class Authentication extends Controller
     $usertype = User::where('usertype', 0)->get();
 
     // Return users with usertype 0
-    return view('usertypeZ', compact('usertype'));
+    return view('admin', compact('usertype'));
 }
 
 }
