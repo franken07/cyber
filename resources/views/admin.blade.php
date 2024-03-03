@@ -235,15 +235,13 @@
         <div id="allusers" class="container tab-pane fade">
             <h2>Users </h2>
             <!-- Display users with UserType 0 -->
-            @if(isset($usertype) && count($usertype) > 0)
+            @if(count($usertype) > 0)
                 <table>
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Name</th>
                             <th>Email</th>
-                            <th>phone</th>
-                            <th>address</th>
                             <!-- Add more columns if needed -->
                         </tr>
                     </thead>
@@ -253,15 +251,13 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
-                                <td>{{ $user->phone }}</td>
-                                <td>{{ $user->address }}</td>
                                 <!-- Add more columns if needed -->
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
             @else
-                <p>No users .</p>
+                <p>No users with UserType 0 found.</p>
             @endif
         </div>
     </div>
