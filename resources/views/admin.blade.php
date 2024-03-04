@@ -49,7 +49,7 @@
             <a class="nav-link" data-toggle="tab" href="#userPurchases">User Purchases</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#allusers">Users</a>
+        <a class="nav-link" data-toggle="tab" href="{{ route('allusers') }}">Users</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#alladmin">Admin</a>
