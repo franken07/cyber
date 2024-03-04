@@ -79,43 +79,39 @@ class Authentication extends Controller
     
     }
 
-    function registrationPost(Request $request){
+    public function registrationPost(Request $request)
+    {
         $request->validate([
-            	'name' => 'required',
-            	'email' => 'required|email|unique:users',
-                'phone' => 'required',
-		        'address' => 'required',
-            	'password' => 'required',
-                'password_confirmation' => 'required|same:password'
-
-            
-
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'phone' => 'required',
+            'address' => 'required',
+            'password' => 'required',
+            'password_confirmation' => 'required|same:password'
         ]);
     
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
-	    $data['address'] = $request->address;
+        $data['address'] = $request->address;
         $data['password'] = Hash::make($request->password);
-        $data['password_confirmation'] = $request->password_confirmation;
-	    
     
         $user = User::create($data);
     
         if (!$user) {
-
-            return redirect()->route('registration')->with("error", "unable to create an account");
+            return redirect()->route('registration')->with("error", "Unable to create an account");
+        } else {
+            if ($request->expectsJson()) {
+                // API request
+                $token = $user->createToken('csd')->accessToken;
+                return response()->json(['user' => $user, 'token' => $token], 201);
             } else {
-
-            if ($request->is('api/*') || $request->wantsJson()) {
-
-                return response()->json($user, 201);
-            } else {
-
+                // Web request
                 return redirect()->route('login')->with("success", "Registration successful. Login to access the app.");
             }
         }
     }
+    
 
    
     function logout(){
