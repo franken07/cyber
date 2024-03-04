@@ -142,13 +142,13 @@ class Authentication extends Controller
         return response()->json(['message' => 'User type updated successfully', 'user' => $user]);
     }
 
-    public function usertypeZ()
+    public function allusers()
 {
     // Fetch users with usertype 0
-    $usertype = User::where('usertype', 0)->get();
+    $allusers = User::where('usertype', 0)->get();
 
     // Return users with usertype 0
-    return view('checkouts', compact('usertype'));
+    return view('checkouts', compact('allusers'));
 }
 
 }
