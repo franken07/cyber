@@ -47,6 +47,7 @@ Route::post('/reset-password', [ResetPasswordController::class, 'resetPasswordPo
 Route::get('/admin', [ProductController::class, 'admin'])->name('admin');
 Route::post('/admin', [Productcontroller::class, 'addProduct'])->name('addProduct');
 Route::get('/userPurchases', [ProductController::class, 'userPurchases'])->name('user.purchases');
+Route::get('/allusers', [ProductController::class, 'userPurchases'])->name('allusers');
 Route::get('/delivered/{id}', [ProductController::class, 'delivered'])->name('delivered');
 Route::post('/delivered/{id}', [ProductController::class, 'delivered'])->name('delivered');
 
