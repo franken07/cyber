@@ -235,7 +235,7 @@
         <div id="allusers" class="container tab-pane fade">
             <h2>Users </h2>
             <!-- Display users with UserType 0 -->
-            @if ($usertype->isEmpty())
+            @if ($allusers->isEmpty())
             <p>No users with UserType 0 found.</p>
             @else
                 <table>
@@ -248,7 +248,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach($usertype as $user)
+                        @foreach($allusers   as $user)
                             <tr>
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
