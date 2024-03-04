@@ -232,7 +232,6 @@
                 </table>
             @endif   
         </div> 
-        <div id="allusers" class="container tab-pane fade">
         @include('userz')
         </div>
     </div>

@@ -142,14 +142,13 @@ class Authentication extends Controller
         return response()->json(['message' => 'User type updated successfully', 'user' => $user]);
     }
 
-    public function allusers()
-{
-    // Fetch users with usertype 0
-    $allusers = User::where('usertype', 0)->get();
-
-    // Return users with usertype 0
-    return view('userz', compact('allusers'));
-}
+    public function alluser(){
+        // Assuming $allusers contains the data you want to pass to the view
+        $allusers = User::where('userType', 0)->get();
+    
+        // Pass the data to the view
+        return view('userz', compact('allusers'));
+    }
 
 }
 
