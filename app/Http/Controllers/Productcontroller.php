@@ -270,7 +270,7 @@ public function checkout(Request $request)
     $allusers = User::where('usertype', 0)->get();
 
     // Pass the data to the view
-    return view('checkouts', compact('userPurchases','allusers'));
+    return view('admin', compact('userPurchases','allusers'));
     }
 
 
