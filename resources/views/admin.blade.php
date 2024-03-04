@@ -233,7 +233,7 @@
             @endif   
         </div> 
         <div id="allusers" class="container tab-pane fade">
-        @include('admininclude.userz')
+        @include('userz')
         </div>
     </div>
 </div>
