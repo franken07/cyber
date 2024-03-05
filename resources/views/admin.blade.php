@@ -134,7 +134,6 @@
                                 <p>{{ $product->prod_name }} - ${{ $product->price }}</p>
                                 <a href="{{ route('editprod', ['id' => $product->id]) }}">Edit</a>
                                 <form action="{{ route('delete_product', ['productId' => $product->id]) }}" method="post">
-                                
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
