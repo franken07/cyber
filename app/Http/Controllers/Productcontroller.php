@@ -267,10 +267,9 @@ public function checkout(Request $request)
 
     public function userPurchases(){
     $userPurchases = Checkout::all();
-    $allusers = User::where('usertype', 0)->get();
 
     // Pass the data to the view
-    return view('admin', compact('userPurchases','allusers'));
+    return view('checouts', compact('userPurchases'));
     }
 
 
