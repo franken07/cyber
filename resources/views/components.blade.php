@@ -46,43 +46,29 @@
 
 <!-- components.blade.php -->
 
-<div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                @if(session('success'))
-                    <div class="alert alert-success">{{ session('success') }}</div>
-                @elseif(session('error'))
-                    <div class="alert alert-danger">{{ session('error') }}</div>
-                @endif
-                <h2>Products</h2>
-                @foreach($productsBycategory as $category => $products)
-                    <h3>{{ $category }}</h3>
-                    <div class="row">
-                        @foreach($products as $product)
-                            <div class="col-md-4">
-                                <div class="card mb-4">
-                                    <img src="{{ $product->image }}" class="card-img-top" alt="{{ $product->prod_name }}">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ $product->prod_name }}</h5>
-                                        <p class="card-text">{{ $product->description }}</p>
-                                        <p class="card-text">Price: ${{ $product->price }}</p>
-                                        <form action="{{ route('cart.add', ['id' => $product->id]) }}" method="post">
-                                            @csrf
-                                            <div class="form-group">
-                                                <label for="quantity">Quantity:</label>
-                                                <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1">
-                                            </div>
-                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
-                                        </form>
-                                    </div>
-                                </div>
-                            </div>
-                        @endforeach
+@foreach($productsBycategory as $category => $products)
+    <h2>{{ ucfirst($category) }}</h2>
+    <div class="row">
+        @foreach($products as $product)
+            <div class="col-md-4">
+                <div class="card mb-4">
+                    <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $product->prod_name }}</h5>
+                        <p class="card-text">Price: ${{ $product->price }}</p>
+                        <p class="card-text">{{ $product->description }}</p>
+                        <form class="add-to-cart-form" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
+                            @csrf
+                            <input type="number" name="quantity" value="1" min="1" class="form-control" required>
+                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                        </form>
                     </div>
-                @endforeach
+                </div>
             </div>
-        </div>
+        @endforeach
     </div>
+@endforeach
 
 
 
