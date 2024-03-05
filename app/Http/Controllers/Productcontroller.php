@@ -174,30 +174,30 @@ public function addToCart(Request $request, $id)
         $user = Auth::user();
         $product = Product::findOrFail($id);
 
-       
-        $existingOrder = Order::where('user_id', $user->id)
-            ->where('product_id', $product->id)
-            ->first();
+        // Make sure the user is loaded with relationships
+        $user->load('orders');
+
+        $existingOrder = $user->orders()->where('product_id', $product->id)->first();
 
         if ($existingOrder) {
-           
             $existingOrder->quantity += $request->quantity;
             $existingOrder->price += $product->price * $request->quantity;
             $existingOrder->save();
         } else {
-           
             $order = new Order;
-            $order->name = $user->name;
-            $order->email = $user->email;
-            $order->phone = $user->phone;
-            $order->address = $user->address;
-            $order->user_id = $user->id;
-            $order->prod_name = $product->prod_name;
-            $order->image = $product->image;
-            $order->price = $product->price * $request->quantity; 
-            $order->product_id = $product->id;
-            $order->quantity = $request->quantity;
-            $order->create();
+            $order->fill([
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'address' => $user->address,
+                'user_id' => $user->id,
+                'prod_name' => $product->prod_name,
+                'image' => $product->image,
+                'price' => $product->price * $request->quantity,
+                'product_id' => $product->id,
+                'quantity' => $request->quantity,
+            ]);
+            $order->save();
         }
 
         return redirect()->back()->with('success', 'Product added to cart successfully.');
@@ -205,6 +205,7 @@ public function addToCart(Request $request, $id)
         return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
 }
+
   
 
 
