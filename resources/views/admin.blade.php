@@ -132,8 +132,9 @@
                             <div class="product-item">
                                 <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}" style="max-width: 100px; max-height: 100px;">
                                 <p>{{ $product->prod_name }} - ${{ $product->price }}</p>
-                                <a href="{{ route('edit_product', ['id' => $product->id]) }}">Edit</a>
+                                <a href="{{ route('editprod', ['id' => $product->id]) }}">Edit</a>
                                 <form action="{{ route('delete_product', ['productId' => $product->id]) }}" method="post">
+                                
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
