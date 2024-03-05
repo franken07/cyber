@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Product</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="shortcut icon" href="assets/images/loko.png" type="image/x-icon">
+    <link rel="shortcut icon" href="assets/images/loko.ico" type="image/x-icon">
     <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
     <link rel="stylesheet" href="assets/parallax/jarallax.css">
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
