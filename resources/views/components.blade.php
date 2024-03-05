@@ -47,60 +47,39 @@
 <!-- components.blade.php -->
 
 <div class="container">
-        @if(session('success'))
-            <div class="alert alert-success">{{ session('success') }}</div>
-        @endif
-        @if(session('error'))
-            <div class="alert alert-danger">{{ session('error') }}</div>
-        @endif
-
         <div class="row">
-            <div class="col-md-4">
-                <h2>GPU</h2>
-                <ul class="list-group">
-                    @foreach($productsBycategory as $category => $products)
-                        <li class="list-group-item">
-                            {{ $products->prod_name }}
-                            <form action="{{ route('addToCart', $products->id) }}" method="post">
-                                @csrf
-                                <input type="hidden" name="quantity" value="1">
-                                <button type="submit" class="btn btn-primary btn-sm float-right">Add to Cart</button>
-                            </form>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h2>CPU</h2>
-                <ul class="list-group">
-                    @foreach($productsBycategory as $category => $products)
-                        <li class="list-group-item">
-                            {{ $products->prod_name }}
-                            <form action="{{ route('addToCart', $product->id) }}" method="post">
-                                @csrf
-                                <input type="hidden" name="quantity" value="1">
-                                <button type="submit" class="btn btn-primary btn-sm float-right">Add to Cart</button>
-                            </form>
-                        </li>
-                    @endforeach
-                </ul>
-            </div>
-
-            <div class="col-md-4">
-                <h2>Monitor</h2>
-                <ul class="list-group">
-                    @foreach($productsBycategory as $category => $products)
-                        <li class="list-group-item">
-                            {{ $products->prod_name }}
-                            <form action="{{ route('addToCart', $products->id) }}" method="post">
-                                @csrf
-                                <input type="hidden" name="quantity" value="1">
-                                <button type="submit" class="btn btn-primary btn-sm float-right">Add to Cart</button>
-                            </form>
-                        </li>
-                    @endforeach
-                </ul>
+            <div class="col-md-12">
+                @if(session('success'))
+                    <div class="alert alert-success">{{ session('success') }}</div>
+                @elseif(session('error'))
+                    <div class="alert alert-danger">{{ session('error') }}</div>
+                @endif
+                <h2>Products</h2>
+                @foreach($productsBycategory as $category => $products)
+                    <h3>{{ $category }}</h3>
+                    <div class="row">
+                        @foreach($products as $product)
+                            <div class="col-md-4">
+                                <div class="card mb-4">
+                                    <img src="{{ $product->image }}" class="card-img-top" alt="{{ $product->prod_name }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $product->prod_name }}</h5>
+                                        <p class="card-text">{{ $product->description }}</p>
+                                        <p class="card-text">Price: ${{ $product->price }}</p>
+                                        <form action="{{ route('cart.add', ['id' => $product->id]) }}" method="post">
+                                            @csrf
+                                            <div class="form-group">
+                                                <label for="quantity">Quantity:</label>
+                                                <input type="number" class="form-control" id="quantity" name="quantity" value="1" min="1">
+                                            </div>
+                                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
+                    </div>
+                @endforeach
             </div>
         </div>
     </div>
