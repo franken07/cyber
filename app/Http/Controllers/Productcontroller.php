@@ -168,6 +168,9 @@ public function addToCart(Request $request, $id)
     // Validate the request data
     $request->validate([
         'quantity' => 'required|integer|min:1', 
+        'email' => 'required|email',
+        'phone' => 'required|string',
+        'address' => 'required|string'
     ]);
 
     if (Auth::check()) { 
