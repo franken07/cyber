@@ -37,7 +37,7 @@ Route::get('/registration', [Authentication::class, 'registration'])->name('regi
 Route::post('/registration', [Authentication::class, 'registrationPost'])->name('registration.post');
 Route::get('/logout', [Authentication::class, 'logout'])->name('logout');
 Route::get('/users', [Authentication::class, 'getalluser'])->name('users.getall');
-Route::get('/admin', [Authentication::class, 'usertypeZ'])->name('usertypeZ');
+
 
 Route::get('/reset-request', [ResetPasswordController::class, 'showResetRequestForm'])->name('reset.request.form');
 Route::post('/reset-request', [ResetPasswordController::class, 'showResetPasswordPost'])->name('reset.request.post');

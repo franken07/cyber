@@ -37,7 +37,7 @@ Route::get('/registration', [Authentication::class, 'registration'])->name('regi
 Route::post('/registration', [Authentication::class, 'registrationPost'])->name('registration.post');
 Route::get('/logout', [Authentication::class, 'logout'])->name('logout');
 Route::get('/users', [Authentication::class, 'getalluser'])->name('users.getall');
-Route::get('/admin/usertypeZ', [Authentication::class, 'usertypeZ'])->name('usertypeZ');
+
 
 Route::get('/reset-request', [ResetPasswordController::class, 'showResetRequestForm'])->name('reset.request.form');
 Route::post('/reset-request', [ResetPasswordController::class, 'showResetPasswordPost'])->name('reset.request.post');
@@ -61,3 +61,4 @@ Route::get('/admin', [ProductController::class, 'editDeleteProducts'])->name('ed
 Route::put('/admin/products/{id}', [ProductController::class, 'editProduct'])->name('edit_product');
 Route::delete('/admin/products/{productId}', [ProductController::class, 'deleteProduct'])->name('delete_product');
 Route::get('/admin/products/{id}/edit', [ProductController::class, 'editprod'])->name('editprod');
+

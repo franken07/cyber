@@ -63,7 +63,7 @@
             <a class="nav-link" data-toggle="tab" href="#userPurchases">User Purchases</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#allusers">Users</a>
+        <a class="nav-link" data-toggle="tab" href="#user">Users</a>
         </li>
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#alladmin">Admin</a>
@@ -244,43 +244,8 @@
                         @endforeach
                     </tbody>
                 </table>
-            @endif
-        </div>
-        <div id="allusers" class="container tab-pane fade">
-        <h1>Users</h1>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <!-- Add more columns if needed -->
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($usertype as $usertype)
-                    <tr>
-                        <td>{{ $user->name }}</td>
-                        <td>{{ $user->email }}</td>
-                        <!-- Display more user information if needed -->
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-@endsection
-
-
-
-
-
-
-
-
-
-
-
-
-        
+            @endif   
+        </div> 
     </div>
 </div>
 

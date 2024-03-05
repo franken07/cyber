@@ -269,7 +269,7 @@ public function checkout(Request $request)
     $userPurchases = Checkout::all();
 
     // Pass the data to the view
-    return view('checkouts', compact('userPurchases'));
+    return view('checouts', compact('userPurchases'));
     }
 
 
