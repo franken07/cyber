@@ -172,7 +172,7 @@ public function addToCart(Request $request, $id)
 
     if (Auth::check()) { 
         $user = Auth::user();
-        $product = Product::find($id);
+        $product = Product::findOrFail($id);
 
        
         $existingOrder = Order::where('user_id', $user->id)
