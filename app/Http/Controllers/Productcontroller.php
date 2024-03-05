@@ -168,9 +168,6 @@ public function addToCart(Request $request, $id)
     // Validate the request data
     $request->validate([
         'quantity' => 'required|integer|min:1', 
-        'email' => 'required|email',
-        'phone' => 'required|string',
-        'address' => 'required|string'
     ]);
 
     if (Auth::check()) { 
@@ -200,7 +197,7 @@ public function addToCart(Request $request, $id)
             $order->price = $product->price * $request->quantity; 
             $order->product_id = $product->id;
             $order->quantity = $request->quantity;
-            $order->save();
+            $order->create();
         }
 
         return redirect()->back()->with('success', 'Product added to cart successfully.');
