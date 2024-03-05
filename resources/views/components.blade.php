@@ -61,7 +61,7 @@
                             @csrf
                             <input type="number" name="quantity" value="1" min="1" class="form-control" required>
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit" class="btn btn-primary">Add tso Cart</button>
+                            <button type="submit" class="btn btn-primary">Add to Cart</button>
                         </form>
                     </div>
                 </div>
