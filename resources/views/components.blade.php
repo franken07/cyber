@@ -60,8 +60,8 @@
                 <ul class="list-group">
                     @foreach($productsBycategory as $category => $products)
                         <li class="list-group-item">
-                            {{ $product->prod_name }}
-                            <form action="{{ route('addToCart', $product->id) }}" method="post">
+                            {{ $products->prod_name }}
+                            <form action="{{ route('addToCart', $products->id) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="quantity" value="1">
                                 <button type="submit" class="btn btn-primary btn-sm float-right">Add to Cart</button>
@@ -76,7 +76,7 @@
                 <ul class="list-group">
                     @foreach($productsBycategory as $category => $products)
                         <li class="list-group-item">
-                            {{ $product->prod_name }}
+                            {{ $products->prod_name }}
                             <form action="{{ route('addToCart', $product->id) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="quantity" value="1">
@@ -92,8 +92,8 @@
                 <ul class="list-group">
                     @foreach($productsBycategory as $category => $products)
                         <li class="list-group-item">
-                            {{ $product->prod_name }}
-                            <form action="{{ route('addToCart', $product->id) }}" method="post">
+                            {{ $products->prod_name }}
+                            <form action="{{ route('addToCart', $products->id) }}" method="post">
                                 @csrf
                                 <input type="hidden" name="quantity" value="1">
                                 <button type="submit" class="btn btn-primary btn-sm float-right">Add to Cart</button>
