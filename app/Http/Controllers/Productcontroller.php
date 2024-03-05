@@ -205,7 +205,6 @@ public function addToCart(Request $request, $id)
         return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
 }
-
   
 
 
@@ -270,7 +269,7 @@ public function checkout(Request $request)
     $userPurchases = Checkout::all();
 
     // Pass the data to the view
-    return view('checouts', compact('userPurchases'));
+    return view('checkouts', compact('userPurchases'));
     }
 
 
