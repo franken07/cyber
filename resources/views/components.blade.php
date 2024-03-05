@@ -46,29 +46,64 @@
 
 <!-- components.blade.php -->
 
-@foreach($productsBycategory as $category => $products)
-    <h2>{{ ucfirst($category) }}</h2>
-    <div class="row">
-        @foreach($products as $product)
+<div class="container">
+        @if(session('success'))
+            <div class="alert alert-success">{{ session('success') }}</div>
+        @endif
+        @if(session('error'))
+            <div class="alert alert-danger">{{ session('error') }}</div>
+        @endif
+
+        <div class="row">
             <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $product->prod_name }}</h5>
-                        <p class="card-text">Price: ₱{{ $product->price }}</p>
-                        <p class="card-text">{{ $product->description }}</p>
-                        <form class="add-to-cart-form" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
-                            @csrf
-                            <input type="number" name="quantity" value="1" min="1" class="form-control">
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit" class="btn btn-primary">Add to Cart</button>
-                        </form>
-                    </div>
-                </div>
+                <h2>GPU</h2>
+                <ul class="list-group">
+                    @foreach($productsBycategory as $category => $products)
+                        <li class="list-group-item">
+                            {{ $product->prod_name }}
+                            <form action="{{ route('addToCart', $product->id) }}" method="post">
+                                @csrf
+                                <input type="hidden" name="quantity" value="1">
+                                <button type="submit" class="btn btn-primary btn-sm float-right">Add to Cart</button>
+                            </form>
+                        </li>
+                    @endforeach
+                </ul>
             </div>
-        @endforeach
+
+            <div class="col-md-4">
+                <h2>CPU</h2>
+                <ul class="list-group">
+                    @foreach($productsBycategory as $category => $products)
+                        <li class="list-group-item">
+                            {{ $product->prod_name }}
+                            <form action="{{ route('addToCart', $product->id) }}" method="post">
+                                @csrf
+                                <input type="hidden" name="quantity" value="1">
+                                <button type="submit" class="btn btn-primary btn-sm float-right">Add to Cart</button>
+                            </form>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+
+            <div class="col-md-4">
+                <h2>Monitor</h2>
+                <ul class="list-group">
+                    @foreach($productsBycategory as $category => $products)
+                        <li class="list-group-item">
+                            {{ $product->prod_name }}
+                            <form action="{{ route('addToCart', $product->id) }}" method="post">
+                                @csrf
+                                <input type="hidden" name="quantity" value="1">
+                                <button type="submit" class="btn btn-primary btn-sm float-right">Add to Cart</button>
+                            </form>
+                        </li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
     </div>
-@endforeach
 
 
 
