@@ -166,16 +166,16 @@ public function deleteProduct(Request $request, $productId)
 public function addToCart(Request $request, $id)
     {
         // Validate the request data
-        $request->validate([
-            'quantity' => 'required|integer|min:1', 
-        ]);
+
 
         // Check if the user is authenticated
         if (Auth::check()) { 
             $user = Auth::user();
             $product = Product::find($id);
 
-            // Ensure the product exists
+            $request->validate([
+                'quantity' => 'required|integer|min:1', 
+            ]);
 
             // Find existing order for the product and user
             $existingOrder = Order::where('user_id', $user->id)
@@ -204,7 +204,7 @@ public function addToCart(Request $request, $id)
 
             return redirect()->back()->with('success', 'Product added to cart successfully.');
         } else {
-            return redirect()->back()->with('error', 'Please log in to add products to your cart.');
+            return redirect('login')->with('error', 'Please log in to add products to your cart.');
         }
     }
   
