@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('prod_name');
             $table->string('image')->nullable();
-            $table->decimal('price', 8, 2); // Assuming price is in decimal format
+            $table->decimal('price',8,2); // Assuming price is in decimal format
             $table->string('category');
             $table->text('description')->nullable();
             $table->timestamps();

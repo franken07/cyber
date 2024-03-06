@@ -177,6 +177,7 @@ public function addToCart(Request $request, $id)
                 'quantity' => 'required|integer|min:1', 
             ]);
 
+
             // Find existing order for the product and user
             $existingOrder = Order::where('user_id', $user->id)
                 ->where('product_id', $product->id)
@@ -188,6 +189,10 @@ public function addToCart(Request $request, $id)
                 $existingOrder->price += $product->price * $request->quantity;
                 $existingOrder->save();
             } else {
+                $request->validate([
+                    'quantity' => 'required|integer|min:1', 
+                ]);
+
                 $order = new Order;
                 $order->name = $user->name;
                 $order->email = $user->email;
