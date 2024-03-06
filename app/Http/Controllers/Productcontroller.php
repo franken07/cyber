@@ -173,25 +173,7 @@ public function addToCart(Request $request, $id)
         $user = Auth::User();
         $product = Product::find($id);
 
-        if (!$product) {
-            return redirect()->back()->with('error', 'Product not found.');
-        }
 
-        $validatedData = $request->validate([
-            'quantity' => 'required|integer|min:1',
-        ]);
-
-        // Find existing order for the product and user
-        $existingOrder = Order::where('user_id', $user->id)
-            ->where('product_id', $product->id)
-            ->first();
-
-        // Update existing order or create a new one
-        if ($existingOrder) {
-            $existingOrder->quantity += $validatedData['quantity'];
-            $existingOrder->price += $product->price * $validatedData['quantity'];
-            $existingOrder->save();
-        } else {
             $order = new Order;
             $order->name = $user->name;
             $order->email = $user->email;
@@ -200,11 +182,11 @@ public function addToCart(Request $request, $id)
             $order->user_id = $user->id;
             $order->prod_name = $product->prod_name; 
             $order->image = $product->image; 
-            $order->price = $product->price * $validatedData['quantity'];
+            $order->price = $product->price * $request -> quantity ;
             $order->product_id = $product->id;
-            $order->quantity = $validatedData['quantity'];
+            $order->quantity = $request -> quantity ;
             $order->save();
-        }
+        
 
         return redirect()->back()->with('success', 'Product added to cart successfully.');
     } else {
