@@ -166,15 +166,31 @@ public function deleteProduct(Request $request, $productId)
 public function addToCart(Request $request, $id)
 {
     // Validate the request data
-  
+    $validatedData = $request->validate([
+        'quantity' => 'required|integer|min:1',
+    ]);
 
     // Check if the user is authenticated
-    if (Auth::id()) {
+    if (Auth::check()) {
         $user = Auth::user();
         $product = Product::find($id);
 
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found.');
+        }
 
-            $order = new order;
+        // Find existing order for the product and user
+        $existingOrder = Order::where('user_id', $user->id)
+            ->where('product_id', $product->id)
+            ->first();
+
+        // Update existing order or create a new one
+        if ($existingOrder) {
+            $existingOrder->quantity += $validatedData['quantity'];
+            $existingOrder->price += $product->price * $validatedData['quantity'];
+            $existingOrder->save();
+        } else {
+            $order = new Order;
             $order->name = $user->name;
             $order->email = $user->email;
             $order->phone = $user->phone;
@@ -182,11 +198,11 @@ public function addToCart(Request $request, $id)
             $order->user_id = $user->id;
             $order->prod_name = $product->prod_name; 
             $order->image = $product->image; 
-            $order->price = $product->price * $request -> quantity ;
+            $order->price = $product->price * $validatedData['quantity'];
             $order->product_id = $product->id;
-            $order->quantity = $request -> quantity ;
-            $order->save();
-        
+            $order->quantity = $validatedData['quantity'];
+            $order->create();
+        }
 
         return redirect()->back()->with('success', 'Product added to cart successfully.');
     } else {
