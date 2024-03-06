@@ -172,7 +172,7 @@ public function addToCart(Request $request, $id)
 
     // Check if the user is authenticated
     if (Auth::check()) {
-        $user = Auth::user();
+        $user = Auth::User();
         $product = Product::find($id);
 
         if (!$product) {
@@ -196,8 +196,8 @@ public function addToCart(Request $request, $id)
             $order->phone = $user->phone;
             $order->address = $user->address;
             $order->user_id = $user->id;
-            $order->prod_name = $product->prod_name; // Assuming product name is stored in 'name' field
-            $order->image = $product->image; // Assuming product image URL is stored in 'image' field
+            $order->prod_name = $product->prod_name; 
+            $order->image = $product->image; 
             $order->price = $product->price * $validatedData['quantity'];
             $order->product_id = $product->id;
             $order->quantity = $validatedData['quantity'];
