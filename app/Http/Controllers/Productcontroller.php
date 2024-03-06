@@ -182,7 +182,7 @@ public function addToCart(Request $request, $id)
         if ($existingOrder) {
            
             $existingOrder->quantity += $request->quantity;
-            $existingOrder->price += $product->price * $request->quantity;
+            $existingOrder->price += $product->price;
             $existingOrder->save();
         } else {
            
@@ -194,7 +194,7 @@ public function addToCart(Request $request, $id)
             $order->user_id = $user->id;
             $order->prod_name = $product->prod_name;
             $order->image = $product->image;
-            $order->price = $product->price * $request->quantity; 
+            $order->price = $product->price; 
             $order->product_id = $product->id;
             $order->quantity = $request->quantity;
             $order->save();
