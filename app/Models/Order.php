@@ -17,5 +17,6 @@ class Order extends Model
         'price',
         'product_id',
         'user_id',
+        'quantity'
     ];
 }
