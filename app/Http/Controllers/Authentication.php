@@ -36,40 +36,39 @@ class Authentication extends Controller
     }
 
     public function loginPost(Request $request)
-{
-    $request->validate([
-        'email' => 'required',
-        'password' => 'required',
-    ]);
-
-    $credentials = $request->only('email', 'password');
-
-    if (Auth::attempt($credentials)) {
-        $user = Auth::user();
-
-        if ($request->expectsJson()) {
-            // API request
-            $token = $user->createToken('csd')->accessToken;
-            return response()->json(['user' => $user, 'token' => $token]);
-        } else {
-            // Web request
-            if ($user->usertype == 0) {
-                // User is of type 0, redirect to index
-                return redirect()->route('index');
-            } elseif ($user->usertype == 1) {
-                // User is of type 1, redirect to admin page
-                return redirect()->route('edit_delete_products');
+    {
+        $request->validate([
+            'email' => 'required',
+            'password' => 'required',
+        ]);
+    
+        $credentials = $request->only('email', 'password');
+    
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+    
+            if ($request->expectsJson()) {
+                // API request
+                $token = $user->createToken('csd')->accessToken;
+                return response()->json(['token' => $token]);
+            } else {
+                // Web request
+                if ($user->usertype == 0) {
+                    // User is of type 0, redirect to index
+                    return redirect()->route('index');
+                } elseif ($user->usertype == 1) {
+                    // User is of type 1, redirect to admin page
+                    return redirect()->route('edit_delete_products');
+                }
             }
         }
+    
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Invalid credentials'], 401);
+        } else {
+            return redirect(route('login'))->with("error", "Invalid credentials");
+        }
     }
-
-    if ($request->expectsJson()) {
-        return response()->json(['error' => 'Invalid credentials'], 401);
-    } else {
-        return redirect(route('login'))->with("error", "Invalid credentials");
-    }
-}
-
     
 
     function registration(){
@@ -79,39 +78,43 @@ class Authentication extends Controller
     
     }
 
-    public function registrationPost(Request $request)
-    {
+    function registrationPost(Request $request){
         $request->validate([
-            'name' => 'required',
-            'email' => 'required|email|unique:users',
-            'phone' => 'required',
-            'address' => 'required',
-            'password' => 'required',
-            'password_confirmation' => 'required|same:password'
+            	'name' => 'required',
+            	'email' => 'required|email|unique:users',
+                'phone' => 'required',
+		        'address' => 'required',
+            	'password' => 'required',
+                'password_confirmation' => 'required|same:password'
+
+            
+
         ]);
     
         $data['name'] = $request->name;
         $data['email'] = $request->email;
         $data['phone'] = $request->phone;
-        $data['address'] = $request->address;
+	    $data['address'] = $request->address;
         $data['password'] = Hash::make($request->password);
+        $data['password_confirmation'] = $request->password_confirmation;
+	    
     
         $user = User::create($data);
     
         if (!$user) {
-            return redirect()->route('registration')->with("error", "Unable to create an account");
-        } else {
-            if ($request->expectsJson()) {
-                // API request
-                $token = $user->createToken('csd')->accessToken;
-                return response()->json(['user' => $user, 'token' => $token], 201);
+
+            return redirect()->route('registration')->with("error", "unable to create an account");
             } else {
-                // Web request
+
+            if ($request->is('api/*') || $request->wantsJson()) {
+
+                return response()->json($user, 201);
+            } else {
+
                 return redirect()->route('login')->with("success", "Registration successful. Login to access the app.");
             }
         }
     }
-    
 
    
     function logout(){
@@ -138,8 +141,4 @@ class Authentication extends Controller
         return response()->json(['message' => 'User type updated successfully', 'user' => $user]);
     }
 
-
-
 }
-
-
