@@ -171,8 +171,11 @@ public function addToCart(Request $request, $id)
     ]);
 
     // Check if the user is authenticated
-    if (Auth::check()) {
-        $user = Auth::user();
+    if (Session::has('user')) {
+        // Get the authenticated user
+        $user = Session::get('user');
+
+        // Find the product by its ID
         $product = Product::find($id);
 
         if (!$product) {
@@ -201,7 +204,7 @@ public function addToCart(Request $request, $id)
             $order->price = $product->price * $validatedData['quantity'];
             $order->product_id = $product->id;
             $order->quantity = $validatedData['quantity'];
-            $order->create();
+            $order->save();
         }
 
         return redirect()->back()->with('success', 'Product added to cart successfully.');
