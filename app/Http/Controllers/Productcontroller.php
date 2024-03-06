@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\checkout;
 use App\Models\User;
-use App\Models\Order;
 use App\Models\Product;
+use App\Models\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
@@ -164,47 +164,52 @@ public function deleteProduct(Request $request, $productId)
 }
 
 public function addToCart(Request $request, $id)
-{
-    // Validate the request data
-    $request->validate([
-        'quantity' => 'required|integer|min:1', 
-    ]);
+    {
+        // Validate the request data
+        $request->validate([
+            'quantity' => 'required|integer|min:1', 
+        ]);
 
-    if (Auth::check()) { 
-        $user = Auth::user();
-        $product = Product::find($id);
+        // Check if the user is authenticated
+        if (Auth::check()) { 
+            $user = Auth::user();
+            $product = Product::find($id);
 
-       
-        $existingOrder = Order::where('user_id', $user->id)
-            ->where('product_id', $product->id)
-            ->first();
+            // Ensure the product exists
+            if (!$product) {
+                return redirect()->back()->with('error', 'Product not found.');
+            }
 
-        if ($existingOrder) {
-           
-            $existingOrder->quantity += $request->quantity;
-            $existingOrder->price += $product->price;
-            $existingOrder->save();
+            // Find existing order for the product and user
+            $existingOrder = Order::where('user_id', $user->id)
+                ->where('product_id', $product->id)
+                ->first();
+
+            // Update existing order or create a new one
+            if ($existingOrder) {
+                $existingOrder->quantity += $request->quantity;
+                $existingOrder->price += $product->price * $request->quantity;
+                $existingOrder->save();
+            } else {
+                $order = new Order;
+                $order->name = $user->name;
+                $order->email = $user->email;
+                $order->phone = $user->phone;
+                $order->address = $user->address;
+                $order->user_id = $user->id;
+                $order->prod_name = $product->prod_name;
+                $order->image = $product->image;
+                $order->price = $product->price * $request->quantity; 
+                $order->product_id = $product->id;
+                $order->quantity = $request->quantity;
+                $order->save();
+            }
+
+            return redirect()->back()->with('success', 'Product added to cart successfully.');
         } else {
-           
-            $order = new Order;
-            $order->name = $user->name;
-            $order->email = $user->email;
-            $order->phone = $user->phone;
-            $order->address = $user->address;
-            $order->user_id = $user->id;
-            $order->prod_name = $product->prod_name;
-            $order->image = $product->image;
-            $order->price = $product->price; 
-            $order->product_id = $product->id;
-            $order->quantity = $request->quantity;
-            $order->save();
+            return redirect('login')->with('error', 'Please log in to add products to your cart.');
         }
-
-        return redirect()->back()->with('success', 'Product added to cart successfully.');
-    } else {
-        return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
-}
   
 
 

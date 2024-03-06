@@ -44,21 +44,21 @@ Route::post('/reset-request', [ResetPasswordController::class, 'showResetPasswor
 Route::get('/reset-password', [ResetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.form');
 Route::post('/reset-password', [ResetPasswordController::class, 'resetPasswordPost'])->name('reset.password.post');
 
-Route::get('/admin', [ProductController::class, 'admin'])->name('admin');
+Route::get('/admin', [Productcontroller::class, 'admin'])->name('admin');
 Route::post('/admin', [Productcontroller::class, 'addProduct'])->name('addProduct');
-Route::get('/userPurchases', [ProductController::class, 'userPurchases'])->name('user.purchases');
-Route::get('/delivered/{id}', [ProductController::class, 'delivered'])->name('delivered');
+Route::get('/userPurchases', [Productcontroller::class, 'userPurchases'])->name('user.purchases');
+Route::get('/delivered/{id}', [Productcontroller::class, 'delivered'])->name('delivered');
 Route::post('/delivered/{id}', [ProductController::class, 'delivered'])->name('delivered');
 
 Route::post('/cart/{id}', [Productcontroller::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [Productcontroller::class, 'checkout'])->name('checkout');
 Route::get('/remove_cart/{id}', [Productcontroller::class, 'remove_cart'])->name('remove_cart');
 Route::delete('/remove_cart/{id}', [Productcontroller::class, 'remove_cart'])->name('remove_cart');
-Route::get('/checkout', [ProductController::class, 'checkoutprod'])->name('checkoutprod');
-Route::post('/checkout', [ProductController::class, 'checkoutprod'])->name('checkoutprod');
+Route::get('/checkout', [Productcontroller::class, 'checkoutprod'])->name('checkoutprod');
+Route::post('/checkout', [Productcontroller::class, 'checkoutprod'])->name('checkoutprod');
 
-Route::get('/admin', [ProductController::class, 'editDeleteProducts'])->name('edit_delete_products');
-Route::put('/admin/products/{id}', [ProductController::class, 'editProduct'])->name('edit_product');
-Route::delete('/admin/products/{productId}', [ProductController::class, 'deleteProduct'])->name('delete_product');
-Route::get('/admin/products/{id}/edit', [ProductController::class, 'editprod'])->name('editprod');
+Route::get('/admin', [Productcontroller::class, 'editDeleteProducts'])->name('edit_delete_products');
+Route::put('/admin/products/{id}', [Productcontroller::class, 'editProduct'])->name('edit_product');
+Route::delete('/admin/products/{productId}', [Productcontroller::class, 'deleteProduct'])->name('delete_product');
+Route::get('/admin/products/{id}/edit', [Productcontroller::class, 'editprod'])->name('editprod');
 
