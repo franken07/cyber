@@ -4,34 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Checkout</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        th {
-            background-color: #f2f2f2;
-        }
-        img {
-            max-width: 100px;
-            height: auto;
-        }
-    </style>
+  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
+  <link rel="stylesheet" href="assets/parallax/jarallax.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+  <link rel="stylesheet" href="assets/dropdown/css/style.css">
+  <link rel="stylesheet" href="assets/socicon/css/styles.css">
+  <link rel="stylesheet" href="assets/animatecss/animate.css">
+  <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/addtocartcss/addtocart.css">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap"></noscript>
+  <link rel="preload" as="style" href="assets/mobirise/css/additional.css"><link rel="stylesheet" href="assets/mobirise/css/additional.css" type="text/css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css">
+  
+   
 </head>
 <body>
-    <h1>Checkout</h1>
+    
+    
+@include('include.header')
+    <div class="center-content">
+        <strong>CART</strong>
+    </div>
 
     @if ($order->isEmpty())
         <p>No orders found.</p>
@@ -39,14 +37,10 @@
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>Address</th>
+                    <th>Image</th>
                     <th>Product Name</th>
                     <th>Price</th>
                     <th>Quantity</th>
-                    <th>Image</th>
                     <th>Action</th>
                 </tr>
             </thead>
@@ -56,14 +50,10 @@
                 @endphp
                 @foreach ($order as $order)
                     <tr>
-                        <td>{{ $order->name }}</td>
-                        <td>{{ $order->email }}</td>
-                        <td>{{ $order->phone }}</td>
-                        <td>{{ $order->address }}</td>
+                        <td><img src="{{ asset('storage/product/' . $order->image) }}" alt="{{ $order->prod_name }}" class="cart-product-image"></td>
                         <td>{{ $order->prod_name }}</td>
                         <td>{{ $order->price }}</td>
                         <td>{{ $order->quantity }}</td>
-                        <td><img src="{{ asset('storage/product/' . $order->image) }}" alt="{{ $order->prod_name }}"></td>
                         <td><form action="{{ route('remove_cart', $order->id) }}" method="post">
                             @csrf
                             @method('DELETE')
@@ -71,18 +61,21 @@
                         </form></td>
                     </tr>
                     @php
-                        $totalprice += $order->price; // Add the price of each order to the total
+                        $totalprice += $order->price; 
                     @endphp
                 @endforeach
-                <div>
-                 <h1>Total Price: {{ $totalprice }}</h1>
-                 <form action="{{ route('checkoutprod') }}" method="post">
-                    @csrf
-                    <button type="submit">Proceed to Order (Cash on Delivery)</button>
-                </form>
-                </div>
-            </tbody>
+            </tbody> 
         </table>
+        @include('include.checkout')
     @endif
+    <script src="assets/parallax/jarallax.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
+  <script src="assets/scrollgallery/scroll-gallery.js"></script>
+  <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
+  <script src="assets/smoothscroll/smooth-scroll.js"></script>
+  <script src="assets/ytplayer/index.js"></script>
+  <script src="assets/theme/js/script.js"></script>
+  <script src="assets/formoid/formoid.min.js"></script>
 </body>
 </html>

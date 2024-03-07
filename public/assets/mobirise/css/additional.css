@@ -184,25 +184,28 @@ body {
 }
 .btn-primary,
 .btn-primary:active {
-  background-color: var(--primary-color, #9fe870) !important;
-  border-color: var(--primary-color, #9fe870) !important;
-  color: var(--primary-text, #264d0c) !important;
+  background-color: var(--primary-color, #fdca40) !important;
+  border-color: var(--primary-color, #fdca40) !important;
+  color: var(--primary-text, black) !important;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.2);
 }
+.button:hover {
+  background-color: var(--hover-color, #eca123) !important; /* Change to a different color on hover */
+}
+
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary.focus,
 .btn-primary.active {
-  color: inherit;
-  background-color: color-mix(in srgb,var(--primary-color, #9fe870),#000 20%) !important;
-  border-color: color-mix(in srgb,var(--primary-color, #9fe870),#000 20%) !important;
+  background-color: color-mix(in srgb,var(--primary-color, #b39e43a6),#b39e43a6 ) !important;
+  border-color: color-mix(in srgb,var(--primary-color, #464845),#464845 ) !important;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.2);
 }
 .btn-primary.disabled,
 .btn-primary:disabled {
   color: var(--primary-text, #264d0c) !important;
-  background-color: color-mix(in srgb,var(--primary-color, #9fe870),#000 40%) !important;
-  border-color: color-mix(in srgb,var(--primary-color, #9fe870),#000 40%) !important;
+  background-color: color-mix(in srgb,var(--primary-color, #464845),#464845) !important;
+  border-color: color-mix(in srgb,var(--primary-color, #464845),#464845 ) !important;
 }
 .btn-secondary,
 .btn-secondary:active {

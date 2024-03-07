@@ -19,6 +19,7 @@
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/animatecss/animate.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
+  <link rel="stylesheet" href="assets/componentscss/components.css">
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/additional.css"><link rel="stylesheet" href="assets/mobirise/css/additional.css" type="text/css">
@@ -29,45 +30,59 @@
 
   <style>:root{ --background: #EBF1FF; --dominant-color: #3772FF; --primary-color: #FDCA40; --secondary-color: #DF2935; --success-color: #31D98B; --danger-color: #DB2F40; --warning-color: #FFC20B; --info-color: #18CEF2; --background-text: #000000; --dominant-text: #FFFFFF; --primary-text: #000000; --secondary-text: #FFFFFF; --success-text: #000000; --danger-text: #FFFFFF; --warning-text: #000000; --info-text: #000000;}
 
-.small-image {
-    width: 400px; /* Adjust the width as needed */
-    height: 400; /* Let the height adjust proportionally */
-}
-
 </style>
 </head>
-<body>
-
 @include('include.header')
+<body style="background-image: url('{{ asset('images/17.png') }}');">
 
-<h1>Product List</h1>
 
-
-<!-- components.blade.php -->
-
-@foreach($productsBycategory as $category => $products)
-    <h2>{{ ucfirst($category) }}</h2>
-    <div class="row">
-        @foreach($products as $product)
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}">
-                    <div class="card-body">
-                        <h5 class="card-title">{{ $product->prod_name }}</h5>
-                        <p class="card-text">Price: ${{ $product->price }}</p>
-                        <p class="card-text">{{ $product->description }}</p>
+<!-- components.blade.php -->   
+<section class="pricing02 cid-u3GZCsHE3N" id="product-list-8-u3GZCsHE3N">
+    <div class="container-fluid">
+        @foreach($productsBycategory as $category => $products)
+        <div class="row justify-content-center">
+            <div class="col-12 content-head">
+                <div class="mbr-section-head mb-5">
+                    <h4 class="mbr-section-title mbr-fonts-style align-center mb-0 display-2">
+                        <strong>{{ ucfirst($category) }}</strong>
+                    </h4>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            @foreach($products as $product)
+            <div class="item features-image col-12 col-md-6 col-lg-3">
+                <div class="item-wrapper">
+                    <div class="item-img">
+                        <img src="{{ url($product->image) }}" alt="{{ $product->prod_name }}">
+                    </div>
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-5">
+                            <strong>{{ $product->prod_name }}</strong>
+                        </h5>
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            {{ $product->description }}
+                        </p>
+                        <!-- Example for Price, if needed -->
+                        <p class="mbr-text mbr-fonts-style display-7">
+                            Price: ₱{{ $product->price }}
+                        </p>
                         <form class="add-to-cart-form" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
                             @csrf
-                            <input type="number" name="quantity" value="1" min="1" class="form-control" required>
+                            <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm" required="">
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
-                            <button type="submit" class="btn btn-primary">Add to Cart</button>
+                            <div class="d-flex justify-content-center align-items-center">
+                                 <button class="btn btn-primary">Add to Cart</button>
+                            </div>
                         </form>
                     </div>
                 </div>
             </div>
+            @endforeach
+        </div>
         @endforeach
     </div>
-@endforeach
+</section>
 
 
 
@@ -117,7 +132,9 @@
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
   <script src="assets/ytplayer/index.js"></script>
   <script src="assets/theme/js/script.js"></script>
+
   <script src="assets/formoid/formoid.min.js"></script>
+  
   
   
   <script>
@@ -130,5 +147,6 @@
     })();
 
   </script>
+  @include('include.carticon')
 </body>
 </html>

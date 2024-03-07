@@ -35,7 +35,7 @@
 @include('include.header')
  
 <!-- bg image  -->
-    <style>
+<style>
   .cid-u3GZCsGLCS {
     display: flex;
     background-image: url("images/17.png");
@@ -542,11 +542,6 @@
 
   </script>
 
-  <!-- Floating cart button -->
-  <div class="floating-action-button">
-    <a href="cart route" class="fab-contact">
-        <i class="fas fa-shopping-cart" style="font-size: 24px;"></i> 
-    </a>
-</div>
+@include('include.carticon')
 </body>
 </html>

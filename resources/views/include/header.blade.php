@@ -22,7 +22,7 @@
           <span></span>
         </div>
       </button>
-      <div class="collapse navbar-collapse justify-content-between" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse justify-content-between  " id="navbarSupportedContent">
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <li class="nav-item">
             <a class="nav-link link text-black display-4" href="{{ route('components') }}">Components</a>
@@ -45,7 +45,7 @@
           </a>
           @endguest
             @auth
-          <a class="btn btn-primary display-4" href="{{ route('logout') }}" style="background-color: yellow; color: black;">
+          <a class="btn btn-primary display-4" href="{{ route('logout') }}" style="background-color: yellow; color: black;">  
             <i class="fas fa-user" style="font-size: 24px; margin-right: 10px;"></i>
               LOGOUT
           </a>

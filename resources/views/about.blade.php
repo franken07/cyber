@@ -129,10 +129,6 @@
     })();
 
   </script>
-  <!-- Floating cart button -->
-  <div class="floating-action-button">
-    <a href="cart route" class="fab-contact">
-        <i class="fas fa-shopping-cart" style="font-size: 24px;"></i> 
-    </a>
+  @include('include.carticon')
 </body>
 </html>
