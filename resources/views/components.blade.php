@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="assets/socicon/css/styles.css">
   <link rel="stylesheet" href="assets/animatecss/animate.css">
   <link rel="stylesheet" href="assets/theme/css/style.css">
-  
   <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;700&display=swap"></noscript>
   <link rel="preload" as="style" href="assets/mobirise/css/additional.css"><link rel="stylesheet" href="assets/mobirise/css/additional.css" type="text/css">
@@ -55,7 +54,7 @@
                     <img src="{{ url($product->image) }}" class="card-img-top small-image" alt="{{ $product->prod_name }}">
                     <div class="card-body">
                         <h5 class="card-title">{{ $product->prod_name }}</h5>
-                        <p class="card-text">Price: ₱{{ $product->price }}</p>
+                        <p class="card-text">Price: ${{ $product->price }}</p>
                         <p class="card-text">{{ $product->description }}</p>
                         <form class="add-to-cart-form" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
                             @csrf
@@ -118,7 +117,6 @@
   <script src="assets/smoothscroll/smooth-scroll.js"></script>
   <script src="assets/ytplayer/index.js"></script>
   <script src="assets/theme/js/script.js"></script>
-
   <script src="assets/formoid/formoid.min.js"></script>
   
   
