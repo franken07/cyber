@@ -171,8 +171,8 @@ public function addToCart(Request $request, $id)
     ]);
 
     // Check if the user is authenticated
-    if (Auth::check()) {
-        $user = Auth::user();
+    if (Auth::id()) {
+        $user = auth()->user();
         $product = Product::find($id);
 
         if (!$product) {
