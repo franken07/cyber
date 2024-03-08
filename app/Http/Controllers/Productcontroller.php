@@ -171,11 +171,8 @@ public function addToCart(Request $request, $id)
     ]);
 
     // Check if the user is authenticated
-    if (Session::has('user')) {
-        // Get the authenticated user
-        $user = Session::get('user');
-
-        // Find the product by its ID
+    if (Auth::check()) {
+        $user = Auth::user();
         $product = Product::find($id);
 
         if (!$product) {
