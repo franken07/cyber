@@ -165,44 +165,28 @@ public function deleteProduct(Request $request, $productId)
 
 public function addToCart(Request $request, $id)
 {
-    // Validate the request data
-    $validatedData = $request->validate([
-        'quantity' => 'required|integer|min:1',
-    ]);
 
-    // Check if the user is authenticated
-    if (Auth::id()) {
-        $user = auth()->user();
+    if (Auth::check()) {
+        $user = Auth::user();
         $product = Product::find($id);
-
-        if (!$product) {
-            return redirect()->back()->with('error', 'Product not found.');
-        }
-
-        // Find existing order for the product and user
-        $existingOrder = Order::where('user_id', $user->id)
-            ->where('product_id', $product->id)
-            ->first();
-
-        // Update existing order or create a new one
-        if ($existingOrder) {
-            $existingOrder->quantity += $validatedData['quantity'];
-            $existingOrder->price += $product->price * $validatedData['quantity'];
-            $existingOrder->save();
+        $order = session()->get('order',[]);
+        if (isset($order[$id])) {
+            $order[$id]['quantity'] += $request->input('quantity', 1);
         } else {
-            $order = new Order;
-            $order->name = $user->name;
-            $order->email = $user->email;
-            $order->phone = $user->phone;
-            $order->address = $user->address;
-            $order->user_id = $user->id;
-            $order->prod_name = $product->prod_name; 
-            $order->image = $product->image; 
-            $order->price = $product->price * $validatedData['quantity'];
-            $order->product_id = $product->id;
-            $order->quantity = $validatedData['quantity'];
-            $order->save();
+            $order[$id]=[
+                "name" => $user->name,
+                "email" => $user->email,
+                "phone" => $user->phone,
+                "address" => $user->address,
+                "user_id" => $user->id,
+                "prod_name" => $product->prod_name, 
+                "image" => $product->image,
+                "price" => $product->price * $request->input('quantity', 1),
+                "product_id" => $product->id,
+                "quantity" => $request->input('quantity', 1),
+            ];
         }
+        session()->put('order', $order);
 
         return redirect()->back()->with('success', 'Product added to cart successfully.');
     } else {
