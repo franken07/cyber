@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
-use Auth;
+use Illuminate\Support\Facades\Auth;
 
 
 class Productcontroller extends Controller
@@ -179,13 +179,13 @@ public function addToCart(Request $request, $id)
             return redirect()->back()->with('error', 'Product not found.');
         }
 
+        // Calculate the total price based on the product's price and quantity
+        $totalPrice = $product->price * $validatedData['quantity'];
+
         // Find existing order for the product and user
         $existingOrder = Order::where('user_id', $user->id)
             ->where('product_id', $product->id)
             ->first();
-
-        // Calculate the total price based on the product's price and quantity
-        $totalPrice = $product->price * $validatedData['quantity'];
 
         // Update existing order or create a new one
         if ($existingOrder) {
@@ -193,26 +193,26 @@ public function addToCart(Request $request, $id)
             $existingOrder->price += $totalPrice;
             $existingOrder->save();
         } else {
-            $order = new Order; 
-            $order->name = $user->name;
-            $order->email = $user->email;
-            $order->phone = $user->phone;
-            $order->address = $user->address;
-            $order->user_id = $user->id;
-            $order->prod_name = $product->prod_name; 
-            $order->image = $product->image; 
-            $order->price = $totalPrice;
-            $order->product_id = $product->id;
-            $order->quantity = $validatedData['quantity'];
+            $order = new Order([
+                'name' => $user->name,
+                'email' => $user->email,
+                'phone' => $user->phone,
+                'address' => $user->address,
+                'user_id' => $user->id,
+                'prod_name' => $product->prod_name,
+                'image' => $product->image,
+                'price' => $totalPrice,
+                'product_id' => $product->id,
+                'quantity' => $validatedData['quantity']
+            ]);
             $order->save();
         }
 
         return redirect()->back()->with('success', 'Product added to cart successfully.');
     } else {
-        return redirect('login')->with('error', 'Please log in to add products to your cart.');
+        return redirect()->route('login')->with('error', 'Please log in to add products to your cart.');
     }
 }
-
 
 public function checkout(Request $request)
 {
