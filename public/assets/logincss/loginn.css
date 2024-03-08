@@ -14,6 +14,10 @@ body {
     width: 100%;
     max-width: 500px;
     box-shadow: 0 0 10px rgb(0, 0, 0);
+    display: flex;
+    justify-content: center;
+    align-items: center; /* This ensures vertical centering */
+    background-color: whitesmoke; /* Example color */
 
 }
 
@@ -140,15 +144,6 @@ button a:hover {
     .mb-3 {
         margin-bottom: 10px; /* Adjust bottom margin for form elements */
     }
-}
-.outer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* This ensures vertical centering */
-    background-color: whitesmoke; /* Example color */
-    border-radius: 30px;
-    padding: 60px; /* Adjust based on how much space you want around the inner container */
-    margin: auto; /* Centers the container horizontally if it has a width */
 }
 
 .inner-container {
