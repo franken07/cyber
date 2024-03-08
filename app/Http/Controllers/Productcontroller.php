@@ -171,8 +171,8 @@ public function addToCart(Request $request, $id)
     ]);
 
     // Check if the user is authenticated
-    if (Auth::id()) {
-        $user = auth()->user();
+    if (Auth::check()) {
+        $user = Auth::user();
         $product = Product::find($id);
 
         if (!$product) {
@@ -184,13 +184,16 @@ public function addToCart(Request $request, $id)
             ->where('product_id', $product->id)
             ->first();
 
+        // Calculate the total price based on the product's price and quantity
+        $totalPrice = $product->price * $validatedData['quantity'];
+
         // Update existing order or create a new one
         if ($existingOrder) {
             $existingOrder->quantity += $validatedData['quantity'];
-            $existingOrder->price += $product->price * $validatedData['quantity'];
+            $existingOrder->price += $totalPrice;
             $existingOrder->save();
         } else {
-            $order = new Order;
+            $order = new Order; 
             $order->name = $user->name;
             $order->email = $user->email;
             $order->phone = $user->phone;
@@ -198,7 +201,7 @@ public function addToCart(Request $request, $id)
             $order->user_id = $user->id;
             $order->prod_name = $product->prod_name; 
             $order->image = $product->image; 
-            $order->price = $product->price * $validatedData['quantity'];
+            $order->price = $totalPrice;
             $order->product_id = $product->id;
             $order->quantity = $validatedData['quantity'];
             $order->save();
