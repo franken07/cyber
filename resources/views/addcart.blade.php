@@ -48,7 +48,7 @@
             @php
                 $totalprice = 0;
             @endphp
-            @foreach ($order as $orderItem)
+            @foreach ($order as $order)
                 <tr>
                     <td><input type="checkbox" name="order_ids[]" value="{{ $order->id }}"></td>
                     <td><img src="{{ asset('storage/product/' . $order->image) }}" alt="{{ $order->prod_name }}" class="cart-product-image"></td>
