@@ -239,16 +239,19 @@ public function checkout(Request $request)
         return redirect()->back();
     }
 
-    public function checkoutprod()
-    {
-        $user = Auth::user();
-        $userid = $user->id; 
-    
-        $orders = Order::where('user_id', $userid)->get();
-    
+    public function checkoutprod(Request $request)
+{
+    $user = Auth::user();
+    $userid = $user->id;
+
+    $selectedOrderIds = $request->input('order_ids');
+
+    if (!empty($selectedOrderIds)) {
+        $orders = Order::whereIn('id', $selectedOrderIds)->where('user_id', $userid)->get();
+
         foreach ($orders as $order) {
             $checkout = new Checkout;
-    
+
             $checkout->name = $order->name;
             $checkout->email = $order->email;
             $checkout->phone = $order->phone;
@@ -260,15 +263,16 @@ public function checkout(Request $request)
             $checkout->quantity = $order->quantity;
             $checkout->product_id = $order->product_id;
             $checkout->delivery_status = 'cash on delivery';
-    
+
             $checkout->save();
-    
+
             // Delete the current order
             $order->delete();
         }
-    
-        return redirect()->back();
     }
+
+    return redirect()->back(); // Redirect to the previous page
+}
 
 
     public function userPurchases(){
