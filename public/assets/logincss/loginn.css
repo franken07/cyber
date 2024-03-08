@@ -11,9 +11,10 @@ body {
     background: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     width: 100%;
     max-width: 500px;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+
 }
 
 form {
@@ -140,16 +141,6 @@ button a:hover {
         margin-bottom: 10px; /* Adjust bottom margin for form elements */
     }
 }
-.outer-container {
-    display: flex;
-    justify-content: center;
-    align-items: center; /* This ensures vertical centering */
-    background-color: yellow; /* Example color */
-    border-radius: 30px;
-    padding: 60px; /* Adjust based on how much space you want around the inner container */
-    margin: auto; /* Centers the container horizontally if it has a width */
-}
-
 .inner-container {
     background-color: rgb(255, 230, 0); /* Specific to the inner container */
     width: 100%;
