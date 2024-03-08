@@ -50,7 +50,7 @@ Route::get('/userPurchases', [Productcontroller::class, 'userPurchases'])->name(
 Route::get('/delivered/{id}', [Productcontroller::class, 'delivered'])->name('delivered');
 Route::post('/delivered/{id}', [Productcontroller::class, 'delivered'])->name('delivered');
 
-Route::post('/cart/add/{productId}', [Productcontroller::class, 'addToCart'])->name('cart.add');
+Route::post('/cart/{id}', [Productcontroller::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [Productcontroller::class, 'checkout'])->name('checkout');
 Route::get('/remove_cart/{id}', [Productcontroller::class, 'remove_cart'])->name('remove_cart');
 Route::delete('/remove_cart/{id}', [Productcontroller::class, 'remove_cart'])->name('remove_cart');

@@ -163,7 +163,7 @@ public function deleteProduct(Request $request, $productId)
     return redirect('admin')->with('success', 'Product deleted successfully.');
 }
 
-public function addToCart(Request $request, $productId)
+public function addToCart(Request $request, $id)
 {
     // Validate the request data
     $validatedData = $request->validate([
@@ -171,9 +171,9 @@ public function addToCart(Request $request, $productId)
     ]);
 
     // Check if the user is authenticated
-    if (auth()->check()) {
+    if (Auth::check()) {
         $user = Auth::user();
-        $product = Product::find($productId);
+        $product = Product::find($id);
 
         if (!$product) {
             return redirect()->back()->with('error', 'Product not found.');
@@ -185,7 +185,7 @@ public function addToCart(Request $request, $productId)
             ->first();
 
         // Calculate the total price based on the product's price and quantity
-        $totalPrice = $product->price * $request->quantity;
+        $totalPrice = $product->price * $validatedData['quantity'];
 
         // Update existing order or create a new one
         if ($existingOrder) {
@@ -212,7 +212,6 @@ public function addToCart(Request $request, $productId)
         return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
 }
-
 
 
 public function checkout(Request $request)
