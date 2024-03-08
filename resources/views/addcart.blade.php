@@ -50,13 +50,13 @@
             @endphp
             @foreach ($order as $orderItem)
                 <tr>
-                    <td><input type="checkbox" name="order_ids[]" value="{{ $orderItem->id }}"></td>
-                    <td><img src="{{ asset('storage/product/' . $orderItem->image) }}" alt="{{ $orderItem->prod_name }}" class="cart-product-image"></td>
-                    <td>{{ $orderItem->prod_name }}</td>
-                    <td class="price">{{ $orderItem->price }}</td>
-                    <td>{{ $orderItem->quantity }}</td>
+                    <td><input type="checkbox" name="order_ids[]" value="{{ $order->id }}"></td>
+                    <td><img src="{{ asset('storage/product/' . $order->image) }}" alt="{{ $order->prod_name }}" class="cart-product-image"></td>
+                    <td>{{ $order->prod_name }}</td>
+                    <td class="price">{{ $order->price }}</td>
+                    <td>{{ $order->quantity }}</td>
                     <td>
-                        <form action="{{ route('remove_cart', $orderItem->id) }}" method="post">
+                        <form action="{{ route('remove_cart', $order->id) }}" method="post">
                             @csrf
                             @method('DELETE')
                             <button type="submit">Remove from Cart</button>
@@ -64,7 +64,7 @@
                     </td>
                 </tr>
                 @php
-                    $totalprice += $orderItem->price * $orderItem->quantity;
+                    $totalprice += $order->price * $order->quantity;
                 @endphp
             @endforeach
             </tbody> 
