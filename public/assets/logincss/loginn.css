@@ -141,6 +141,16 @@ button a:hover {
         margin-bottom: 10px; /* Adjust bottom margin for form elements */
     }
 }
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* This ensures vertical centering */
+    background-color: whitesmoke; /* Example color */
+    border-radius: 30px;
+    padding: 60px; /* Adjust based on how much space you want around the inner container */
+    margin: auto; /* Centers the container horizontally if it has a width */
+}
+
 .inner-container {
     background-color: rgb(255, 230, 0); /* Specific to the inner container */
     width: 100%;
