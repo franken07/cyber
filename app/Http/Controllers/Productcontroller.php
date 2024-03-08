@@ -179,13 +179,13 @@ public function addToCart(Request $request, $id)
             return redirect()->back()->with('error', 'Product not found.');
         }
 
-        // Calculate the total price based on the product's price and quantity
-        $totalPrice = $product->price * $validatedData['quantity'];
-
         // Find existing order for the product and user
         $existingOrder = Order::where('user_id', $user->id)
             ->where('product_id', $product->id)
             ->first();
+
+        // Calculate the total price based on the product's price and quantity
+        $totalPrice = $product->price * $validatedData['quantity'];
 
         // Update existing order or create a new one
         if ($existingOrder) {
@@ -193,14 +193,14 @@ public function addToCart(Request $request, $id)
             $existingOrder->price += $totalPrice;
             $existingOrder->save();
         } else {
-            $order = new Order;
+            $order = new Order; 
             $order->name = $user->name;
             $order->email = $user->email;
             $order->phone = $user->phone;
             $order->address = $user->address;
             $order->user_id = $user->id;
-            $order->prod_name = $product->prod_name;
-            $order->image = $product->image;
+            $order->prod_name = $product->prod_name; 
+            $order->image = $product->image; 
             $order->price = $totalPrice;
             $order->product_id = $product->id;
             $order->quantity = $validatedData['quantity'];
