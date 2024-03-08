@@ -163,22 +163,21 @@ public function deleteProduct(Request $request, $productId)
     return redirect('admin')->with('success', 'Product deleted successfully.');
 }
 
-public function addToCart(Request $request, $id)
+public function addToCart(Request $request, $productId)
 {
     // Validate the request data
     $validatedData = $request->validate([
         'quantity' => 'required|integer|min:1',
     ]);
 
-    // Validate the product ID
-    $product = Product::find($id);
-    if (!$product) {
-        return redirect()->back()->with('error', 'Product not found.');
-    }
-
     // Check if the user is authenticated
-    if (Auth::check()) {
+    if (auth()->check()) {
         $user = Auth::user();
+        $product = Product::find($productId);
+
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found.');
+        }
 
         // Find existing order for the product and user
         $existingOrder = Order::where('user_id', $user->id)
@@ -186,7 +185,7 @@ public function addToCart(Request $request, $id)
             ->first();
 
         // Calculate the total price based on the product's price and quantity
-        $totalPrice = $product->price * $validatedData['quantity'];
+        $totalPrice = $product->price * $request->quantity;
 
         // Update existing order or create a new one
         if ($existingOrder) {
@@ -195,23 +194,22 @@ public function addToCart(Request $request, $id)
             $existingOrder->save();
         } else {
             $order = new Order; 
-            $order->fill([
-                'name' => $user->name,
-                'email' => $user->email,
-                'phone' => $user->phone,
-                'address' => $user->address,
-                'user_id' => $user->id,
-                'prod_name' => $product->prod_name,
-                'image' => $product->image,
-                'price' => $totalPrice,
-                'product_id' => $product->id,
-                'quantity' => $validatedData['quantity']
-            ])->save();
+            $order->name = $user->name;
+            $order->email = $user->email;
+            $order->phone = $user->phone;
+            $order->address = $user->address;
+            $order->user_id = $user->id;
+            $order->prod_name = $product->prod_name; 
+            $order->image = $product->image; 
+            $order->price = $totalPrice;
+            $order->product_id = $product->id;
+            $order->quantity = $validatedData['quantity'];
+            $order->save();
         }
 
-        return redirect()->route('cart.view')->with('success', 'Product added to cart successfully.');
+        return redirect()->back()->with('success', 'Product added to cart successfully.');
     } else {
-        return redirect()->route('login')->with('error', 'Please log in to add products to your cart.');
+        return redirect('login')->with('error', 'Please log in to add products to your cart.');
     }
 }
 

@@ -69,8 +69,7 @@
                         </p>
                         <form class="add-to-cart-form" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
                             @csrf
-                            <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm" required="">
-                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                            <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm" required="" value="{{ old('quantity', 1) }}">
                             <div class="d-flex justify-content-center align-items-center">
                                  <button class="btn btn-primary">Add to Cart</button>
                             </div>
