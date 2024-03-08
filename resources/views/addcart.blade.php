@@ -2,6 +2,8 @@
 <html lang="en">
 <head>
     <!-- Your existing head content here -->
+
+    <!-- Your existing script includes here -->
 </head>
 <body>
     @include('include.header')
@@ -34,7 +36,7 @@
                         <td><input type="checkbox" name="order_ids[]" value="{{ $orderItem->id }}"></td>
                         <td><img src="{{ asset('storage/product/' . $orderItem->image) }}" alt="{{ $orderItem->prod_name }}" class="cart-product-image"></td>
                         <td>{{ $orderItem->prod_name }}</td>
-                        <td>{{ $orderItem->price }}</td>
+                        <td class="price">{{ $orderItem->price }}</td>
                         <td>{{ $orderItem->quantity }}</td>
                         <td>
                             <form action="{{ route('remove_cart', $orderItem->id) }}" method="post">
@@ -51,9 +53,9 @@
                 </tbody> 
             </table>
             @include('include.checkout')
+            <div>Total Price: $<span id="total-price">{{ $totalprice }}</span></div> <!-- Display total price -->
+        </form>
     @endif
-
-    <!-- Your existing script includes here -->
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -73,6 +75,30 @@
                     checkbox.checked = true;
                 });
             });
+
+            // Function to recalculate total price when checkboxes are changed
+            function recalculateTotalPrice() {
+                var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
+                var totalprice = 0;
+                checkboxes.forEach(function(checkbox) {
+                    if (checkbox.checked) {
+                        var priceElement = checkbox.closest('tr').querySelector('.price');
+                        totalprice += parseFloat(priceElement.textContent);
+                    }
+                });
+                document.getElementById('total-price').textContent = totalprice.toFixed(2); // Update total price display
+            }
+
+            // Add event listeners to checkboxes
+            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
+            checkboxes.forEach(function(checkbox) {
+                checkbox.addEventListener('change', function() {
+                    recalculateTotalPrice();
+                });
+            });
+
+            // Call recalculateTotalPrice initially to set the initial total price
+            recalculateTotalPrice();
         });
     </script>
 </body>
