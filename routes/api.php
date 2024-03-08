@@ -56,7 +56,7 @@ Route::get('/remove_cart/{id}', [Productcontroller::class, 'remove_cart'])->name
 Route::delete('/remove_cart/{id}', [Productcontroller::class, 'remove_cart'])->name('remove_cart');
 Route::get('/checkout', [Productcontroller::class, 'checkoutprod'])->name('checkoutprod');
 Route::post('/checkout', [Productcontroller::class, 'checkoutprod'])->name('checkoutprod');
-Route::delete('/checkout', [Productcontroller::class, 'checkoutprod'])->name('checkoutprod');
+
 
 Route::get('/admin', [Productcontroller::class, 'editDeleteProducts'])->name('edit_delete_products');
 Route::put('/admin/products/{id}', [Productcontroller::class, 'editProduct'])->name('edit_product');
