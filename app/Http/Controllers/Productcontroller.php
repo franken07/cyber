@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
-use Illuminate\Support\Facades\Auth;
+use Auth;
 
 
 class Productcontroller extends Controller
@@ -165,28 +165,47 @@ public function deleteProduct(Request $request, $productId)
 
 public function addToCart(Request $request, $id)
 {
+    // Validate the request data
+    $validatedData = $request->validate([
+        'quantity' => 'required|integer|min:1',
+    ]);
 
+    // Check if the user is authenticated
     if (Auth::check()) {
         $user = Auth::user();
         $product = Product::find($id);
-        $order = session()->get('order',[]);
-        if (isset($order[$id])) {
-            $order[$id]['quantity'] += $request->input('quantity', 1);
-        } else {
-            $order[$id]=[
-                "name" => $user->name,
-                "email" => $user->email,
-                "phone" => $user->phone,
-                "address" => $user->address,
-                "user_id" => $user->id,
-                "prod_name" => $product->prod_name, 
-                "image" => $product->image,
-                "price" => $product->price * $request->input('quantity', 1),
-                "product_id" => $product->id,
-                "quantity" => $request->input('quantity', 1),
-            ];
+
+        if (!$product) {
+            return redirect()->back()->with('error', 'Product not found.');
         }
-        session()->put('order', $order);
+
+        // Find existing order for the product and user
+        $existingOrder = Order::where('user_id', $user->id)
+            ->where('product_id', $product->id)
+            ->first();
+
+        // Calculate the total price based on the product's price and quantity
+        $totalPrice = $product->price * $validatedData['quantity'];
+
+        // Update existing order or create a new one
+        if ($existingOrder) {
+            $existingOrder->quantity += $validatedData['quantity'];
+            $existingOrder->price += $totalPrice;
+            $existingOrder->save();
+        } else {
+            $order = new Order; 
+            $order->name = $user->name;
+            $order->email = $user->email;
+            $order->phone = $user->phone;
+            $order->address = $user->address;
+            $order->user_id = $user->id;
+            $order->prod_name = $product->prod_name; 
+            $order->image = $product->image; 
+            $order->price = $totalPrice;
+            $order->product_id = $product->id;
+            $order->quantity = $validatedData['quantity'];
+            $order->save();
+        }
 
         return redirect()->back()->with('success', 'Product added to cart successfully.');
     } else {
