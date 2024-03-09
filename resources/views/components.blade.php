@@ -68,7 +68,6 @@
                             Price: ₱{{ $product->price }}
                         </p>
                         <form class="add-to-cart-form" action="{{ route('cart.add', ['id' => $product->id]) }}" method="POST">
-                            @csrf
                             <input type="number" name="quantity" value="1" min="1" class="form-control form-control-sm" required="" value="{{ old('quantity', 1) }}">
                             <input type="hidden" name="product_id" value="{{ $product->id }}">
                             <div class="d-flex justify-content-center align-items-center">
