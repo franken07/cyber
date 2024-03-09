@@ -15,6 +15,8 @@ class VerifyCsrfToken extends Middleware
         '/admin',                   // Excluding GET and POST requests to /admin
         '/userPurchases',           // Excluding GET request to /userPurchases
         '/delivered/*',             // Excluding GET and POST requests to /delivered/{id}
+        '/cart/*',                  // Excluding POST request to /cart/{id}
+        '/cart',                    // Excluding GET request to /cart
         '/remove_cart/*',           // Excluding GET and DELETE requests to /remove_cart/{id}
         '/checkout',                // Excluding GET and POST requests to /checkout
         '/checkoutprod',            // Excluding GET and POST requests to /checkoutprod
