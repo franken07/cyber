@@ -73,54 +73,7 @@
     </form>
 @endif
 
-<!-- Add your JavaScript code here -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('check-all').addEventListener('change', function(event) {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
-            checkboxes.forEach(function(checkbox) {
-                checkbox.checked = event.target.checked;
-            });
-            recalculateTotalPrice(); // Recalculate total price after checking/unchecking all checkboxes
-        });
 
-        document.getElementById('proceed-to-order-btn').addEventListener('click', function(event) {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
-            var atLeastOneChecked = false;
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    atLeastOneChecked = true;
-                }
-            });
-            if (!atLeastOneChecked) {
-                alert("Please select at least one product to proceed.");
-                event.preventDefault();
-            }
-        });
-
-        function recalculateTotalPrice() {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
-            var totalprice = 0;
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    var priceElement = checkbox.closest('tr').querySelector('.price');
-                    totalprice += parseFloat(priceElement.textContent);
-                }
-            });
-            document.getElementById('total-price').textContent = totalprice.toFixed(2);
-        }
-
-        var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
-        checkboxes.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                recalculateTotalPrice();
-            });
-        });
-
-        recalculateTotalPrice();
-    });
-    
-</script>
 <script src="assets/parallax/jarallax.js"></script>
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/dropdown/js/navbar-dropdown.js"></script>
