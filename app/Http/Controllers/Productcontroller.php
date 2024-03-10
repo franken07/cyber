@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
+
 
 class Productcontroller extends Controller
 {
@@ -197,7 +197,7 @@ public function addToCart(Request $request, $id)
                 'name' => $user->name,
                 'email' => $user->email,
                 'phone' => $user->phone,
-                'address' => $user->address,    
+                'address' => $user->address,
                 'user_id' => $user->id,
                 'prod_name' => $product->prod_name,
                 'image' => $product->image,
