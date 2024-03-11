@@ -74,24 +74,23 @@
 <body>
 <div class="container">
         <h1>Billing Information</h1>
-        <h2>Billing Information</h2>
-            @if(session('success'))
-                <div class="success-message">{{ session('success') }}</div>
-            @endif
-            <form action="{{ route('billing.buy') }}" method="POST">
-                @csrf
-                @method('PUT') <!-- Use the correct HTTP method -->
-                <label for="phone">Phone:</label>
-                <input type="text" id="phone" name="phone" value="{{ $checkout->phone ?? old('phone') }}" >
-                @error('phone')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
+        @if(session('success'))
+            <div class="success-message">{{ session('success') }}</div>
+        @endif
+        <form action="{{ route('billing.buy') }}" method="POST">
+            @csrf
+            @method('PUT')
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" value="{{ $checkout->phone ?? old('phone') }}" >
+            @error('phone')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
 
-                <label for="address">Address:</label>
-                <input type="text" id="address" name="address" value="{{ $checkout->address ?? old('address') }}" >
-                @error('address')
-                    <div class="error-message">{{ $message }}</div>
-                @enderror
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" value="{{ $checkout->address ?? old('address') }}" >
+            @error('address')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
         
         @if ($checkout)
             <div>
