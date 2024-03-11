@@ -48,9 +48,26 @@
             color: #28a745;
             margin-top: 10px;
         }
+        .error-message {
+            color: #dc3545;
+            margin-top: 5px;
+        }
         img {
-            max-width: 100%; /* Limit the maximum width of the image to fit within its container */
-            height: auto; /* Ensure the aspect ratio is maintained */
+            max-width: 100%;
+            height: auto;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
         }
     </style>
 </head>
@@ -60,9 +77,9 @@
     @if(session('success'))
         <div class="success-message">{{ session('success') }}</div>
     @endif
-    <form action="{{ route('billing.buy') }}" method="POST">
+    <form action="{{ route('billing.update') }}" method="POST">
         @csrf
-        @method('PUT') <!-- Use the correct HTTP method -->
+        @method('PUT')
         <label for="phone">Phone:</label>
         <input type="text" id="phone" name="phone" value="{{ $checkout->phone ?? old('phone') }}" >
         @error('phone')
@@ -75,7 +92,6 @@
             <div class="error-message">{{ $message }}</div>
         @enderror
 
-        <!-- Display checkout items -->
         <table>
             <thead>
                 <tr>
@@ -86,22 +102,21 @@
                 </tr>
             </thead>
             <tbody>
-                @if (is_object($checkout))
+                @forelse ($checkout as $item)
                     <tr>
-                        <td><img src="{{ asset('storage/product/' . $checkout->image) }}" alt="{{ $checkout->prod_name }}"></td>
-                        <td>{{ $checkout->prod_name }}</td>
-                        <td>{{ $checkout->price }}</td>
-                        <td>{{ $checkout->quantity }}</td>
+                        <td><img src="{{ asset('storage/product/' . $item->image) }}" alt="{{ $item->prod_name }}"></td>
+                        <td>{{ $item->prod_name }}</td>
+                        <td>{{ $item->price }}</td>
+                        <td>{{ $item->quantity }}</td>
                     </tr>
-                @else
+                @empty
                     <tr>
                         <td colspan="4">No items found in checkout</td>
                     </tr>
-                @endif
+                @endforelse
             </tbody>
         </table>
 
-        <!-- Form to buy -->
         <button type="submit">Update Billing Information</button>
     </form>
 </div>
