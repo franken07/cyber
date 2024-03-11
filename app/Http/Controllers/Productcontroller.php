@@ -325,7 +325,7 @@ public function checkout(Request $request)
         }
     }
 
-    public function billingupdate(Request $request,$id)
+    public function billing(Request $request,$id)
     {
         
         // Validate the incoming request
