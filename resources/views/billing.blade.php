@@ -56,7 +56,7 @@
     @if(session('success'))
         <div class="success-message">{{ session('success') }}</div>
     @endif
-    <form action="{{ route('billing.update') }}" method="POST">
+    <form action="{{ route('billing.buy') }}" method="POST">
         @csrf
         @method('PUT') <!-- Use the correct HTTP method -->
         <label for="phone">Phone:</label>
@@ -101,11 +101,6 @@
         <button type="submit">Update Billing Information</button>
     </form>
 
-    <form action="{{ route('billing.confirm', $checkout->id) }}" method="POST">
-        @csrf
-        @method('PUT') <!-- Use the correct HTTP method -->
-        <button type="submit">Buy</button>
-    </form>
 </div>
 </body>
 </html>

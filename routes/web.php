@@ -63,7 +63,5 @@ Route::get('/admin/products/{id}/edit', [Productcontroller::class, 'editprod'])-
 
 
 Route::get('/billing', [Productcontroller::class, 'billingshow'])->name('billing'); // Route to display billing information form
-Route::post('/billing/update', [Productcontroller::class, 'billingupdate'])->name('billing.update'); // Route to update billing information
-Route::get('/billing/{id}', [Productcontroller::class, 'billing'])->name('billing.confirm'); // Route to confirm billing and change delivery status
-
+Route::match(['post', 'get'], '/billing/{id?}', [Productcontroller::class, 'billing'])->name('billing.buy');
 
