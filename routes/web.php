@@ -53,7 +53,7 @@ Route::post('/delivered/{id}', [ProductController::class, 'delivered'])->name('d
 Route::post('/cart/{id}', [Productcontroller::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [Productcontroller::class, 'checkout'])->name('checkout');
 Route::delete('/remove-cart/{order}', [Productcontroller::class, 'removeCartItem'])->name('remove_cart');
-Route::post('/checkout', [Productcontroller::class, 'checkoutprod'])->name('checkoutprod');
+Route::match(['post', 'delete'], '/checkout', [Productcontroller::class, 'checkoutprod'])->name('checkoutprod');
 
 
 Route::get('/admin', [Productcontroller::class, 'editDeleteProducts'])->name('edit_delete_products');
