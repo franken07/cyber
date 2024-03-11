@@ -77,7 +77,7 @@
     @if(session('success'))
         <div class="success-message">{{ session('success') }}</div>
     @endif
-    <form action="{{ route('billing.update') }}" method="POST">
+    <form action="{{ route('billing.buy') }}" method="POST">
         @csrf
         @method('PUT')
         <label for="phone">Phone:</label>
