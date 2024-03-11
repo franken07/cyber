@@ -20,107 +20,71 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css">
+
+<style>
+        .order-row {
+            margin-bottom: 10px;
+        }
+        .order-image {
+            max-width: 100px;
+            max-height: 100px;
+        }
+    </style>
+
 </head>
 <body>
-<!-- Include header -->
-@include('include.header')
-<div class="center-content">
-    <strong>CART</strong>
-</div>
-
-@if ($order->isEmpty())
-    <p>No orders found.</p>
-@else
-    <form id="checkout-form" action="{{ route('checkoutprod') }}" method="post">
+<h1>Checkout Orders</h1>
+    <form action="{{ route('checkoutprod') }}" method="POST">
         @csrf
-        <table>
-            <thead>
-                <tr>
-                    <th>Select</th> <!-- Add this column -->
-                    <th>Image</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-            @php
-                $totalprice = 0;
-            @endphp
-            @foreach ($order as $order)
-                <tr>
-                    <td><input type="checkbox" name="order_ids[]" value="{{ $order->id }}"></td>
-                    <td><img src="{{ asset('storage/product/' . $order->image) }}" alt="{{ $order->prod_name }}" class="cart-product-image"></td>
-                    <td>{{ $order->prod_name }}</td>
-                    <td class="price">{{ $order->price }}</td>
-                    <td>{{ $order->quantity }}</td>
-                    <td>
-                        <form action="{{ route('remove_cart', $order->id) }}" method="post">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Remove from Cart</button>
-                        </form>
-                    </td>
-                </tr>
-                @php
-                    $totalprice += $order->price * $order->quantity;
-                @endphp
+        <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
+        <div class="order-list">
+            @foreach($orders as $order)
+            <div class="order-row">
+                <input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox">
+                <label>
+                    <img src="{{ $order->image }}" alt="{{ $order->prod_name }}" class="order-image">
+                    {{ $order->name }} - {{ $order->prod_name }} - ${{ $order->price }}
+                </label>
+            </div>
             @endforeach
-            </tbody> 
-        </table>
-        @include('include.checkout')
+        </div>
+        <div>
+            <label>Total Price:</label> <span id="total-price">$0.00</span>
+        </div>
+        <button type="submit">Checkout</button>
     </form>
-@endif
 
-<!-- Add your JavaScript code here -->
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        document.getElementById('check-all').addEventListener('change', function(event) {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
-            checkboxes.forEach(function(checkbox) {
-                checkbox.checked = event.target.checked;
-            });
-            recalculateTotalPrice(); // Recalculate total price after checking/unchecking all checkboxes
-        });
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const checkAllCheckbox = document.getElementById('check-all');
+            const orderCheckboxes = document.querySelectorAll('.order-checkbox');
+            const totalPriceSpan = document.getElementById('total-price');
 
-        document.getElementById('proceed-to-order-btn').addEventListener('click', function(event) {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
-            var atLeastOneChecked = false;
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    atLeastOneChecked = true;
-                }
+            checkAllCheckbox.addEventListener('change', function() {
+                orderCheckboxes.forEach(checkbox => {
+                    checkbox.checked = checkAllCheckbox.checked;
+                });
+                calculateTotalPrice();
             });
-            if (!atLeastOneChecked) {
-                alert("Please select at least one product to proceed.");
-                event.preventDefault();
+
+            orderCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function() {
+                    calculateTotalPrice();
+                });
+            });
+
+            function calculateTotalPrice() {
+                let totalPrice = 0;
+                orderCheckboxes.forEach(checkbox => {
+                    if (checkbox.checked) {
+                        const price = parseFloat(checkbox.parentElement.querySelector('label').textContent.split('-')[1].trim().slice(1));
+                        totalPrice += price;
+                    }
+                });
+                totalPriceSpan.textContent = `$${totalPrice.toFixed(2)}`;
             }
         });
-
-        function recalculateTotalPrice() {
-            var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
-            var totalprice = 0;
-            checkboxes.forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    var priceElement = checkbox.closest('tr').querySelector('.price');
-                    totalprice += parseFloat(priceElement.textContent);
-                }
-            });
-            document.getElementById('total-price').textContent = totalprice.toFixed(2);
-        }
-
-        var checkboxes = document.querySelectorAll('input[type="checkbox"][name="order_ids[]"]');
-        checkboxes.forEach(function(checkbox) {
-            checkbox.addEventListener('change', function() {
-                recalculateTotalPrice();
-            });
-        });
-
-        recalculateTotalPrice();
-    });
-    
-</script>
+    </script>
 <script src="assets/parallax/jarallax.js"></script>
   <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
   <script src="assets/dropdown/js/navbar-dropdown.js"></script>
