@@ -90,7 +90,7 @@
                     @foreach($checkout as $item)
                         <tr>
                             <td><img src="{{ $item->image }}" alt="{{ $item->name }}" width="100"></td>
-                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->prod_name }}</td>
                             <td>{{ $item->price }}</td>
                             <td>{{ $item->quantity }}</td>
                         </tr>
