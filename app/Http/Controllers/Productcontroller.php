@@ -325,40 +325,30 @@ public function checkout(Request $request)
         }
     }
 
-    public function billing(Request $request, $id = null)
-{
-    // If $id is provided, it means it's a delivery status update request
-    if ($request->isMethod('post') && $id !== null) {
-        // Find the checkout record by its ID
-        $checkout = checkout::find($id);
-        if (!$checkout) {
-            return redirect()->route('billing')->with('error', 'Checkout not found.');
-        }
-        // Update delivery status to "Delivery"
-        $checkout->delivery_status = "Delivery";
-        $checkout->save();
-
-        return redirect()->route('billing')->with('success', 'Delivery status updated successfully.');
-    }
-
-    // Validate the incoming request for billing update
-    $request->validate([
-        'phone' => 'required|string|max:20',
-        'address' => 'required|string|max:255',
-    ]);
-
-    // Update billing information for the currently authenticated user
-    $user = auth()->user();
+    public function billing(Request $request,$id)
+    {
+        
+        // Validate the incoming request
+        $request->validate([
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
+        ]);
     
-    // Get the latest checkout record for the user or create a new one if it doesn't exist
-    $checkout = $user->checkout()->latest()->firstOrCreate(['user_id' => $user->id]);
+        // Update billing information for the currently authenticated user
+        $user = auth()->user();
+        
+        // Get the latest checkout record for the user or create a new one if it doesn't exist
+        $checkout=checkout::find($id);
 
-    // Update phone and address fields with the input data
-    $checkout->phone = $request->input('phone');
-    $checkout->address = $request->input('address');
-    $checkout->save();
-
-    return redirect()->route('billing')->with('success', 'Billing information updated successfully.');
-}
+       
+    
+        // Update phone and address fields with the input data
+        $checkout->phone = $request->input('phone');
+        $checkout->address = $request->input('address');
+        $checkout->delivery_status="Delivery";
+        $checkout->save();
+    
+        return redirect()->route('billing')->with('success', 'Billing information updated successfully.');
+    }
 
 }
