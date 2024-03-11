@@ -53,6 +53,20 @@
             </div>
         </div>
         <div class="row">
+            <div class="mt-5">
+                @if(session('success' . $product->id))
+                    <div class="alert alert-success">
+                        {{ session('success' . $product->id) }}
+                    </div>
+                @endif
+
+                @if(session('error' . $product->id))
+                    <div class="alert alert-danger">
+                        {{ session('error' . $product->id) }}
+                    </div>
+                @endif
+            </div>
+            
             @foreach($products as $product)
             <div class="item features-image col-12 col-md-6 col-lg-3">
                 <div class="item-wrapper">
@@ -61,19 +75,6 @@
                         <img src="{{ url($product->image) }}" alt="{{ $product->prod_name }}">
                     </div>
                     <div class="item-content">
-                        <div class="mt-5">
-                            @if(session('success'))
-                                <div class="alert alert-success">
-                                    {{ session('success') }}
-                                </div>
-                            @endif
-
-                            @if(session('error'))
-                                <div class="alert alert-danger">
-                                    {{ session('error') }}
-                                </div>
-                            @endif
-                        </div>
                         <h5 class="item-title mbr-fonts-style display-5">
                             <strong>{{ $product->prod_name }}</strong>
                         </h5>
