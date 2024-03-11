@@ -290,7 +290,7 @@ public function checkout(Request $request)
         if ($request->expectsJson()) {
             return response()->json(['success' => 'Checkout successful!', 'token' => $token]);
         } else {
-            return redirect()->route('billing')->with('success', 'Checkout successful!');
+            return redirect()->back()->with('success', 'Checkout successful!');
         }
     }
 
