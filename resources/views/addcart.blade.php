@@ -34,7 +34,7 @@
 </head>
 <body>
 <h1>Checkout Orders</h1>
-    <form action="{{ route('checkoutprod') }}" method="POST">
+    <form action="{{ route('checkout') }}" method="POST">
         @csrf
         <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
         <div class="order-list">
@@ -45,6 +45,11 @@
                     <img src="{{ $order->image }}" alt="{{ $order->prod_name }}" class="order-image">
                     {{ $order->name }} - {{ $order->prod_name }} - ${{ $order->price }}
                 </label>
+                <form action="{{ route('remove.cart', $order->id) }}" method="POST">
+                    @csrf
+                    @method('DELETE')
+                    <button type="submit">Remove</button>
+                </form>
             </div>
             @endforeach
         </div>
@@ -85,15 +90,5 @@
             }
         });
     </script>
-<script src="assets/parallax/jarallax.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-  <script src="assets/scrollgallery/scroll-gallery.js"></script>
-  <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/ytplayer/index.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  <script src="assets/formoid/formoid.min.js"></script>
-<!-- Include your JavaScript and library files here -->
 </body>
 </html>
