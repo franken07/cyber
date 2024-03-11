@@ -61,3 +61,7 @@ Route::get('/admin', [Productcontroller::class, 'editDeleteProducts'])->name('ed
 Route::put('/admin/products/{id}', [Productcontroller::class, 'editProduct'])->name('edit_product');
 Route::delete('/admin/products/{productId}', [Productcontroller::class, 'deleteProduct'])->name('delete_product');
 Route::get('/admin/products/{id}/edit', [Productcontroller::class, 'editprod'])->name('editprod');
+
+
+Route::get('/billing/edit', [Productcontroller::class, 'edit'])->name('billing.edit');
+Route::put('/billing/update', [Productcontroller::class, 'update'])->name('billing.update');
