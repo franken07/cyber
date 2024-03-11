@@ -318,11 +318,11 @@ public function checkout(Request $request)
 {
     if (Auth::check()) {
         $userId = Auth::id();
-        $checkouts = Checkout::where('user_id', $userId)
+        $checkout = checkout::where('user_id', $userId)
                              ->whereNull('delivery_status')
                              ->orWhere('delivery_status', '')
                              ->get();
-        return view('billing', compact('checkouts'));
+        return view('billing', compact('checkout'));
     } else {
         return view('login');
     }
