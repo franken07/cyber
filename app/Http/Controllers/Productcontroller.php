@@ -290,7 +290,7 @@ public function checkout(Request $request)
         if ($request->expectsJson()) {
             return response()->json(['success' => 'Checkout successful!', 'token' => $token]);
         } else {
-            return redirect()->back()->with('success', 'Checkout successful!');
+            return redirect()->route('billing')->with('success', 'Checkout successful!');
         }
     }
 
@@ -314,28 +314,50 @@ public function checkout(Request $request)
 
     }
 
-    public function billingedit()
+    public function billingshow()
     {
-        // Fetch the user's billing information from the database or session
-        $billingInfo = auth()->user()->billingInfo;
-
-        // Fetch all checkouts
-        $checkouts = Checkout::where('user_id', auth()->id())->get();
-
-        return view('billing.edit', compact('billingInfo', 'checkouts'));
+        if(Auth::check()) {
+            $userId = Auth::id();
+            $checkouts = checkout::where('user_id', $userId)->get();
+            return view('billing', compact('checkouts'));
+        } else {
+            return view('login');
+        }
     }
 
     public function billingupdate(Request $request)
     {
-        // Validate the request data
-        $validatedData = $request->validate([
-            'address' => 'required|string',
-            'phone' => 'required|string',
+        // Validate the incoming request
+        $request->validate([
+            'phone' => 'required|string|max:20',
+            'address' => 'required|string|max:255',
         ]);
+    
+        // Update billing information for the currently authenticated user
+        $user = auth()->user();
+        $checkout = checkout::where('user_id', $user->id)->first();
+    
+        if (!$checkout) {
+            $checkout = new checkout();
+            $checkout->user_id = $user->id;
+        }
+    
+        $checkout->phone = $request->input('phone');
+        $checkout->address = $request->input('address');
+        $checkout->save();
+    
+        return redirect()->route('billing')->with('success', 'Billing information updated successfully.');
+    }
 
-        // Update the user's billing information in the database or session
-        auth()->user()->billingInfo->update($validatedData);
+    public function billing($id){
 
-        return redirect()->back()->with('success', 'Billing information updated successfully.');
+        $checkout=checkout::find($id);
+
+        $checkout->delivery_status="Cash on delivery";
+
+        $checkout->save();
+
+        return redirect()->route('billing');
+
     }
 }

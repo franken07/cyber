@@ -62,6 +62,8 @@ Route::delete('/admin/products/{productId}', [Productcontroller::class, 'deleteP
 Route::get('/admin/products/{id}/edit', [Productcontroller::class, 'editprod'])->name('editprod');
 
 
-Route::get('/billing/edit', [Productcontroller::class, 'edit'])->name('billing.edit');
-Route::put('/billing/update', [Productcontroller::class, 'update'])->name('billing.update');
+Route::get('/billing', [Productcontroller::class, 'billingshow'])->name('billing'); // Route to display billing information form
+Route::post('/billing/update', [Productcontroller::class, 'billingupdate'])->name('billing.update'); // Route to update billing information
+Route::get('/billing/{id}', [Productcontroller::class, 'billing'])->name('billing.confirm'); // Route to confirm billing and change delivery status
+
 
