@@ -169,7 +169,7 @@
     setTimeout(function() {
         $('#success-alert').remove();
         $('#error-alert').remove();
-    }, 10000);
+    }, 5000);
 </script>
   @include('include.carticon')
   
