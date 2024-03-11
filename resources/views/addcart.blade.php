@@ -22,25 +22,23 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css">
 
 <style>
-        .order-row {
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
+        table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .order-details {
-            flex: 1;
-            display: flex;
-            align-items: center;
+        th, td {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+            text-align: left;
         }
-        .order-image {
+        th {
+            background-color: #f2f2f2;
+        }
+        img {
             max-width: 100px;
             max-height: 100px;
-            margin-right: 10px;
         }
-        .remove-form {
-            margin-left: auto;
-        }
-        .remove-form button {
+        .remove-button {
             background-color: #ff6666;
             color: white;
             border: none;
@@ -48,7 +46,7 @@
             cursor: pointer;
             transition: background-color 0.3s;
         }
-        .remove-form button:hover {
+        .remove-button:hover {
             background-color: #ff4d4d;
         }
     </style>
@@ -58,22 +56,36 @@
     <form action="{{ route('checkoutprod') }}" method="POST">
         @csrf
         <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
-        <div class="order-list">
-            @foreach($order as $order)
-            <div class="order-row">
-                <div class="order-details">
-                    <input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox">
-                    <img src="{{ $order->image }}" alt="{{ $order->prod_name }}" class="order-image">
-                    <label>{{ $order->name }} - {{ $order->prod_name }} - ${{ $order->price }}</label>
-                </div>
-                <form action="{{ route('remove_cart', $order->id) }}" method="POST" class="remove-form">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit">Remove</button>
-                </form>
-            </div>
-            @endforeach
-        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Name</th>
+                    <th>Product</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($order as $order)
+                <tr>
+                    <td><input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox"></td>
+                    <td>{{ $order->name }}</td>
+                    <td>{{ $order->prod_name }}</td>
+                    <td>${{ $order->price }}</td>
+                    <td>{{ $order->quantity }}</td>
+                    <td>
+                        <form action="{{ route('remove_cart', $order->id) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="remove-button">Remove</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
         <div>
             <label>Total Price:</label> <span id="total-price">$0.00</span>
         </div>
@@ -103,7 +115,8 @@
                 let totalPrice = 0;
                 orderCheckboxes.forEach(checkbox => {
                     if (checkbox.checked) {
-                        const price = parseFloat(checkbox.parentElement.querySelector('label').textContent.split('-')[1].trim().slice(1));
+                        const priceText = checkbox.parentElement.parentElement.querySelector('td:nth-child(4)').textContent;
+                        const price = parseFloat(priceText.slice(1));
                         totalPrice += price;
                     }
                 });
