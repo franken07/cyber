@@ -74,6 +74,7 @@
 <body>
 <h1>Billing Information</h1>
 
+
     <div>
         <h2>Checkout Details:</h2>
         @if($checkout->count() > 0)
@@ -106,18 +107,20 @@
 
     <div>
         <h2>Edit Billing Information:</h2>
-        <form method="POST" action="{{ route('billing.buy') }}">
+        <form method="POST" action="{{ route('updateBilling') }}">
             @csrf
-            @method('PUT')
-            <div>
-                <label for="phone">Phone:</label>
-                <input type="text" name="phone" id="phone" value="{{$checkout->phone}}">
-            </div>
 
-            <div>
-                <label for="address">Address:</label>
-                <input type="text" name="address" id="address" value="{{$checkout->address}}">
-            </div>
+            @foreach($checkout as $item)
+                <div>
+                    <label for="phone">Phone:</label>
+                    <input type="text" name="phone" id="phone" value="{{ old('phone') ?? $item->phone }}">
+                </div>
+
+                <div>
+                    <label for="address">Address:</label>
+                    <input type="text" name="address" id="address" value="{{ old('address') ?? $item->address }}">
+                </div>
+            @endforeach
 
             <div>
                 <button type="submit">Update Billing Information</button>
