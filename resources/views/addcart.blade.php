@@ -71,7 +71,7 @@
                     @foreach($orders as $order)
                     <tr>
                         <td><input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox"></td>
-                        <td>{{ $order->image }}</td>
+                        <td><img src="{{ asset('storage/product/' . $order->image) }}" alt="{{ $order->prod_name }}"></td>
                         <td>{{ $order->prod_name }}</td>
                         <td>${{ $order->price }}</td>
                         <td>{{ $order->quantity }}</td>
