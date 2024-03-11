@@ -50,6 +50,7 @@
             background-color: #ff4d4d;
         }
     </style>
+    @include('include.header')
 </head>
 <body>
     <h1>Checkout Orders</h1>
