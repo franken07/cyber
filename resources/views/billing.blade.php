@@ -52,56 +52,56 @@
 </head>
 <body>
 <div class="container">
-        <h2>Billing Information</h2>
-        @if(session('success'))
-            <div class="success-message">{{ session('success') }}</div>
-        @endif
-        <form action="{{ route('billing.update') }}" method="POST">
-            @csrf
-            @method('PUT') <!-- Use the correct HTTP method -->
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" value="{{ $checkout->phone ?? old('phone') }}" >
-            @error('phone')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
+    <h2>Billing Information</h2>
+    @if(session('success'))
+        <div class="success-message">{{ session('success') }}</div>
+    @endif
+    <form action="{{ route('billing.update') }}" method="POST">
+        @csrf
+        @method('PUT') <!-- Use the correct HTTP method -->
+        <label for="phone">Phone:</label>
+        <input type="text" id="phone" name="phone" value="{{ $checkout->phone ?? old('phone') }}" >
+        @error('phone')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
 
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" value="{{ $checkout->address ?? old('address') }}" >
-            @error('address')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
+        <label for="address">Address:</label>
+        <input type="text" id="address" name="address" value="{{ $checkout->address ?? old('address') }}" >
+        @error('address')
+            <div class="error-message">{{ $message }}</div>
+        @enderror
 
-            <!-- Display checkout items -->
-            <table>
-                <thead>
+        <!-- Display checkout items -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Image</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($checkouts as $checkoutItem)
                     <tr>
-                        <th>Image</th>
-                        <th>Product Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
+                        <td><img src="{{ asset('storage/product/' . $checkoutItem->image) }}" alt="{{ $checkoutItem->prod_name }}"></td>
+                        <td>{{ $checkoutItem->prod_name }}</td>
+                        <td>{{ $checkoutItem->price }}</td>
+                        <td>{{ $checkoutItem->quantity }}</td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach($checkouts as $checkoutItem)
-                        <tr>
-                            <td><img src="{{ asset('storage/product/' . $checkoutItem->image) }}" alt="{{ $checkoutItem->prod_name }}"></td>
-                            <td>{{ $checkoutItem->prod_name }}</td>
-                            <td>{{ $checkoutItem->price }}</td>
-                            <td>{{ $checkoutItem->quantity }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-            
+                @endforeach
+            </tbody>
+        </table>
 
         <!-- Form to buy -->
-            <form action="{{ route('billing.confirm', $checkout->id) }}" method="POST">
-                @csrf
-                @method('PUT') <!-- Use the correct HTTP method -->
-                <button type="submit">Buy</button>
-            </form>
-        </form>
-    </div>
+        <button type="submit">Update Billing Information</button>
+    </form>
+
+    <form action="{{ route('billing.confirm', $checkout->id) }}" method="POST">
+        @csrf
+        @method('PUT') <!-- Use the correct HTTP method -->
+        <button type="submit">Buy</button>
+    </form>
+</div>
 </body>
 </html>
