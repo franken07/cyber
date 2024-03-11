@@ -48,6 +48,10 @@
             color: #28a745;
             margin-top: 10px;
         }
+        img {
+            max-width: 100%; /* Limit the maximum width of the image to fit within its container */
+            height: auto; /* Ensure the aspect ratio is maintained */
+        }
     </style>
 </head>
 <body>
