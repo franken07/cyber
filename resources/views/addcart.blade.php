@@ -45,7 +45,7 @@
                     <img src="{{ $order->image }}" alt="{{ $order->prod_name }}" class="order-image">
                     {{ $order->name }} - {{ $order->prod_name }} - ${{ $order->price }}
                 </label>
-                <form action="{{ route('remove.cart', $order->id) }}" method="POST">
+                <form action="{{ route('remove_cart', $order->id) }}" method="POST">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Remove</button>
