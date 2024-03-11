@@ -76,7 +76,7 @@
                     <td>${{ $order->price }}</td>
                     <td>{{ $order->quantity }}</td>
                     <td>
-                    <form action="{{ route('remove_cart', $order->id) }}" method="POST">
+                    <form action="{{ route('remove_cart', $order->id) }}" method="DELETE">
                         @csrf
                         @method('DELETE')
                         <!-- Add this hidden input field -->
