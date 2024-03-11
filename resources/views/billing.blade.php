@@ -81,15 +81,21 @@
                     <th>Quantity</th>
                 </tr>
             </thead>
-            <tbody>
-                @foreach($checkouts as $checkoutItem)
+            <<tbody>
+                @if ($checkout)
+                    @foreach($checkout as $checkoutItem)
+                        <tr>
+                            <td><img src="{{ asset('storage/product/' . $checkoutItem->image) }}" alt="{{ $checkoutItem->prod_name }}"></td>
+                            <td>{{ $checkoutItem->prod_name }}</td>
+                            <td>{{ $checkoutItem->price }}</td>
+                            <td>{{ $checkoutItem->quantity }}</td>
+                        </tr>
+                    @endforeach
+                @else
                     <tr>
-                        <td><img src="{{ asset('storage/product/' . $checkoutItem->image) }}" alt="{{ $checkoutItem->prod_name }}"></td>
-                        <td>{{ $checkoutItem->prod_name }}</td>
-                        <td>{{ $checkoutItem->price }}</td>
-                        <td>{{ $checkoutItem->quantity }}</td>
+                        <td colspan="4">No items found in checkout</td>
                     </tr>
-                @endforeach
+                @endif
             </tbody>
         </table>
 

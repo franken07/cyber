@@ -318,8 +318,8 @@ public function checkout(Request $request)
     {
         if(Auth::check()) {
             $userId = Auth::id();
-            $checkouts = checkout::where('user_id', $userId)->get();
-            return view('billing', compact('checkouts'));
+            $checkout = checkout::where('user_id', $userId)->latest()->first();
+            return view('billing', compact('checkout'));
         } else {
             return view('login');
         }
