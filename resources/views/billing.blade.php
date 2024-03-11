@@ -110,7 +110,7 @@
         @if($checkout->isNotEmpty())
             <form method="POST" action="{{ route('billing.buy') }}">
                 @csrf
-
+                @method('PUT')
                 <div>
                     <label for="phone">Phone:</label>
                     <input type="text" name="phone" id="phone" value="{{ old('phone') ?? $checkout->first()->phone }}">
