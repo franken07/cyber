@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Form</title>
-    <link rel="stylesheet" href="https://cyberservice-96805b7c1a96.herokuapp.com/assets/logincss/loginn.css">
+    <link rel="stylesheet" href="assets/logincss/loginn.css">
 </head>
 <body>
 <div class="logo-wrapper">
