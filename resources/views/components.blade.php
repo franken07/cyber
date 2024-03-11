@@ -53,6 +53,7 @@
             </div>
         </div>
         <div class="row">
+            @foreach($products as $product)
             <div class="mt-5">
                 @if(session('success' . $product->id))
                     <div class="alert alert-success">
@@ -66,8 +67,6 @@
                     </div>
                 @endif
             </div>
-            
-            @foreach($products as $product)
             <div class="item features-image col-12 col-md-6 col-lg-3">
                 <div class="item-wrapper">
                     <div class="item-img">
