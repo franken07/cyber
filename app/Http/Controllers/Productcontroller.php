@@ -335,25 +335,22 @@ public function checkout(Request $request)
     
         // Update billing information for the currently authenticated user
         $user = auth()->user();
-        $checkout = checkout::where('user_id', $user->id)->first();
+        
+        // Get the latest checkout record for the user or create a new one if it doesn't exist
+        $checkout = $user->checkout()->latest()->firstOrCreate(['user_id' => $user->id]);
     
-        if (!$checkout) {
-            $checkout = new checkout();
-            $checkout->user_id = $user->id;
-        }
-    
+        // Update phone and address fields with the input data
         $checkout->phone = $request->input('phone');
         $checkout->address = $request->input('address');
         $checkout->save();
     
         return redirect()->route('billing')->with('success', 'Billing information updated successfully.');
     }
-
     public function billing($id){
 
         $checkout=checkout::find($id);
 
-        $checkout->delivery_status="Cash on delivery";
+        $checkout->delivery_status="Delivery";
 
         $checkout->save();
 

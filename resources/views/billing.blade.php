@@ -51,21 +51,22 @@
     </style>
 </head>
 <body>
-    <div class="container">
+<div class="container">
         <h2>Billing Information</h2>
         @if(session('success'))
             <div class="success-message">{{ session('success') }}</div>
         @endif
         <form action="{{ route('billing.update') }}" method="POST">
             @csrf
+            @method('PUT') <!-- Use the correct HTTP method -->
             <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" value="{{ $checkouts->phone  }}" >
+            <input type="text" id="phone" name="phone" value="{{ $checkout->phone ?? old('phone') }}" >
             @error('phone')
                 <div class="error-message">{{ $message }}</div>
             @enderror
 
             <label for="address">Address:</label>
-            <input type="text" id="address" name="address" value="{{ $checkouts->address }}" >
+            <input type="text" id="address" name="address" value="{{ $checkout->address ?? old('address') }}" >
             @error('address')
                 <div class="error-message">{{ $message }}</div>
             @enderror
@@ -81,18 +82,25 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($checkouts as $checkout)
+                    @foreach($checkouts as $checkoutItem)
                         <tr>
-                            <td><img src="{{ asset('storage/product/' . $checkout->image) }}" alt="{{ $checkout->prod_name }}">></td>
-                            <td>{{ $checkout->prod_name }}</td>
-                            <td>{{ $checkout->price }}</td>
-                            <td>{{ $checkout->quantity }}</td>
+                            <td><img src="{{ asset('storage/product/' . $checkoutItem->product->image) }}" alt="{{ $checkoutItem->product->name }}"></td>
+                            <td>{{ $checkoutItem->product->name }}</td>
+                            <td>{{ $checkoutItem->product->price }}</td>
+                            <td>{{ $checkoutItem->quantity }}</td>
                         </tr>
                     @endforeach
                 </tbody>
             </table>
 
-            <button type="submit">BUY</button>
+            
+
+        <!-- Form to buy -->
+            <form action="{{ route('billing.confirm', $checkout->id) }}" method="POST">
+                @csrf
+                @method('PUT') <!-- Use the correct HTTP method -->
+                <button type="submit">Buy</button>
+            </form>
         </form>
     </div>
 </body>
