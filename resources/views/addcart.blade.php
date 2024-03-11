@@ -59,7 +59,7 @@
                 <thead>
                     <tr>
                         <th></th>
-                        <th>Name</th>
+                        <th>Image</th>
                         <th>Product</th>
                         <th>Price</th>
                         <th>Quantity</th>
@@ -70,7 +70,7 @@
                     @foreach($orders as $order)
                     <tr>
                         <td><input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox"></td>
-                        <td>{{ $order->name }}</td>
+                        <td>{{ $order->image }}</td>
                         <td>{{ $order->prod_name }}</td>
                         <td>${{ $order->price }}</td>
                         <td>{{ $order->quantity }}</td>
