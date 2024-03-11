@@ -102,16 +102,10 @@
                 </tr>
             </thead>
             <tbody>
-                @if ($checkout)
+                @if (is_object($checkout))
                     @foreach ($checkout as $item)
                         <tr>
-                            <td>
-                                @if ($item->image)
-                                    <img src="{{ asset('storage/product/' . $item->image) }}" alt="{{ $item->prod_name }}">
-                                @else
-                                    No Image
-                                @endif
-                            </td>
+                            <td><img src="{{ asset('storage/product/' . $checkout->image) }}" alt="{{ $checkout->prod_name }}">
                             <td>{{ $item->prod_name }}</td>
                             <td>{{ $item->price }}</td>
                             <td>{{ $item->quantity }}</td>
