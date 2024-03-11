@@ -294,12 +294,15 @@ public function checkout(Request $request)
         }
     }
 
-    public function userPurchases(){
-    $userPurchases = Checkout::all();
+    public function userPurchases()
+{
+    $userPurchases = Checkout::whereNotNull('delivery_status')
+                             ->where('delivery_status', '!=', '')
+                             ->get();
 
     // Pass the data to the view
     return view('admin', compact('userPurchases'));
-    }
+}
 
 
     public function delivered($id){
