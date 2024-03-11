@@ -43,13 +43,13 @@
 <section class="pricing02 cid-u3GZCsHE3N" id="product-list-8-u3GZCsHE3N">
     <div class="mt-5">
         @if(session('success'))
-            <div class="alert alert-success">
+            <div class="alert alert-success auto-close">
                 {{ session('success') }}
             </div>
         @endif
 
         @if(session('error'))
-            <div class="alert alert-danger">
+            <div class="alert alert-danger auto-close">
                 {{ session('error') }}
             </div>
         @endif
@@ -164,11 +164,12 @@
 
   </script>
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    // Remove success and error alerts after 5 seconds
-    setTimeout(function() {
-        $('.alert').remove();
-    }, 5000);
+    $(document).ready(function(){
+        // Function to close the alert after 5 seconds (5000 milliseconds)
+        $(".auto-close").delay(5000).fadeOut("slow");
+    });
 </script>
   @include('include.carticon')
   
