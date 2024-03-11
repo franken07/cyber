@@ -82,12 +82,16 @@ class Authentication extends Controller
     public function registrationPost(Request $request)
     {
         $request->validate([
-            'name' => 'required',
+            'name' => 'required|min:6',
             'email' => 'required|email|unique:users',
-            'phone' => 'required',
+            'phone' => 'required|min:11',
             'address' => 'required',
-            'password' => 'required',
+            'password' => 'required|min:6',
             'password_confirmation' => 'required|same:password'
+        ], [
+            'name.min' => 'The name must be at least 6 characters.',
+            'phone.min' => 'The phone number must be at least 11 characters.',
+            'password.min' => 'The password must be at least 6 characters.',
         ]);
     
         $data['name'] = $request->name;
