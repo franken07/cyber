@@ -111,12 +111,12 @@
             @method('PUT')
             <div>
                 <label for="phone">Phone:</label>
-                <input type="text" name="phone" id="phone" value="{{ old('phone') ?? $checkout->phone }}">
+                <input type="text" name="phone" id="phone" value="{{$checkout->phone}}">
             </div>
 
             <div>
                 <label for="address">Address:</label>
-                <input type="text" name="address" id="address" value="{{ old('address') ?? $checkout->address }}">
+                <input type="text" name="address" id="address" value="{{$checkout->address}}">
             </div>
 
             <div>
