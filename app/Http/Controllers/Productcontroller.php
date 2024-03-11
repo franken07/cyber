@@ -318,7 +318,7 @@ public function checkout(Request $request)
     {
         if(Auth::check()) {
             $userId = Auth::id();
-            $checkout = Checkout::where('user_id', $userId)->latest()->first();
+            $checkout = checkout::where('user_id', $userId)->get();
             return view('billing', compact('checkout'));
         } else {
             return view('login');
