@@ -72,56 +72,54 @@
     </style>
 </head>
 <body>
-<div class="container">
-    <h2>Billing Information</h2>
-    @if(session('success'))
-        <div class="success-message">{{ session('success') }}</div>
-    @endif
-    <form action="{{ route('billing.buy') }}" method="POST">
-        @csrf
-        @method('PUT')
-        <label for="phone">Phone:</label>
-        <input type="text" id="phone" name="phone" value="{{ $checkout->phone ?? old('phone') }}" >
-        @error('phone')
-            <div class="error-message">{{ $message }}</div>
-        @enderror
+    <div class="container">
+        <h2>Billing Information</h2>
+        @if(session('success'))
+            <div class="success-message">{{ session('success') }}</div>
+        @endif
+        <form action="{{ route('billing.buy') }}" method="POST">
+            @csrf
+            @method('PUT')
+            <label for="phone">Phone:</label>
+            <input type="text" id="phone" name="phone" value="{{ $checkout->phone ?? old('phone') }}" >
+            @error('phone')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
 
-        <label for="address">Address:</label>
-        <input type="text" id="address" name="address" value="{{ $checkout->address ?? old('address') }}" >
-        @error('address')
-            <div class="error-message">{{ $message }}</div>
-        @enderror
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="address" value="{{ $checkout->address ?? old('address') }}" >
+            @error('address')
+                <div class="error-message">{{ $message }}</div>
+            @enderror
 
-        <table>
-            <thead>
-                <tr>
-                    <th>Image</th>
-                    <th>Product Name</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($checkout as $checkout)
+            <table>
+                <thead>
                     <tr>
-                        <td>   
-                        <img src="{{ asset('storage/product/' . $checkout->image) }}" alt="{{ $checkout->prod_name }}">
-                        </td>
-                        <td>{{ $checkout->prod_name }}</td>
-                        <td>{{ $checkout->price }}</td>
-                        <td>{{ $checkout->quantity }}</td>
+                        <th>Image</th>
+                        <th>Product Name</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
                     </tr>
-                @endforeach
-                @empty
-                    <tr>
-                        <td colspan="4">No items found in checkout</td>
-                    </tr>
-                @endempty
-            </tbody>
-        </table>
+                </thead>
+                <tbody>
+                    @foreach ($checkout->orders as $order)
+                        <tr>
+                            <td><img src="{{ asset('storage/product/' . $order->image) }}" alt="{{ $order->prod_name }}"></td>
+                            <td>{{ $order->prod_name }}</td>
+                            <td>{{ $order->price }}</td>
+                            <td>{{ $order->quantity }}</td>
+                        </tr>
+                    @endforeach
+                    @empty
+                        <tr>
+                            <td colspan="4">No items found in checkout</td>
+                        </tr>
+                    @endempty
+                </tbody>
+            </table>
 
-        <button type="submit">Update Billing Information</button>
-    </form>
-</div>
+            <button type="submit">Update Billing Information</button>
+        </form>
+    </div>
 </body>
 </html>
