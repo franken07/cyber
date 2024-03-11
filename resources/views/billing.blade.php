@@ -42,8 +42,8 @@
                     @foreach($checkouts as $checkout)
                         <tr>
                             <td><img src="{{ asset('storage/product/' . $checkout->image) }}" alt="{{ $checkout->prod_name }}">></td>
-                            <td>{{ $checkout->product->name }}</td>
-                            <td>{{ $checkout->product->price }}</td>
+                            <td>{{ $checkout->prod_name }}</td>
+                            <td>{{ $checkout->price }}</td>
                             <td>{{ $checkout->quantity }}</td>
                         </tr>
                     @endforeach
