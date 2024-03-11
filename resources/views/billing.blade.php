@@ -59,13 +59,13 @@
         <form action="{{ route('billing.update') }}" method="POST">
             @csrf
             <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" value="{{ $checkouts->phone }}" required>
+            <input type="text" id="phone" name="phone" value="{{ $checkouts->phone  }}" >
             @error('phone')
                 <div class="error-message">{{ $message }}</div>
             @enderror
 
             <label for="address">Address:</label>
-            <input type="text" id="address" name="address" value="{{ $checkouts->address }}" required>
+            <input type="text" id="address" name="address" value="{{ $checkouts->address }}" >
             @error('address')
                 <div class="error-message">{{ $message }}</div>
             @enderror
