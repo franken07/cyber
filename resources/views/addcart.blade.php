@@ -38,7 +38,7 @@
         @csrf
         <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
         <div class="order-list">
-            @foreach($orders as $order)
+            @foreach($order as $order)
             <div class="order-row">
                 <input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox">
                 <label>
