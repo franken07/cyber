@@ -318,13 +318,13 @@ public function checkout(Request $request)
     {
         if(Auth::check()) {
             $userId = Auth::id();
-            $checkout = checkout::where('user_id', $userId)->latest()->first();
+            $checkout = Checkout::where('user_id', $userId)->latest()->first();
             return view('billing', compact('checkout'));
         } else {
             return view('login');
         }
     }
-
+    
     public function updateBilling(Request $request)
     {
         // Add your validation logic here if needed
@@ -334,13 +334,13 @@ public function checkout(Request $request)
             'delivery_status' => 'string|max:255'
         ]);
     
-        // Assuming you have a Checkout model to store billing information
-        $checkout = Checkout::firstOrNew(['user_id' => auth()->id()]); // Assuming Checkout model has 'user_id' field
-        $checkout->phone = $request->phone;
-        $checkout->address = $request->address;
-        $checkout->delivery_status = "Delivery";
-        
-        $checkout->save();
+        // Update or create checkout record
+        $checkout = Checkout::updateOrCreate(
+            ['user_id' => auth()->id()],
+            ['phone' => $request->phone,
+            'address' => $request->address,
+            'delivery_status' => 'Delivery']
+        );
     
         return redirect()->route('billing')->with('success', 'Billing information updated successfully.');
     }
