@@ -113,7 +113,6 @@
                             <td>{{ $item->price }}</td>
                             <td>{{ $item->quantity }}</td>
                         </tr>
-                    @endforeach
                 @empty
                     <tr>
                         <td colspan="4">No items found in checkout</td>
