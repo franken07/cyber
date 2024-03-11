@@ -108,7 +108,7 @@
     <div>
         <h2>Edit Billing Information:</h2>
         @if($checkout->isNotEmpty())
-            <form method="POST" action="{{ route('updateBilling') }}">
+            <form method="POST" action="{{ route('billing.buy') }}">
                 @csrf
 
                 <div>
