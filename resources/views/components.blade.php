@@ -41,6 +41,19 @@
 
 <!-- components.blade.php -->   
 <section class="pricing02 cid-u3GZCsHE3N" id="product-list-8-u3GZCsHE3N">
+    <div class="mt-5">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+    </div>
     <div class="container-fluid">
         @foreach($productsBycategory as $category => $products)
         <div class="row justify-content-center">
@@ -54,23 +67,9 @@
         </div>
         <div class="row">
             @foreach($products as $product)
-            <div class="mt-5">
-                @if(session('success' . $product->id))
-                    <div class="alert alert-success">
-                        {{ session('success' . $product->id) }}
-                    </div>
-                @endif
-
-                @if(session('error' . $product->id))
-                    <div class="alert alert-danger">
-                        {{ session('error' . $product->id) }}
-                    </div>
-                @endif
-            </div>
             <div class="item features-image col-12 col-md-6 col-lg-3">
                 <div class="item-wrapper">
                     <div class="item-img">
-                        
                         <img src="{{ url($product->image) }}" alt="{{ $product->prod_name }}">
                     </div>
                     <div class="item-content">
