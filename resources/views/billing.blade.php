@@ -72,26 +72,11 @@
     </style>
 </head>
 <body>
-    <div class="container">
-        <h2>Billing Information</h2>
-        @if(session('success'))
-            <div class="success-message">{{ session('success') }}</div>
-        @endif
-        <form action="{{ route('billing.buy') }}" method="POST">
-            @csrf
-            @method('PUT')
-            <label for="phone">Phone:</label>
-            <input type="text" id="phone" name="phone" value="{{ $checkout->phone ?? old('phone') }}" >
-            @error('phone')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
+<h1>Billing Information</h1>
 
-            <label for="address">Address:</label>
-            <input type="text" id="address" name="address" value="{{ $checkout->address ?? old('address') }}" >
-            @error('address')
-                <div class="error-message">{{ $message }}</div>
-            @enderror
-
+    <div>
+        <h2>Checkout Details:</h2>
+        @if($checkout->count() > 0)
             <table>
                 <thead>
                     <tr>
@@ -102,23 +87,41 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach ($checkout->orders as $order)
+                    @foreach($checkout as $item)
                         <tr>
-                            <td><img src="{{ asset('storage/product/' . $order->image) }}" alt="{{ $order->prod_name }}"></td>
-                            <td>{{ $order->prod_name }}</td>
-                            <td>{{ $order->price }}</td>
-                            <td>{{ $order->quantity }}</td>
+                            <td><img src="{{ $item->product->image_url }}" alt="{{ $item->product->name }}" width="100"></td>
+                            <td>{{ $item->product->name }}</td>
+                            <td>{{ $item->product->price }}</td>
+                            <td>{{ $item->quantity }}</td>
                         </tr>
                     @endforeach
-                    @empty
-                        <tr>
-                            <td colspan="4">No items found in checkout</td>
-                        </tr>
-                    @endempty
                 </tbody>
             </table>
+        @else
+            <p>No items found in checkout.</p>
+        @endif
+    </div>
 
-            <button type="submit">Update Billing Information</button>
+    <hr>
+
+    <div>
+        <h2>Edit Billing Information:</h2>
+        <form method="POST" action="{{ route('updateBilling') }}">
+            @csrf
+            @method('PUT')
+            <div>
+                <label for="phone">Phone:</label>
+                <input type="text" name="phone" id="phone" value="{{ old('phone') ?? $checkout->phone }}">
+            </div>
+
+            <div>
+                <label for="address">Address:</label>
+                <input type="text" name="address" id="address" value="{{ old('address') ?? $checkout->address }}">
+            </div>
+
+            <div>
+                <button type="submit">Update Billing Information</button>
+            </div>
         </form>
     </div>
 </body>
