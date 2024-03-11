@@ -316,9 +316,9 @@ public function checkout(Request $request)
 
     public function billingshow()
     {
-        if(Auth::check()) {
+        if (Auth::check()) {
             $userId = Auth::id();
-            $checkout = checkout::where('user_id', $userId)->get();
+            $checkout = Checkout::where('user_id', $userId)->where('delivery_status', '!=', 'Delivery')->get();
             return view('billing', compact('checkout'));
         } else {
             return view('login');
