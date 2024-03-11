@@ -90,7 +90,7 @@
         <div>
             <label>Total Price:</label> <span id="total-price">$0.00</span>
         </div>
-    <form action="{{ route('checkoutprod') }}" method="POST">
+    <form action="{{ route('checkoutprod', $order->id) }}" method="POST">
         @csrf
         <button type="submit">Checkout</button>
     </form>
