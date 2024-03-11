@@ -327,20 +327,21 @@ public function checkout(Request $request)
     
     public function updateBilling(Request $request)
     {
-        // Add your validation logic here if needed
         $validatedData = $request->validate([
             'phone' => 'string|max:255',
             'address' => 'string|max:255',
             'delivery_status' => 'string|max:255'
         ]);
     
-        // Update or create checkout record
-        $checkout = Checkout::updateOrCreate(
-            ['user_id' => auth()->id()],
-            ['phone' => $request->phone,
+        // Get the authenticated user's ID
+        $userId = auth()->id();
+    
+        // Update the delivery status for all checkouts of the authenticated user
+        Checkout::where('user_id', $userId)->update([
+            'phone' => $request->phone,
             'address' => $request->address,
-            'delivery_status' => 'Delivery']
-        );
+            'delivery_status' => 'Delivery'
+        ]);
     
         return redirect()->route('billing')->with('success', 'Billing information updated successfully.');
     }
