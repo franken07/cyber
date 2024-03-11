@@ -24,28 +24,49 @@
 <style>
         .order-row {
             margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        .order-details {
+            flex: 1;
+            display: flex;
+            align-items: center;
         }
         .order-image {
             max-width: 100px;
             max-height: 100px;
+            margin-right: 10px;
+        }
+        .remove-form {
+            margin-left: auto;
+        }
+        .remove-form button {
+            background-color: #ff6666;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        .remove-form button:hover {
+            background-color: #ff4d4d;
         }
     </style>
-
 </head>
 <body>
-<h1>Checkout Orders</h1>
+    <h1>Checkout Orders</h1>
     <form action="{{ route('checkout') }}" method="POST">
         @csrf
         <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
         <div class="order-list">
-            @foreach($order as $order)
+            @foreach($orders as $order)
             <div class="order-row">
-                <input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox">
-                <label>
+                <div class="order-details">
+                    <input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox">
                     <img src="{{ $order->image }}" alt="{{ $order->prod_name }}" class="order-image">
-                    {{ $order->name }} - {{ $order->prod_name }} - ${{ $order->price }}
-                </label>
-                <form action="{{ route('remove_cart', $order->id) }}" method="POST">
+                    <label>{{ $order->name }} - {{ $order->prod_name }} - ${{ $order->price }}</label>
+                </div>
+                <form action="{{ route('remove.cart', $order->id) }}" method="POST" class="remove-form">
                     @csrf
                     @method('DELETE')
                     <button type="submit">Remove</button>
