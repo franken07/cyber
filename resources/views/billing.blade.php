@@ -107,25 +107,27 @@
 
     <div>
         <h2>Edit Billing Information:</h2>
-        <form method="POST" action="{{ route('billing.buy') }}">
-            @csrf
+        @if($checkout->isNotEmpty())
+            <form method="POST" action="{{ route('updateBilling') }}">
+                @csrf
 
-            @foreach($checkout as $item)
                 <div>
                     <label for="phone">Phone:</label>
-                    <input type="text" name="phone" id="phone" value="{{ old('phone') ?? $item->phone }}">
+                    <input type="text" name="phone" id="phone" value="{{ old('phone') ?? $checkout->first()->phone }}">
                 </div>
 
                 <div>
                     <label for="address">Address:</label>
-                    <input type="text" name="address" id="address" value="{{ old('address') ?? $item->address }}">
+                    <input type="text" name="address" id="address" value="{{ old('address') ?? $checkout->first()->address }}">
                 </div>
-            @endforeach
 
-            <div>
-                <button type="submit">Update Billing Information</button>
-            </div>
-        </form>
+                <div>
+                    <button type="submit">Update Billing Information</button>
+                </div>
+            </form>
+        @else
+            <p>No billing information found.</p>
+        @endif
     </div>
 </body>
 </html>
