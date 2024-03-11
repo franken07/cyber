@@ -76,11 +76,11 @@
                     <td>${{ $order->price }}</td>
                     <td>{{ $order->quantity }}</td>
                     <td>
-                        <form action="{{ route('remove_cart', $order->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit" class="remove-button">Remove</button>
-                        </form>
+                    <form action="{{ route('remove_cart', $order->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="remove-button">Remove</button>
+                    </form>
                     </td>
                 </tr>
                 @endforeach
