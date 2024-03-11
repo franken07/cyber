@@ -89,15 +89,9 @@
                 <tbody>
                     @foreach($checkout as $item)
                         <tr>
-                            <td>
-                                @if($item->product)
-                                    <img src="{{ $item->product->image_url }}" alt="{{ $item->product->name }}" width="100">
-                                @else
-                                    No Image
-                                @endif
-                            </td>
-                            <td>{{ $item->product->name }}</td>
-                            <td>{{ $item->product->price }}</td>
+                            <td><img src="{{ $item->image }}" alt="{{ $item->name }}" width="100"></td>
+                            <td>{{ $item->name }}</td>
+                            <td>{{ $item->price }}</td>
                             <td>{{ $item->quantity }}</td>
                         </tr>
                     @endforeach
