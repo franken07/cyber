@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration Form</title>
-    <link rel="stylesheet" href="assets/registrationcss/registrationn.css">
-    <link rel="shortcut icon" href="assets/images/loko.png" type="image/x-icon">
+    <link rel="stylesheet" href="{{ secure_asset('assets/registrationcss/registrationn.css') }}">
+    <link rel="shortcut icon" href="{{ secure_asset('assets/images/loko.png') }}" type="image/x-icon">
 </head>
 <body>
 <div class="logo-wrapper">
