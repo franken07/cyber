@@ -280,7 +280,6 @@ public function checkout(Request $request)
                 $checkout->image = $order->image;
                 $checkout->quantity = $order->quantity;
                 $checkout->product_id = $order->product_id;
-                $checkout->delivery_status = 'cash on delivery';
                 $checkout->save();
                 $order->delete();
             }
@@ -291,7 +290,7 @@ public function checkout(Request $request)
         if ($request->expectsJson()) {
             return response()->json(['success' => 'Checkout successful!', 'token' => $token]);
         } else {
-            return redirect()->back()->with('success', 'Checkout successful!');
+            return redirect()->route('billing')->with('success', 'Checkout successful!');
         }
     }
 
@@ -313,5 +312,30 @@ public function checkout(Request $request)
 
         return redirect()->route('edit_delete_products');
 
+    }
+
+    public function billingedit()
+    {
+        // Fetch the user's billing information from the database or session
+        $billingInfo = auth()->user()->billingInfo;
+
+        // Fetch all checkouts
+        $checkouts = Checkout::where('user_id', auth()->id())->get();
+
+        return view('billing.edit', compact('billingInfo', 'checkouts'));
+    }
+
+    public function billingupdate(Request $request)
+    {
+        // Validate the request data
+        $validatedData = $request->validate([
+            'address' => 'required|string',
+            'phone' => 'required|string',
+        ]);
+
+        // Update the user's billing information in the database or session
+        auth()->user()->billingInfo->update($validatedData);
+
+        return redirect()->back()->with('success', 'Billing information updated successfully.');
     }
 }

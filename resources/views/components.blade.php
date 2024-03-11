@@ -168,7 +168,7 @@
 <script>
     $(document).ready(function(){
         // Function to close the alert after 5 seconds (5000 milliseconds)
-        $(".auto-close").delay(5000).fadeOut("slow");
+        $(".auto-close").delay(3000).fadeOut("slow");
     });
 </script>
   @include('include.carticon')
