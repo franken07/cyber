@@ -41,6 +41,19 @@
 
 <!-- components.blade.php -->   
 <section class="pricing02 cid-u3GZCsHE3N" id="product-list-8-u3GZCsHE3N">
+    <div class="mt-5">
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
+        @if(session('error'))
+            <div class="alert alert-danger">
+                {{ session('error') }}
+            </div>
+        @endif
+    </div>
     <div class="container-fluid">
         @foreach($productsBycategory as $category => $products)
         <div class="row justify-content-center">
@@ -151,16 +164,6 @@
 
   </script>
   @include('include.carticon')
-  @if(session('success'))
-    <div class="alert alert-success">
-        {{ session('success') }}
-    </div>
-@endif
-
-@if(session('error'))
-    <div class="alert alert-danger">
-        {{ session('error') }}
-    </div>
-@endif
+  
 </body>
 </html>
