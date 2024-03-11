@@ -315,17 +315,18 @@ public function checkout(Request $request)
     }
 
     public function billingshow()
-    {
-        if (Auth::check()) {
-            $userId = Auth::id();
-            $checkout = checkout::where('user_id', $userId)
-                                ->where('delivery_status', '!=', 'Delivery')
-                                ->get();
-            return view('billing', compact('checkout'));
-        } else {
-            return view('login');
-        }
+{
+    if (Auth::check()) {
+        $userId = Auth::id();
+        $checkouts = Checkout::where('user_id', $userId)
+                             ->whereNull('delivery_status')
+                             ->orWhere('delivery_status', '')
+                             ->get();
+        return view('billing', compact('checkouts'));
+    } else {
+        return view('login');
     }
+}
     
     public function updateBilling(Request $request)
     {
