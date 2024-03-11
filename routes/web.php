@@ -52,8 +52,8 @@ Route::post('/delivered/{id}', [ProductController::class, 'delivered'])->name('d
 
 Route::post('/cart/{id}', [Productcontroller::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [Productcontroller::class, 'checkout'])->name('checkout');
-Route::get('/remove_cart/{id}', [Productcontroller::class, 'remove_cart'])->name('remove_get_cart');
-Route::delete('/remove_cart/{id}', [Productcontroller::class, 'remove_cart'])->name('remove_cart');
+Route::delete('/remove-cart/{order}', [Productcontroller::class, 'removeCartItem'])->name('remove_cart');
+
 Route::get('/checkout', [Productcontroller::class, 'checkoutprod'])->name('checkoutprod');
 Route::post('/checkout', [Productcontroller::class, 'checkoutprod'])->name('checkoutprod');
 

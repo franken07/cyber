@@ -53,45 +53,44 @@
 </head>
 <body>
     <h1>Checkout Orders</h1>
-
-        <table>
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Name</th>
-                    <th>Product</th>
-                    <th>Price</th>
-                    <th>Quantity</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach($orders as $order)
-                <tr>
-                    <td><input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox"></td>
-                    <td>{{ $order->name }}</td>
-                    <td>{{ $order->prod_name }}</td>
-                    <td>${{ $order->price }}</td>
-                    <td>{{ $order->quantity }}</td>
-                    <td>
-                        <form action="{{ route('remove_cart', $order->id) }}" method="POST">
-                            @csrf
-                            @method('DELETE')
-                            <input type="hidden" name="_method" value="DELETE">
-                            <button type="submit" class="remove-button">Remove</button>
-                        </form>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        <div>
-            <label>Total Price:</label> <span id="total-price">$0.00</span>
-        </div>
         <form action="{{ route('checkoutprod') }}" method="POST">
             @csrf
+            <table>
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Name</th>
+                        <th>Product</th>
+                        <th>Price</th>
+                        <th>Quantity</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach($orders as $order)
+                    <tr>
+                        <td><input type="checkbox" name="order_ids[]" value="{{ $order->id }}" class="order-checkbox"></td>
+                        <td>{{ $order->name }}</td>
+                        <td>{{ $order->prod_name }}</td>
+                        <td>${{ $order->price }}</td>
+                        <td>{{ $order->quantity }}</td>
+                        <td>
+                            <form action="{{ route('remove_cart', $order->id) }}" method="POST">
+                                @csrf
+                                @method('DELETE')
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button type="submit" class="remove-button">Remove</button>
+                            </form>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            <div>
+                <label>Total Price:</label> <span id="total-price">$0.00</span>
+            </div>
             <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
-            <button type="submit">Checkout</button>
+            <button type="submit">Checkout Selected</button>
         </form>
 
     <script>

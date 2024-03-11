@@ -241,40 +241,34 @@ public function checkout(Request $request)
         }
     }
 
-    public function remove_cart($id)
+    public function removeCartItem(Order $order)
     {
-        $order = Order::find($id);
-
-        if (!$order) {
-            return redirect()->back()->with('error', 'Order not found.');
-        }
-
+        // Assuming you have some logic to validate the authenticated user and the order belongs to the user
+    
         $order->delete();
-
-        return redirect()->back()->with('success', 'Order deleted successfully.');
+    
+        return redirect()->back()->with('success', 'Item removed from cart successfully.');
     }
 
     public function checkoutprod(Request $request)
-{
-    if (!Auth::check()) {
-        if ($request->expectsJson()) {
-            return response()->json(['error' => 'User not authenticated'], 401);
-        } else {
-            return redirect()->back()->with('error', 'User not authenticated');
+    {
+        if (!Auth::check()) {
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'User not authenticated'], 401);
+            } else {
+                return redirect()->back()->with('error', 'User not authenticated');
+            }
         }
-    }
-
-    $userId = Auth::id();
-    $selectedOrderIds = $request->input('order_ids');
-
-    if (!empty($selectedOrderIds)) {
-        $orders = Order::whereIn('id', $selectedOrderIds)
-            ->where('user_id', $userId)
-            ->get();
-
-        foreach ($orders as $order) {
-            // Check if the order ID is in the selected order IDs array
-            if (in_array($order->id, $selectedOrderIds)) {
+    
+        $userId = Auth::id();
+        $selectedOrderIds = $request->input('order_ids');
+    
+        if (!empty($selectedOrderIds)) {
+            $orders = Order::whereIn('id', $selectedOrderIds)
+                ->where('user_id', $userId)
+                ->get();
+    
+            foreach ($orders as $order) {
                 $checkout = new Checkout();
                 $checkout->name = $order->name;
                 $checkout->email = $order->email;
@@ -291,16 +285,15 @@ public function checkout(Request $request)
                 $order->delete();
             }
         }
+    
+        $token = Auth::user()->createToken('csd')->accessToken;
+    
+        if ($request->expectsJson()) {
+            return response()->json(['success' => 'Checkout successful!', 'token' => $token]);
+        } else {
+            return redirect()->back()->with('success', 'Checkout successful!');
+        }
     }
-
-    $token = Auth::user()->createToken('csd')->accessToken;
-
-    if ($request->expectsJson()) {
-        return response()->json(['success' => 'Checkout successful!', 'token' => $token]);
-    } else {
-        return redirect()->back()->with('success', 'Checkout successful!');
-    }
-}
 
     public function userPurchases(){
     $userPurchases = Checkout::all();
