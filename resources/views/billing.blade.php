@@ -118,7 +118,7 @@
                     <tr>
                         <td colspan="4">No items found in checkout</td>
                     </tr>
-                @endforeach
+                @endempty
             </tbody>
         </table>
 
