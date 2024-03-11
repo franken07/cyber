@@ -100,7 +100,6 @@
         <!-- Form to buy -->
         <button type="submit">Update Billing Information</button>
     </form>
-
 </div>
 </body>
 </html>
