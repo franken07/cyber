@@ -106,7 +106,7 @@
 
     <div>
         <h2>Edit Billing Information:</h2>
-        <form method="POST" action="{{ route('updateBilling') }}">
+        <form method="POST" action="{{ route('billing.buy') }}">
             @csrf
             @method('PUT')
             <div>
