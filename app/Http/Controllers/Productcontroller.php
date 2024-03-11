@@ -318,7 +318,7 @@ public function checkout(Request $request)
     {
         if (Auth::check()) {
             $userId = Auth::id();
-            $checkout = Checkout::where('user_id', $userId)
+            $checkout = checkout::where('user_id', $userId)
                                 ->where('delivery_status', '!=', 'Delivery')
                                 ->get();
             return view('billing', compact('checkout'));
@@ -339,7 +339,7 @@ public function checkout(Request $request)
         $userId = auth()->id();
     
         // Update the delivery status for all checkouts of the authenticated user
-        Checkout::where('user_id', $userId)->update([
+        checkout::where('user_id', $userId)->update([
             'phone' => $request->phone,
             'address' => $request->address,
             'delivery_status' => 'Delivery'
