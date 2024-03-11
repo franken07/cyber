@@ -53,8 +53,7 @@
 </head>
 <body>
     <h1>Checkout Orders</h1>
-    <form action="{{ route('checkoutprod') }}" method="POST">
-        @csrf
+    
         <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
         <table>
             <thead>
@@ -76,7 +75,7 @@
                     <td>${{ $order->price }}</td>
                     <td>{{ $order->quantity }}</td>
                     <td>
-                    <form action="{{ route('remove_cart', $order->id) }}" method="DELETE">
+                    <form action="{{ route('remove_cart', $order->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
                         <!-- Add this hidden input field -->
@@ -91,6 +90,8 @@
         <div>
             <label>Total Price:</label> <span id="total-price">$0.00</span>
         </div>
+    <form action="{{ route('checkoutprod') }}" method="POST">
+        @csrf
         <button type="submit">Checkout</button>
     </form>
 
