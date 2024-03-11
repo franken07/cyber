@@ -63,4 +63,4 @@ Route::delete('/admin/products/{productId}', [Productcontroller::class, 'deleteP
 Route::get('/admin/products/{id}/edit', [Productcontroller::class, 'editprod'])->name('editprod');
 
 Route::get('/billing', [Productcontroller::class, 'billingshow'])->name('billing');
-Route::put('/billing/{id?}', [Productcontroller::class, 'billing'])->name('billing.buy');
+Route::put('/billing', [Productcontroller::class, 'updateBilling'])->name('billing.buy');

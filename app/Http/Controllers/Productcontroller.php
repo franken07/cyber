@@ -325,33 +325,24 @@ public function checkout(Request $request)
         }
     }
 
-    public function billing(Request $request, $id)
+    public function updateBilling(Request $request)
     {
-        // Validate the incoming request
-        $request->validate([
-            'phone' => 'required|string|max:20',
-            'address' => 'required|string|max:255',
+        // Add your validation logic here if needed
+        $validatedData = $request->validate([
+            'phone' => 'string|max:255',
+            'address' => 'string|max:255',
+            'delivery_status' => 'string|max:255'
         ]);
     
-        // Find the checkout record by its ID
-        $checkout = checkout::find($id);
-    
-        // Check if the checkout record exists
-        if (!$checkout) {
-            return redirect()->route('billing')->with('error', 'Checkout not found.');
-        }
-    
-        // Update phone and address fields with the input data
-        $checkout->phone = $request->input('phone');
-        $checkout->address = $request->input('address');
-    
-        // Update delivery status to "Delivery"
+        // Assuming you have a Checkout model to store billing information
+        $checkout = Checkout::firstOrNew(['user_id' => auth()->id()]); // Assuming Checkout model has 'user_id' field
+        $checkout->phone = $request->phone;
+        $checkout->address = $request->address;
         $checkout->delivery_status = "Delivery";
-    
-        // Save the changes
+        
         $checkout->save();
     
-        return redirect()->route('billing')->with('success', 'Billing information and delivery status updated successfully.');
+        return redirect()->route('billing.show')->with('success', 'Billing information updated successfully.');
     }
 
 }
