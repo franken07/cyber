@@ -249,10 +249,15 @@ public function checkout(Request $request)
 
     public function remove_cart($id)
     {
-        $order=Order::find($id);
+        $order = Order::find($id);
+
+        if (!$order) {
+            return redirect()->back()->with('error', 'Order not found.');
+        }
 
         $order->delete();
-        return redirect()->back();
+
+        return redirect()->back()->with('success', 'Order deleted successfully.');
     }
 
     public function checkoutprod(Request $request)

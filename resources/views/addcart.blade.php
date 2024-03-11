@@ -79,6 +79,8 @@
                     <form action="{{ route('remove_cart', $order->id) }}" method="POST">
                         @csrf
                         @method('DELETE')
+                        <!-- Add this hidden input field -->
+                        <input type="hidden" name="_method" value="DELETE">
                         <button type="submit" class="remove-button">Remove</button>
                     </form>
                     </td>
