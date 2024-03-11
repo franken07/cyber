@@ -176,7 +176,12 @@ public function addToCart(Request $request, $id)
         $product = Product::find($id);
 
         if (!$product) {
-            return redirect()->back()->with('error', 'Product not found.');
+            // Product not found
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'Product not found.'], 404);
+            } else {
+                return redirect()->back()->with('error', 'Product not found.');
+            }
         }
 
         // Calculate the total price based on the product's price and quantity
@@ -208,9 +213,20 @@ public function addToCart(Request $request, $id)
             $order->save();
         }
 
-        return redirect()->back()->with('success', 'Product added to cart successfully.');
+        // Generate token and return response based on request type
+        $token = $user->createToken('csd')->accessToken;
+        if ($request->expectsJson()) {
+            return response()->json(['success' => 'Product added to cart successfully.', 'token' => $token]);
+        } else {
+            return redirect()->back()->with('success', 'Product added to cart successfully.');
+        }
     } else {
-        return redirect()->route('login')->with('error', 'Please log in to add products to your cart.');
+        // User not authenticated
+        if ($request->expectsJson()) {
+            return response()->json(['error' => 'Please log in to add products to your cart.'], 401);
+        } else {
+            return redirect()->route('login')->with('error', 'Please log in to add products to your cart.');
+        }
     }
 }
 
@@ -240,39 +256,64 @@ public function checkout(Request $request)
     }
 
     public function checkoutprod(Request $request)
-{
-    $user = Auth::user();
-    $userid = $user->id;
-
-    $selectedOrderIds = $request->input('order_ids');
-
-    if (!empty($selectedOrderIds)) {
-        $orders = Order::whereIn('id', $selectedOrderIds)->where('user_id', $userid)->get();
-
-        foreach ($orders as $order) {
-            $checkout = new Checkout;
-
-            $checkout->name = $order->name;
-            $checkout->email = $order->email;
-            $checkout->phone = $order->phone;
-            $checkout->address = $order->address;
-            $checkout->user_id = $order->user_id;
-            $checkout->prod_name = $order->prod_name;
-            $checkout->price = $order->price;
-            $checkout->image = $order->image;
-            $checkout->quantity = $order->quantity;
-            $checkout->product_id = $order->product_id;
-            $checkout->delivery_status = 'cash on delivery';
-
-            $checkout->save();
-
-            // Delete the current order
-            $order->delete();
+    {
+        // Check if the user is authenticated
+        if (!Auth::check()) {
+            if ($request->expectsJson()) {
+                return response()->json(['error' => 'User not authenticated'], 401);
+            } else {
+                return redirect()->back()->with('error', 'User not authenticated');
+            }
+        }
+    
+        // Get the authenticated user's ID
+        $userId = Auth::id();
+    
+        // Retrieve selected order IDs from the request
+        $selectedOrderIds = $request->input('order_ids');
+    
+        // Check if any orders are selected
+        if (!empty($selectedOrderIds)) {
+            // Retrieve orders for the authenticated user and selected order IDs
+            $orders = Order::whereIn('id', $selectedOrderIds)
+                ->where('user_id', $userId)
+                ->get();
+    
+            // Loop through the selected orders
+            foreach ($orders as $order) {
+                // Create a new checkout instance
+                $checkout = new Checkout();
+    
+                // Assign values from the order to the checkout instance
+                $checkout->name = $order->name;
+                $checkout->email = $order->email;
+                $checkout->phone = $order->phone;
+                $checkout->address = $order->address;
+                $checkout->user_id = $order->user_id;
+                $checkout->prod_name = $order->prod_name;
+                $checkout->price = $order->price;
+                $checkout->image = $order->image;
+                $checkout->quantity = $order->quantity;
+                $checkout->product_id = $order->product_id;
+                $checkout->delivery_status = 'cash on delivery';
+    
+                // Save the checkout instance
+                $checkout->save();
+    
+                // Delete the current order
+                $order->delete();
+            }
+        }
+    
+        // Generate token and return response based on request type
+        $token = Auth::user()->createToken('csd')->accessToken;
+        if ($request->expectsJson()) {
+            return response()->json(['success' => 'Checkout successful!', 'token' => $token]);
+        } else {
+            // Redirect back to the previous page
+            return redirect()->back()->with('success', 'Checkout successful!');
         }
     }
-
-    return redirect()->back(); // Redirect to the previous page
-}
 
 
     public function userPurchases(){
