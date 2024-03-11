@@ -167,8 +167,7 @@
 <script>
     // Remove success and error alerts after 5 seconds
     setTimeout(function() {
-        $('#success').remove();
-        $('#error').remove();
+        $('.alert').remove();
     }, 5000);
 </script>
   @include('include.carticon')
