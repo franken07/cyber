@@ -342,7 +342,7 @@ public function checkout(Request $request)
         
         $checkout->save();
     
-        return redirect()->route('billing.show')->with('success', 'Billing information updated successfully.');
+        return redirect()->route('billing')->with('success', 'Billing information updated successfully.');
     }
 
 }
