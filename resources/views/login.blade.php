@@ -6,7 +6,8 @@
     <title>Login Form</title>
     <link rel="stylesheet" href="{{ secure_asset('assets/logincss/loginn.css') }}">
 </head>
-<body style="background-image: url('{{ asset('images/bg.jpg') }}');">
+
+<body style="background-image: url('{{ asset('images/bsg.jpg') }}');">
 <div class="logo-wrapper">
     <!-- Logo Image -->
         <img src="images/loko.png" alt="Logo" class="logo">
