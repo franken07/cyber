@@ -120,3 +120,6 @@ tr:nth-child(even) {
     background-color: #f9f9f9; /* Optional: adds a background color */
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow */
 }
+.nav-tabs .nav-link.active {
+    color: var(--primary-color, yellow) !important;
+}
