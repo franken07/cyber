@@ -25,6 +25,7 @@ div {
 table {
     width: 100%;
     border-collapse: collapse;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
 }
 
 th, td {
