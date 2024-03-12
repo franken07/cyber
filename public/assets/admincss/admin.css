@@ -4,6 +4,9 @@ body {
     background-color: #f4f7f6;
     color: #333;
     line-height: 1.6;
+    background-image: url('images/17.png'); /* Add this line, replace the placeholder with your image's path */
+    background-size: cover; /* Cover ensures the background image covers the whole body */
+    background-position: center; /* Centers the background image */
 }
 
 .container {
