@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{ secure_asset('assets/logincss/loginn.css') }}">
 </head>
 
-<body style="background-image: url('{{ asset('images/bsg.jpg') }}');">
+<body style="background-image: url('{{ asset('images/bsg.jpg') }}'); background-size: cover; background-position: center;">
 <div class="logo-wrapper">
     <!-- Logo Image -->
         <img src="images/loko.png" alt="Logo" class="logo">
