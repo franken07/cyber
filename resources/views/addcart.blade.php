@@ -87,8 +87,10 @@
                 <div>
                      <label>Total Price:</label> <span id="total-price">₱0.00</span>
                 </div>
-                <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
                 <button type="submit">Checkout Selected</button>
+            </div>
+            <div>
+            <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
             </div>
         </form>
 
