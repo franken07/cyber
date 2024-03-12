@@ -44,7 +44,7 @@
    <!-- Session Messages -->
 <div class="session-alerts">
     @if(session('success'))
-        <div class="alert alert-success auto-close">
+        <div class="alert alert-success auto-close custom-alert-success">
             {{ session('success') }}
         </div>
     @endif

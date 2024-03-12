@@ -171,6 +171,10 @@ html {
     align-items: center;
     pointer-events: none; 
 }
+.custom-alert-success {
+    background-color: #fdca40 !important; /* A shade of yellow */
+    color: #000 !important; /* Text color - black for better contrast */
+}
 
 .session-alerts .alert {
     pointer-events: auto; 
