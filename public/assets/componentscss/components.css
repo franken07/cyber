@@ -170,7 +170,6 @@ html {
     justify-content: center;
     align-items: center;
     pointer-events: none; 
-    background-color: #fdca40!important;
 }
 
 .session-alerts .alert {
