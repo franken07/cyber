@@ -89,3 +89,20 @@ html {
     text-align: center;
     font-size: 60px;
 }
+.checkout-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Ensures responsiveness; items will wrap when the container is too narrow */
+}
+
+.checkout-container > div, 
+.checkout-container > input, 
+.checkout-container > label {
+    /* This ensures the checkbox and its label align with the first row's baseline */
+    align-self: flex-start; 
+}
+
+.checkout-container > button {
+    align-self: flex-start; /* Aligns the button to the start of the flex container, which might be necessary depending on your overall layout */
+}
