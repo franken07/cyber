@@ -58,10 +58,10 @@ button {
 button:hover {
     background-color: red!important;
 }
-#checkoutButton:hover {
-    /* Add your hover styles here */
-    background-color: #f0f0f0; /* Example: changes background color on hover */
-    color: #333; /* Example: changes text color on hover */
+.checkout-button:hover {
+    /* Your hover styles */
+    background-color: #f0f0f0;
+    color: #333;
   }
 html {  
     scroll-behavior: smooth;
