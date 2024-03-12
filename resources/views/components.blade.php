@@ -36,7 +36,7 @@
 </style>
 </head>
 @include('include.header')
-<body style="background-image: url('{{ asset('images/bg.jpg') }}');">
+<body style="background-image: url('{{ asset('images/17.png') }}');">
 
 
 <!-- components.blade.php -->   
