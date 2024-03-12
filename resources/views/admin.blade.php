@@ -23,13 +23,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.css">
   
 <body>
-<style>
-  .cid-u3GZCsGLCS {
-    display: flex;
-    background-image: url("images/17.png");
-  }
-</style>
-
 <div class="container">
     <h1>Admin Dashboard</h1>
     
