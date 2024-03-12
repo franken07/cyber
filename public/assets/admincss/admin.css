@@ -114,11 +114,10 @@ tr:nth-child(even) {
     justify-content: center !important;
 }
 .rounded-container {
-    border-radius: 15px; /* Adjust this value to increase or decrease the roundness */
+    border-radius: 15px; 
     padding: 20px;
-    border: 1px solid #ccc; /* Optional: adds a border */
-    background-color: #f9f9f9; /* Optional: adds a background color */
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow */
+    border: 1px solid #ccc; 
+    background-color: #f9f9f9; /* Optional: adds a subtle shadow */
 }
 .nav-tabs .nav-link.active {
     color: var(--primary-color, rgb(0, 0, 0)) !important;
