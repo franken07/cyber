@@ -108,3 +108,8 @@ tr:nth-child(even) {
     max-height: 100px;
     margin-right: 10px;
 }
+.nav {
+    display: -webkit-flex;
+    -webkit-flex-wrap: wrap;
+    justify-content: center !important;
+}
