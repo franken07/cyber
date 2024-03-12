@@ -6,7 +6,11 @@ body {
     padding: 20px;
 }
 
-h1, h2 {
+h1{
+    color: #444;
+    text-align: center;
+}
+h2 {
     color: #444;
 }
 
