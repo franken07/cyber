@@ -143,13 +143,12 @@ button a:hover {
 .outer-container {
     display: flex;
     justify-content: center;
-    align-items: center; /* This ensures vertical centering */
-    background-color: yellow; /* Example color */
+    align-items: center;
+    background-color: #d1d1d1;
     border-radius: 30px;
-    padding: 60px; /* Adjust based on how much space you want around the inner container */
-    margin: auto; /* Centers the container horizontally if it has a width */
+    padding: 35px;
+    margin: auto;
 }
-
 .inner-container {
     background-color: rgb(255, 230, 0); /* Specific to the inner container */
     width: 100%;
