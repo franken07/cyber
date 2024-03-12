@@ -49,6 +49,7 @@
     </ul>
     
     <!-- Tab panes -->
+    <div class="rounded-container">
     <div class="tab-content">
         <!-- Add Products Tab -->
         <div id="addProducts" class="container tab-pane active"><br>
@@ -222,6 +223,7 @@
             @endif   
         </div> 
     </div>
+</div>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
