@@ -25,8 +25,6 @@
 </head>
 <body>
 <h1>Billing Information</h1>
-
-
     <div>
         <h2>Checkout Details:</h2>
         @if($checkout->count() > 0)
