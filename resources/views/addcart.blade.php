@@ -25,7 +25,7 @@
     @include('include.header')
 </head>
 <body>
-    <h1>Checkout Orders</h1>
+    <h1>CART</h1>
         <form action="{{ route('checkoutprod') }}" method="POST">
             @csrf
             <table>
