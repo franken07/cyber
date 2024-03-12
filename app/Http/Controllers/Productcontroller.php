@@ -23,24 +23,20 @@ class Productcontroller extends Controller
     }
 
     public function components()
-    {
-        $productsBycategory = [
-            'GPU' => Product::where('category', 'GPU')->get(),
-            'CPU' => Product::where('category', 'CPU')->get(),
-            'Monitor' => Product::where('category', 'Monitor')->get(),
-        ];
+{
+    $productsBycategory = Product::all()->groupBy('category')->map(function ($products, $category) {
+        return $products->map(function ($product) {
+            // Assuming $product->image contains the relative path to the image
+            // Set the full image path for each product
+            $product->image = asset('storage/product/' . $product->image);
+            return $product;
+        });
+    });
 
-        foreach ($productsBycategory as $category => $products) {
-            foreach ($products as $product) {
-                // Assuming $product->image contains the relative path to the image
-                // Set the full image path for each product
-                $product->image = asset('storage/product/' . $product->image);
-            }
-            
-        }
+    $jsonData = $productsBycategory->toJson();
 
-        return view('components', compact('productsBycategory'));
-    }
+    return view('components')->with('productsBycategory', $jsonData);
+}
     public function addProduct(Request $request)
         {
             // Validate the incoming request data
