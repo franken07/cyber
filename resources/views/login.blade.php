@@ -12,7 +12,6 @@
         <img src="images/loko.png" alt="Logo" class="logo">
     </div>
 <h1 class="title">LOGIN</h1>
-<div class="container outer-container"> 
 <div class="container">
         <div class="mt-5">
             @if($errors->any())
@@ -47,7 +46,6 @@
                 <a href="{{route('registration')}}" class="btn btn-primary">Sign Up</a>
             </div>
         </form>
-    </div>
 </div>    
 </body>
 </html>
