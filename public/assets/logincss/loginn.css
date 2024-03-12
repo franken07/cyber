@@ -169,3 +169,6 @@ button a:hover {
     margin-top: -10px; /* Adjust top margin as needed */
     margin-bottom: 2px; /* Provides some space before the next container */
 }
+h1{
+    font-size: 35px;
+}
