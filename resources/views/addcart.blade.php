@@ -48,7 +48,7 @@
     </style>
     @include('include.header')
 </head>
-<body style="background-image: url('{{ asset('images/aww.jpeg') }}');">
+<body>
     <h1>Checkout Orders</h1>
         <form action="{{ route('checkoutprod') }}" method="POST">
             @csrf
