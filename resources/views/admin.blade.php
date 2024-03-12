@@ -179,7 +179,7 @@
 
         <!-- User Purchases Tab -->
         <div id="userPurchases" class="container tab-pane fade">
-            <h1>User Purchases</h1>
+            <h3>User Purchases</h3>
             @if ($userPurchases->isEmpty())
                 <p>No purchases found.</p>
             @else
