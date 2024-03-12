@@ -50,7 +50,6 @@
     
     <!-- Tab panes -->
     <div class="tab-content">
-        <div class="rounded-lg shadow p-4">
         <!-- Add Products Tab -->
         <div id="addProducts" class="container tab-pane active"><br>
             <h3>Add Products</h3>
@@ -83,7 +82,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary">Add Product</button>
             </form>
-            </div>
         </div>
 
         <!-- Edit/Delete Products Tab -->
