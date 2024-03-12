@@ -121,6 +121,6 @@ tr:nth-child(even) {
     box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow */
 }
 .nav-tabs .nav-link.active {
-    color: var(--primary-color, yellow) !important;
-    background-color: #9999998e!important;
+    color: var(--primary-color, rgb(255, 255, 255)) !important;
+    background-color: #fdca40!important;
 }
