@@ -61,7 +61,7 @@
             </table>
             <div class="checkout-container">
                 <div>
-                     <label>Total Price:</label> <span id="total-price">0.00</span>
+                     <label>Total Price:</label> <span id="total-price">₱0.00</span>
                 </div>
                 <button type="submit" class="checkout-button">Checkout Selected</button>
             </div>
