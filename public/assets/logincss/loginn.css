@@ -1,94 +1,70 @@
-body, html {
-    height: 100%;
-    margin: 0;
+body {
     font-family: Arial, sans-serif;
     background-color: #f0f2f5;
-}
-
-.logo-wrapper {
-    text-align: center;
-    margin: 20px 0;
-}
-
-.logo {
-    width: 100px; /* You can adjust this based on your logo's size */
-}
-
-.title {
-    text-align: center;
-    color: #333;
-}
-
-.outer-container {
-    display: flex;
     justify-content: center;
     align-items: center;
-    height: 80%;
+    height: 100vh;
+    margin: 0;
 }
 
 .container {
-    background-color: #ffffff;
+    background: rgb(255, 255, 255);
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    width: auto;
+    box-shadow: 0 2px 4px rgb(0, 0, 0);
+    width: 100%;
+    max-width: 500px;
 }
 
-.form-label {
-    margin-bottom: .5rem;
-    color: #6c757d;
+form {
+    margin-top: 20px;
 }
 
-.form-control {
+.mb-3 {
+    margin-bottom: 16px;
+}
+
+label.form-label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input.form-control {
     display: block;
     width: 100%;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    font-weight: 400;
-    line-height: 1.5;
-    color: #495057;
-    background-color: #fff;
-    background-clip: padding-box;
-    border: 1px solid #ced4da;
-    border-radius: .25rem;
-    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    padding: 10px;
+    font-size: 16px;
+    line-height: 20px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
 }
 
-.form-control:focus {
-    color: #495057;
-    background-color: #fff;
-    border-color: #80bdff;
-    outline: 0;
-    box-shadow: 0 0 0 0.2rem rgba(0,123,255,.25);
-}
-
-.btn {
-    color: #fff;
-    background-color: #007bff;
-    border-color: #007bff;
-    padding: .375rem .75rem;
-    font-size: 1rem;
-    line-height: 1.5;
-    border-radius: .25rem;
+button.btn {
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: none;
     cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
+    background-color: #007bff;
+    color: white;
 }
 
-.btn:hover {
-    color: #fff;
-    background-color: #0056b3;
-    border-color: #004085;
+button a {
+    text-decoration: none;
+    background-color: #007bff;
+    color: white;
+}
+
+button a:hover {
+    text-decoration: underline;
 }
 
 .alert {
-    padding: .75rem 1.25rem;
-    margin-bottom: 1rem;
-    border: 1px solid transparent;
-    border-radius: .25rem;
-}
-
-.alert-danger {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
     color: #721c24;
     background-color: #f8d7da;
     border-color: #f5c6cb;
@@ -100,6 +76,97 @@ body, html {
     border-color: #c3e6cb;
 }
 
-.mb-3 {
-    margin-bottom: 1rem!important;
+.alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 16px; 
+    border-radius: 5px; 
+    border: none; 
+    cursor: pointer; 
+    text-align: center; 
+    text-decoration: none; 
+    color: white; 
+    background-color: #007bff; 
+}
+
+.btn-primary:hover {
+    background-color: #0056b3; 
+}
+  @media (min-width: 992px) and (max-width: 1200px) {
+    .container {
+        width: auto; 
+        margin: auto; /* Add some margin around the container */
+        padding: 10px; /* Reduce padding inside the container for more space */
+    }
+
+    .btn {
+        padding: 12px 15px; /* Slightly bigger padding for easier tapping */
+    }
+
+    input.form-control, button.btn {
+        font-size: 14px; /* Slightly smaller font size to fit smaller screens */
+    }
+
+    form {
+        margin-top: 10px;
+    }
+  }
+  @media (max-width: 767px) {
+    .container {
+        padding: 10px; /* Adjust padding for smaller screens */
+        margin: 20px; /* Add margin to avoid elements touching screen edges */
+    }
+
+    .form-control, .btn {
+        font-size: 14px; /* Make text slightly smaller for better fit */
+    }
+
+    .btn {
+        padding: 12px; /* Increase padding for easier interaction */
+        width: auto; /* Adjust width to fit content or container */
+        margin-top: 10px; /* Add some space above buttons for clarity */
+    }
+
+    label.form-label {
+        margin-bottom: 5px; /* Reduce space below labels to compact form */
+    }
+
+    .mb-3 {
+        margin-bottom: 10px; /* Adjust bottom margin for form elements */
+    }
+}
+.outer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* This ensures vertical centering */
+    background-color: yellow; /* Example color */
+    border-radius: 30px;
+    padding: 60px; /* Adjust based on how much space you want around the inner container */
+    margin: auto; /* Centers the container horizontally if it has a width */
+}
+
+.inner-container {
+    background-color: rgb(255, 230, 0); /* Specific to the inner container */
+    width: 100%;
+}
+
+.logo-wrapper {
+    text-align: center;
+    margin-bottom: 5px; /* Adjust space below the logo as needed */
+    margin-TOP: -45px; 
+}
+
+.logo {
+    width: auto; /* or set a specific width */
+    height: auto; /* maintain aspect ratio */
+}
+.title {
+    text-align: center;
+    margin-top: -10px; /* Adjust top margin as needed */
+    margin-bottom: 2px; /* Provides some space before the next container */
 }
