@@ -160,3 +160,35 @@ html {
     justify-content: center; /* Centers vertically in a column direction */
     align-items: center; /* Centers horizontally */
 }
+.session-alerts {
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 20px; /* Adjust as needed */
+    z-index: 1050; /* Ensure it's above other content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: none; /* Allows clicks to pass through */
+}
+
+.session-alerts .alert {
+    pointer-events: auto; /* Re-enable pointer events for interaction */
+    border-radius: 15px; /* Rounded corners */
+    padding: 10px 20px; /* Adjust padding */
+    margin: 0 10px; /* Space between multiple alerts */
+    opacity: 0.95; /* Slightly transparent */
+    transition: opacity 0.5s ease-in-out; /* Fade effect */
+}
+
+/* Optional: Add media query for responsiveness */
+@media (max-width: 600px) {
+    .session-alerts {
+        flex-direction: column;
+        bottom: 10px;
+    }
+    .session-alerts .alert {
+        width: 90%;
+        margin-bottom: 10px;
+    }
+}

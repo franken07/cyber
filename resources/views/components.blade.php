@@ -41,19 +41,20 @@
 
 <!-- components.blade.php -->   
 <section class="pricing02 cid-u3GZCsHE3N" id="product-list-8-u3GZCsHE3N">
-    <div class="mt-5">
-        @if(session('success'))
-            <div class="alert alert-success auto-close">
-                {{ session('success') }}
-            </div>
-        @endif
+   <!-- Session Messages -->
+<div class="session-alerts">
+    @if(session('success'))
+        <div class="alert alert-success auto-close">
+            {{ session('success') }}
+        </div>
+    @endif
 
-        @if(session('error'))
-            <div class="alert alert-danger auto-close">
-                {{ session('error') }}
-            </div>
-        @endif
-    </div>
+    @if(session('error'))
+        <div class="alert alert-danger auto-close">
+            {{ session('error') }}
+        </div>
+    @endif
+</div>
     <div class="container-fluid">
         @foreach($productsBycategory as $category => $products)
         <div class="row justify-content-center">
