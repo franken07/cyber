@@ -122,4 +122,5 @@ tr:nth-child(even) {
 }
 .nav-tabs .nav-link.active {
     color: var(--primary-color, yellow) !important;
+    background-color: #9999998e!important;
 }
