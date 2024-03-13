@@ -92,13 +92,16 @@
             
             <div id="accordion">
                 <!-- GPU Products with Enhanced Layout -->
+                <div class="card">
+                    <div class="card-header" id="monitorHeading">
+                        <h5 class="mb-0">
+                            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseMonitor" aria-expanded="false" aria-controls="collapseMonitor">
+                                Monitor Products
+                            </button>
+                        </h5>
+                    </div>                
 <div id="collapseGPU" class="collapse show" aria-labelledby="gpuHeading" data-parent="#accordion">
     <div class="card-body">
-    <h5 class="mb-0">
-            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseCPU" aria-expanded="false" aria-controls="collapseCPU">
-                 CPU Products
-            </button>
-            </h5>
         <div class="row">
             @foreach($gpuProducts as $product)
             <div class="col-md-4 col-sm-6 mb-4">
