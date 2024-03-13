@@ -122,3 +122,18 @@ tr:nth-child(even) {
     color: var(--primary-color, rgb(0, 0, 0)) !important;
     background-color: #fdca40!important;
 }
+.product-card {
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 0;
+    border-radius: 0.5rem;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.product-card img {
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+}
