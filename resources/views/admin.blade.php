@@ -94,6 +94,11 @@
                 <!-- GPU Products with Enhanced Layout -->
 <div id="collapseGPU" class="collapse show" aria-labelledby="gpuHeading" data-parent="#accordion">
     <div class="card-body">
+    <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseCPU" aria-expanded="false" aria-controls="collapseCPU">
+                 CPU Products
+            </button>
+            </h5>
         <div class="row">
             @foreach($gpuProducts as $product)
             <div class="col-md-4 col-sm-6 mb-4">
