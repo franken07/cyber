@@ -91,35 +91,63 @@
             <h3>Edit/Delete Products</h3>
             
             <div id="accordion">
-                <!-- GPU Products with Enhanced Layout -->
-<div id="collapseGPU" class="collapse show" aria-labelledby="gpuHeading" data-parent="#accordion">
-    <div class="card-body">
-        <div class="row">
-            @foreach($gpuProducts as $product)
-            <div class="col-md-4 col-sm-6 mb-4">
-                <div class="product-card card h-100">
-                    <img src="{{ url($product->image) }}" class="card-img-top" alt="{{ $product->prod_name }}" style="max-height: 200px; object-fit: cover;">
-                    <div class="card-body d-flex flex-column">
-                        <h5 class="card-title">{{ $product->prod_name }}</h5>
-                        <p class="card-text">${{ $product->price }}</p>
-                        <a href="#" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#editModal{{ $product->id }}">Edit</a>
-                        <button type="button" class="btn btn-danger mt-2" onclick="confirmDelete({{ $product->id }})">Delete</button>
+               <!-- GPU Products -->
+<div class="card">
+    <div class="card-header" id="gpuHeading">
+        <h5 class="mb-0">
+            <button class="btn btn-link" data-toggle="collapse" data-target="#collapseGPU" aria-expanded="true" aria-controls="collapseGPU">
+                GPU Products
+            </button>
+        </h5>
+    </div>
+    <div id="collapseGPU" class="collapse show" aria-labelledby="gpuHeading" data-parent="#accordion">
+        <div class="card-body">
+            <div id="gpuCarousel" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    @foreach($gpuProducts as $index => $product)
+                    <div class="carousel-item {{ $index == 0 ? 'active' : '' }}">
+                        <img src="{{ url($product->image) }}" class="d-block w-100" alt="{{ $product->prod_name }}">
+                        <div class="carousel-caption d-none d-md-block">
+                            <h5>{{ $product->prod_name }}</h5>
+                            <p>${{ $product->price }}</p>
+                            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#productModal{{$product->id}}">View Details</button>
+                        </div>
                     </div>
+                    @endforeach
                 </div>
+                <a class="carousel-control-prev" href="#gpuCarousel" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#gpuCarousel" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
-
-            <!-- Edit Modal -->
-            <div class="modal fade" id="editModal{{ $product->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
+            @foreach($gpuProducts as $product)
+            <!-- Modal -->
+            <div class="modal fade" id="productModal{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="productModalLabel{{$product->id}}" aria-hidden="true">
+                <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
+                            <h5 class="modal-title" id="productModalLabel{{$product->id}}">{{ $product->prod_name }}</h5>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <!-- Edit form (simplified for brevity) -->
+                            <img src="{{ url($product->image) }}" class="img-fluid" alt="{{ $product->prod_name }}">
+                            <p class="mt-2">{{ $product->description }}</p>
+                            <p class="mt-2">Price: ${{ $product->price }}</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            <a href="{{ route('editprod', ['id' => $product->id]) }}" class="btn btn-primary">Edit</a>
+                            <form action="{{ route('delete_product', ['productId' => $product->id]) }}" method="post" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>
