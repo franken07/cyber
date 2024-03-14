@@ -25,9 +25,6 @@ table {
     box-shadow: 0 0 10px rgb(0, 0, 0);
     background-color: white;
 }
-label {
-    background-color: white !important;
-}
 th, td {
     padding: 10px;
     text-align: left;
@@ -114,4 +111,7 @@ html {
 
 .checkout-container > button {
     align-self: flex-start; 
+}
+.white-text {
+    color: white;
 }
