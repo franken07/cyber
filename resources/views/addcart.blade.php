@@ -65,7 +65,7 @@
                 </div>
                 <button type="submit" class="checkout-button">Checkout Selected</button>
             </div>
-            <div class="checkout-container">
+            <div>
             <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
             </div>
         </form>
