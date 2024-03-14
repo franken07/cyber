@@ -23,6 +23,7 @@ table {
     border-collapse: collapse;
     margin: 20px 0;
     box-shadow: 0 0 10px rgb(0, 0, 0);
+    background-color: white;
 }
 th, td {
     padding: 10px;
@@ -30,6 +31,7 @@ th, td {
     border-bottom: 1px solid #ddd;
     text-align: center;
     justify-content: center!important;
+    background-color: #f4f4f4;
 }
 th {
     background-color: #f2f2f2;
