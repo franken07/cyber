@@ -25,6 +25,9 @@ table {
     box-shadow: 0 0 10px rgb(0, 0, 0);
     background-color: white;
 }
+label {
+    background-color: white;
+}
 th, td {
     padding: 10px;
     text-align: left;
