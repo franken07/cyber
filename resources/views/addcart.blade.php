@@ -59,14 +59,14 @@
                     @endforeach
                 </tbody>
             </table>
-            <div class="checkout-container">
-                <div>
-                     <label>Total Price:</label> <span id="total-price">₱0.00</span>
-                </div>
-                <button type="submit" class="checkout-button">Checkout Selected</button>
+            <div class="checkout-container" style="color: white;">
+                 <div>
+                         <label style="color: white;">Total Price:</label> <span id="total-price" style="color: white;">₱0.00</span>
+                 </div>
+                 <button type="submit" class="checkout-button" style="color: white;">Checkout Selected</button>
             </div>
-            <div>
-            <input type="checkbox" id="check-all"> <label for="check-all">Check All</label>
+            <div style="color: white;">
+                <input type="checkbox" id="check-all"> <label for="check-all" style="color: white;">Check All</label>
             </div>
         </form>
 
