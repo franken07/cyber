@@ -28,7 +28,7 @@
     <h1>CART</h1>
         <form action="{{ route('checkoutprod') }}" method="POST">
             @csrf
-            <table>
+            <table style="background-color: white;">
                 <thead>
                     <tr>
                         <th></th>
