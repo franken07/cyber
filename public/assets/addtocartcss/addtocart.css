@@ -8,10 +8,9 @@ body {
     margin-top: 150px; /* Adjust the value as needed to push it down */   
 }
 h1 {
-    color: #ffffff;
+    color: #333;
     font: bold;
     text-align: center;
-    font-size: 50px;
 }
 .container {
     max-width: 1100px;
