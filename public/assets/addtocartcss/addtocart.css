@@ -100,6 +100,7 @@ html {
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap; 
+    background-color: #f4f4f4!important;
 }
 
 .checkout-container > div, 
@@ -111,4 +112,5 @@ html {
 
 .checkout-container > button {
     align-self: flex-start; 
+    background-color: #f4f4f4!important;
 }
