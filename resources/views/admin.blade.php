@@ -331,8 +331,8 @@
     </div>
 </div>
 </div>
-</div>
         <!-- User Purchases Tab -->
+        <div class="tab-pane fade" id="userPurchases" role="tabpanel" aria-labelledby="profile-tab">
         <div id="userPurchases" class="container tab-pane fade">
             <h3>User Purchases</h3>
             @if ($userPurchases->isEmpty())
@@ -380,6 +380,9 @@
     </div>
 </div>
 </div>
+</div>
+
+
 
 <script>
 function confirmDelete() {
