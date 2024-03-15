@@ -403,7 +403,41 @@ function confirmDelete(productId) {
     }
 }
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    // Listen for the form submit event
+    document.querySelector("form").addEventListener("submit", function(e) {
+        e.preventDefault(); // Prevent the default form submission
+        
+        const formData = new FormData(this);
 
+        // Use Fetch API to submit form data
+        fetch('{{route('addProduct')}}', {
+            method: 'POST',
+            body: formData, // FormData object, no need to set Content-Type header
+            headers: {
+                'X-Requested-With': 'XMLHttpRequest', // To identify the request as AJAX in some server-side frameworks
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content') // Laravel CSRF token, adjust if not using Laravel
+            },
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                // Display success message
+                alert('Product added successfully!');
+               
+            } else {
+                // Handle failure
+                alert('Failed to add product. Please try again.');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            alert('Product added successfully!');
+        });
+    });
+});
+</script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
