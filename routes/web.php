@@ -64,10 +64,10 @@ Route::get('/admin/products/{id}/edit', [Productcontroller::class, 'editprod'])-
 Route::get('/billing', [Productcontroller::class, 'billingshow'])->name('billing'); // Route to display billing information form
 Route::put('/billing', [Productcontroller::class, 'updateBilling'])->name('billing.buy');
 
-<<<<<<< Updated upstream
+
 Route::delete('/product/delete/{productId}', [ProductController::class, 'deleteProduct'])->name('product.delete');
 Route::put('/product/update/{id}', [ProductController::class, 'editProduct'])->name('product.update');
-=======
+
 Route::get('/appointments', [Apointmentcontroller::class, 'indexappointment'])->name('appointments.index');
 
 // Route for adding appointment
@@ -76,4 +76,4 @@ Route::match(['post', 'delete'],'/reservation/{id}', [Apointmentcontroller::clas
 
 Route::match(['post', 'get'],'reservations/{id}/mark-reserved', [Apointmentcontroller::class, 'markReserved'])->name('reservation.markReserved');
 Route::delete('reservations/{id}', [Apointmentcontroller::class, 'destroy'])->name('reservation.destroy');
->>>>>>> Stashed changes
+
