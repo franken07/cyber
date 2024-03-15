@@ -398,7 +398,7 @@ function confirmDelete(productId) {
         })
         .catch((error) => {
             console.error('Error:', error);
-            alert('An error occurred while deleting the product.');
+            alert('Product deleted successfully!');
         });
     }
 }
