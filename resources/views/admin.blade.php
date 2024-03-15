@@ -277,37 +277,6 @@
     </div>
 </div>
 </div>
-<script>
-function confirmDelete(productId) {
-    if (confirm('Are you sure you want to delete this product?')) {
-        // Example AJAX request using Fetch API
-        fetch('/delete-product-url/' + productId, {
-            method: 'DELETE', // or 'POST', if your server expects a POST request
-            headers: {
-                'Content-Type': 'application/json',
-                // Include other headers as required by your backend
-            },
-            body: JSON.stringify({ id: productId })
-        })
-        .then(response => {
-            if (response.ok) {
-                return response.json();
-            }
-            throw new Error('Network response was not ok.');
-        })
-        .then(data => {
-            alert('Product deleted successfully!');
-            // Optionally refresh the page or remove the deleted item from the DOM
-            window.location.reload();
-        })
-        .catch(error => {
-            console.error('There has been a problem with your fetch operation:', error);
-            alert('Error deleting product. Please try again.');
-        });
-    }
-}
-</script>
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
