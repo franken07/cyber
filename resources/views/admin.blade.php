@@ -112,23 +112,12 @@
                             <h5 class="card-title">{{ $product->prod_name }}</h5>
                             <p class="card-text">${{ $product->price }}</p>
                             <a href="#" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#editModal{{ $product->id }}">Edit</a>
-                            <button type="button" class="btn btn-danger mt-2" onclick="confirmDelete('{{ $product->id }}')">Delete</button>
-                        </div>
-                    </div>
-                </div>
-                <!-- Edit Modal -->
-                <div class="modal fade" id="editModal{{ $product->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content"> 
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <!-- Edit form (simplified for brevity) -->
-                            </div>
+                            <!-- Delete Form -->
+                            <form action="{{ route('product.delete', $product->id) }}" method="POST" onsubmit="return confirmDelete()">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit" class="btn btn-danger mt-2">Delete</button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -277,6 +266,12 @@
     </div>
 </div>
 </div>
+
+<script>
+function confirmDelete() {
+    return confirm('Are you sure you want to delete this product?');
+}
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

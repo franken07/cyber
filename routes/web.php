@@ -64,3 +64,5 @@ Route::get('/admin/products/{id}/edit', [Productcontroller::class, 'editprod'])-
 
 Route::get('/billing', [Productcontroller::class, 'billingshow'])->name('billing'); // Route to display billing information form
 Route::put('/billing', [Productcontroller::class, 'updateBilling'])->name('billing.buy');
+
+Route::delete('/product/delete/{productId}', [ProductController::class, 'deleteProduct'])->name('product.delete');
