@@ -112,7 +112,7 @@
                             <h5 class="card-title">{{ $product->prod_name }}</h5>
                             <p class="card-text">${{ $product->price }}</p>
                             <a href="#" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#editModal{{ $product->id }}">Edit</a>
-                            <button type="button" class="btn btn-danger mt-2" onclick="confirmDelete({{ $product->id }})">Delete</button>
+                            <button type="button" class="btn btn-danger mt-2" onclick="confirmDelete('{{ $product->id }}')">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -158,7 +158,7 @@
                             <h5 class="card-title">{{ $product->prod_name }}</h5>
                             <p class="card-text">${{ $product->price }}</p>
                             <a href="#" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#editModalCPU{{ $product->id }}">Edit</a>
-                            <button type="button" class="btn btn-danger mt-2" onclick="confirmDeleteCPU({{ $product->id }})">Delete</button>
+                            <button type="button" class="btn btn-danger mt-2" onclick="confirmDelete('{{ $product->id }}')">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -204,7 +204,7 @@
                             <h5 class="card-title">{{ $product->prod_name }}</h5>
                             <p class="card-text">${{ $product->price }}</p>
                             <a href="#" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#editModalMonitor{{ $product->id }}">Edit</a>
-                            <button type="button" class="btn btn-danger mt-2" onclick="confirmDeleteMonitor({{ $product->id }})">Delete</button>
+                            <button type="button" class="btn btn-danger mt-2" onclick="confirmDelete('{{ $product->id }}')">Delete</button>
                         </div>
                     </div>
                 </div>
@@ -277,6 +277,36 @@
     </div>
 </div>
 </div>
+<script>
+function confirmDelete(productId) {
+    if (confirm('Are you sure you want to delete this product?')) {
+        // Example AJAX request using Fetch API
+        fetch('/delete-product-url/' + productId, {
+            method: 'DELETE', // or 'POST', if your server expects a POST request
+            headers: {
+                'Content-Type': 'application/json',
+                // Include other headers as required by your backend
+            },
+            body: JSON.stringify({ id: productId })
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            }
+            throw new Error('Network response was not ok.');
+        })
+        .then(data => {
+            alert('Product deleted successfully!');
+            // Optionally refresh the page or remove the deleted item from the DOM
+            window.location.reload();
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+            alert('Error deleting product. Please try again.');
+        });
+    }
+}
+</script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>

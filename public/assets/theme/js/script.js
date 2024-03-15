@@ -46,7 +46,7 @@
         return i;
     }
 
-    // fadeIn and fadeOut functions from https://only-to-top.ru/blog/coding/2019-09-24-jquery-to-js.html
+
     function fadeOut(el) {
         (function fade() {
             if ((el.style.opacity -= .1) < 0) {
@@ -68,7 +68,7 @@
         })();
     };
 
-    // get parents function from https://gist.github.com/ziggi/2f15832b57398649ee9b
+   
     Element.prototype.parents = function(selector) {
         var elements = [];
         var elem = this;
@@ -118,8 +118,7 @@
 
 
     (function (sr) {
-        // debouncing function from John Hann
-        // http://unscriptable.com/index.php/2009/03/20/debouncing-javascript-methods/
+
         var debounce = function (func, threshold, execAsap) {
             var timeout;
 
