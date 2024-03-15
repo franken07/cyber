@@ -111,6 +111,5 @@ html {
 }
 
 .checkout-container > button {
-    align-self: flex-start; 
-    background-color: #f4f4f4!important;
+    align-self: flex-start;
 }
