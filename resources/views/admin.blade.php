@@ -328,8 +328,10 @@
         </div>
     </div>
 </div>
-        <!-- User Purchases Tab -->
-        <div id="userPurchases" class="container tab-pane fade">
+   
+</div>
+     <!-- User Purchases Tab -->
+     <div id="userPurchases" class="container tab-pane fade">
             <h3>User Purchases</h3>
             @if ($userPurchases->isEmpty())
                 <p>No purchases found.</p>
@@ -374,7 +376,6 @@
             @endif   
         </div> 
     </div>
-</div>
 </div>
 
 <script>
