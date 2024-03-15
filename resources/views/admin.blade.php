@@ -35,7 +35,7 @@
             <a class="nav-link" data-toggle="tab" href="#editDeleteProducts">Edit/Delete Products</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#userPurchases">User Purchases</a>
+            <a class="nav-link" id="profile-tab" data-toggle="tab" href="#userPurchases" role="tab" aria-controls="profile" aria-selected="false">User Purchases</a>
         </li>
     </ul>
     
@@ -247,6 +247,8 @@
 </div>
                 
            <!-- Monitor Products -->
+<div class="tab-content" id="myTabContent">
+<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">          
 <div class="card">
     <div class="card-header" id="monitorHeading">
         <h5 class="mb-0">
@@ -328,10 +330,10 @@
         </div>
     </div>
 </div>
-   
 </div>
-     <!-- User Purchases Tab -->
-     <div id="userPurchases" class="container tab-pane fade">
+</div>
+        <!-- User Purchases Tab -->
+        <div id="userPurchases" class="container tab-pane fade">
             <h3>User Purchases</h3>
             @if ($userPurchases->isEmpty())
                 <p>No purchases found.</p>
@@ -376,6 +378,7 @@
             @endif   
         </div> 
     </div>
+</div>
 </div>
 
 <script>
