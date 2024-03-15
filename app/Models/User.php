@@ -48,4 +48,8 @@ class User extends Authenticatable
     {
         return $this->hasMany(Product::class);
     }
+    public function Appointment()
+    {
+        return $this->hasOne(Product::class);
+    }
 }

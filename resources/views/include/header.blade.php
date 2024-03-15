@@ -28,10 +28,10 @@
             <a class="nav-link link text-black display-4" href="{{ route('components') }}">Components</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link text-black display-4" href="#">Appointments</a>
+            <a class="nav-link link text-black display-4" href="{{ route('appointments.index')}}">Appointments</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link link text-black display-4" href="{{ route('about') }}">About</a>
+            <a class="nav-link link text-black display-4"  href="{{ route('about') }}">About</a>
           </li>
           <li class="nav-item">
             <a class="nav-link link text-black display-4" href="{{ route('contact') }}">Contacts</a>

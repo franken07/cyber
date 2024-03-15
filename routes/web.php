@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\about_controller;
-use App\Http\Controllers\components_controller;
+use App\Http\Controllers\Apointmentcontroller;
 use App\Http\Controllers\contacts_controller;
 use App\Http\Controllers\index_controller;
 use App\Http\Controllers\Authentication;
@@ -39,14 +39,13 @@ Route::get('/logout', [Authentication::class, 'logout'])->name('logout');
 Route::get('/users', [Authentication::class, 'getalluser'])->name('users.getall');
 
 
-Route::get('/reset-request', [ResetPasswordController::class, 'showResetRequestForm'])->name('reset.request.form');
-Route::post('/reset-request', [ResetPasswordController::class, 'showResetPasswordPost'])->name('reset.request.post');
-Route::get('/reset-password', [ResetPasswordController::class, 'showResetPasswordForm'])->name('reset.password.form');
+Route::get('/reset-request', [ResetPasswordController::class, 'forgetpassword'])->name('forget.password');
+Route::post('/reset-request', [ResetPasswordController::class, 'forgetpasswordpost'])->name('forget.password.post');
+Route::get('/reset-password/{token}', [ResetPasswordController::class, 'resetpassword'])->name('reset.password');
 Route::post('/reset-password', [ResetPasswordController::class, 'resetPasswordPost'])->name('reset.password.post');
 
 Route::get('/admin', [Productcontroller::class, 'admin'])->name('admin');
 Route::post('/admin', [Productcontroller::class, 'addProduct'])->name('addProduct');
-Route::get('/userPurchases', [Productcontroller::class, 'userPurchases'])->name('user.purchases');
 Route::get('/delivered/{id}', [Productcontroller::class, 'delivered'])->name('delivered');
 Route::post('/delivered/{id}', [ProductController::class, 'delivered'])->name('delivered');
 
@@ -65,5 +64,16 @@ Route::get('/admin/products/{id}/edit', [Productcontroller::class, 'editprod'])-
 Route::get('/billing', [Productcontroller::class, 'billingshow'])->name('billing'); // Route to display billing information form
 Route::put('/billing', [Productcontroller::class, 'updateBilling'])->name('billing.buy');
 
+<<<<<<< Updated upstream
 Route::delete('/product/delete/{productId}', [ProductController::class, 'deleteProduct'])->name('product.delete');
 Route::put('/product/update/{id}', [ProductController::class, 'editProduct'])->name('product.update');
+=======
+Route::get('/appointments', [Apointmentcontroller::class, 'indexappointment'])->name('appointments.index');
+
+// Route for adding appointment
+Route::post('/appointments/add', [Apointmentcontroller::class, 'addappointment'])->name('appointments.add');
+Route::match(['post', 'delete'],'/reservation/{id}', [Apointmentcontroller::class, 'Reservation'])->name('reservation');
+
+Route::match(['post', 'get'],'reservations/{id}/mark-reserved', [Apointmentcontroller::class, 'markReserved'])->name('reservation.markReserved');
+Route::delete('reservations/{id}', [Apointmentcontroller::class, 'destroy'])->name('reservation.destroy');
+>>>>>>> Stashed changes

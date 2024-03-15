@@ -37,6 +37,21 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#userPurchases">User Purchases</a>
         </li>
+<<<<<<< Updated upstream
+=======
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#Addapointment">Add Apointment</a>
+        </li>
+        <li class="nav-item">
+        <a class="nav-link" data-toggle="tab" href="#reserverations">Reservation</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#alladmin">Admin</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#statistic">Statistic</a>
+        </li>
+>>>>>>> Stashed changes
     </ul>
     
     <!-- Tab panes -->
@@ -44,39 +59,10 @@
     <div class="tab-content">
         <!-- Add Products Tab -->
         <div id="addProducts" class="container tab-pane active"><br>
-            <h3>Add Products</h3>
-            <!-- Form to add products -->
-            <form action="{{route('addProduct')}}" method="POST" enctype="multipart/form-data">
-                @csrf
-                <div class="form-group">
-                    <label for="productName">Product Name:</label>
-                    <input type="text" class="form-control" id="productName" name="prod_name" placeholder="Enter product name">
-                </div>
-                <div class="form-group">
-                    <label for="productPrice">Product Price:</label>
-                    <input type="number" class="form-control" id="productPrice" name="price" placeholder="Enter product price">
-                </div>
-                <div class="form-group">
-                    <label for="productPicture">Product Picture:</label>
-                    <input type="file" class="form-control-file" id="productPicture" name="image">
-                </div>
-                <div class="form-group">
-                    <label for="productCategory">Product Category:</label>
-                    <select class="form-control" id="productCategory" name="category">
-                        <option value="GPU">GPU</option>
-                        <option value="CPU">CPU</option>
-                        <option value="Monitor">Monitor</option>
-                    </select>
-                </div>
-                <div class="form-group">
-                    <label for="productDescription">Product Description:</label>
-                    <textarea class="form-control" id="productDescription" name="description" placeholder="Enter product description"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary">Add Product</button>
-            </form>
+            @include('include.addProducts')
         </div>
-
         <!-- Edit/Delete Products Tab -->
+<<<<<<< Updated upstream
         <div id="editDeleteProducts" class="container tab-pane fade">
             <br>
             <h3>Edit/Delete Products</h3>
@@ -328,51 +314,22 @@
         </div>
     </div>
 </div>           
+=======
+        <div id="editDeleteProducts" class="container tab-pane fade"><br>
+            @include('include.editDeleteProducts')
+        </div>
+>>>>>>> Stashed changes
         <!-- User Purchases Tab -->
-        <div id="userPurchases" class="container tab-pane fade">
-            <h3>User Purchases</h3>
-            @if ($userPurchases->isEmpty())
-                <p>No purchases found.</p>
-            @else
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Name</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Address</th>
-                            <th>Product Name</th>
-                            <th>Price</th>
-                            <th>Image</th>
-                            <th>quantity</th>
-                            <th>Delivery</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($userPurchases as $purchase)
-                        <tr>
-                            <td>{{ $purchase->name }}</td>
-                            <td>{{ $purchase->email }}</td>
-                            <td>{{ $purchase->phone }}</td>
-                            <td>{{ $purchase->address }}</td>
-                            <td>{{ $purchase->prod_name }}</td>
-                            <td>{{ $purchase->price }}</td>
-                            <td><img src="{{ asset('storage/product/' . $purchase->image) }}" alt="{{ $purchase->prod_name }}"></td>
-                            <td>{{ $purchase->quantity }}</td>
-                            <td>{{ $purchase->delivery_status }}</td>
-                            <td>
-                            <form action="{{ route('delivered', ['id' => $purchase->id]) }}" method="post">
-                                @csrf
-                                <button type="submit" class="btn btn-primary btn-sm">Mark Delivered</button>
-                            </form>
-                            </td>
-                        </tr>
-                        @endforeach
-                    </tbody>
-                </table>
-            @endif   
+        <div id="userPurchases" class="container tab-pane fade"><br>
+            @include('include.userPurchases')
         </div> 
+        
+        <div id="Addapointment" class="container tab-pane fade"><br>
+            @include('include.Addapointment')
+        </div>
+        <div id="reserverations" class="container tab-pane active"><br>
+            @include('include.reservations')
+        </div>
     </div>
 </div>
 </div>

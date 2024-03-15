@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\checkout;
-use App\Models\User;
+use App\Models\Reservation;
 use App\Models\Product;
 use App\Models\Order;
 use Illuminate\Http\Request;
@@ -78,31 +78,37 @@ class Productcontroller extends Controller
             return redirect('admin')->with('success', 'Product added successfully.');
         }
 
-    public function editDeleteProducts()
-    {
-
-        $userPurchases = Checkout::all();
-
-
-        $gpuProducts = Product::where('category', 'GPU')->get();
-        $cpuProducts = Product::where('category', 'CPU')->get();
-        $monitorProducts = Product::where('category', 'Monitor')->get();
-    
-        // Assuming $product->image contains the relative path to the image
-        // Set the full image path for each product 
-        foreach ($gpuProducts as $product) {
-            $product->image = asset('storage/product/' . $product->image);
+        public function editDeleteProducts()
+        {
+            // Retrieve all user purchases
+            $userPurchases = Checkout::whereNotNull('delivery_status')
+                            ->orWhere('delivery_status', '!=', '')
+                            ->get();
+            $reservations = Reservation::all();
+        
+            // Retrieve GPU products
+            $gpuProducts = Product::where('category', 'GPU')->get();
+            // Retrieve CPU products
+            $cpuProducts = Product::where('category', 'CPU')->get();
+            // Retrieve Monitor products
+            $monitorProducts = Product::where('category', 'Monitor')->get();
+        
+            // Assuming $product->image contains the relative path to the image
+            // Set the full image path for each product 
+            foreach ($gpuProducts as $product) {
+                $product->image = asset('storage/product/' . $product->image);
+            }
+            foreach ($cpuProducts as $product) {
+                $product->image = asset('storage/product/' . $product->image);
+            }
+            foreach ($monitorProducts as $product) {
+                $product->image = asset('storage/product/' . $product->image);
+            }
+        
+            // Pass product data and user purchases to the view
+            return view('admin', compact('gpuProducts', 'cpuProducts', 'monitorProducts', 'userPurchases','reservations'));
         }
-        foreach ($cpuProducts as $product) {
-            $product->image = asset('storage/product/' . $product->image);
-        }
-        foreach ($monitorProducts as $product) {
-            $product->image = asset('storage/product/' . $product->image);
-        }
-    
-        // Pass product data to the view
-        return view('admin', compact('gpuProducts', 'cpuProducts', 'monitorProducts','userPurchases'));
-    }
+        
 
     public function editProduct(Request $request, $id)
     {
@@ -148,7 +154,7 @@ public function editprod($id)
     $product = Product::findOrFail($id);
     
     // Return the view with the product data
-    return view('editproduct', compact('product'));
+    return view('include.editproduct', compact('product'));
 }
 public function deleteProduct(Request $request, $productId)
 {
@@ -298,14 +304,7 @@ public function checkout(Request $request)
         }
     }
 
-    public function userPurchases()
-{
-    $userPurchases = Checkout::whereNotNull('delivery_status')
-                            ->orWhere('delivery_status', '!=', '')
-                            ->get();
-    // Pass the data to the view
-    return view('admin', compact('userPurchases'));
-}
+
 
 
     public function delivered($id){

@@ -1,7 +1,7 @@
 <?php
 
 use App\Http\Controllers\about_controller;
-use App\Http\Controllers\components_controller;
+use App\Http\Controllers\Apointmentcontroller;
 use App\Http\Controllers\contacts_controller;
 use App\Http\Controllers\index_controller;
 use App\Http\Controllers\Authentication;
@@ -64,3 +64,7 @@ Route::get('/admin/products/{id}/edit', [Productcontroller::class, 'editprod'])-
 
 Route::get('/billing', [Productcontroller::class, 'billingshow'])->name('billing');
 Route::put('/billing', [Productcontroller::class, 'updateBilling'])->name('billing.buy');
+
+Route::get('/appointments',[Apointmentcontroller::class, 'Appointmentindex'])->name('Appointmentindex');
+Route::get('/appointments/{date}',[Apointmentcontroller::class, 'Appointmentshow'])->name('Appointmentshow');
+Route::post('/appointments', [Apointmentcontroller::class, 'Appointmentstore'])->name('Appointmentstore');

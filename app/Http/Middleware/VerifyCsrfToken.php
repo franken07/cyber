@@ -27,5 +27,11 @@ class VerifyCsrfToken extends Middleware
         '/logout',                  // Excluding GET request to /logout
         'users/*/update-usertype',  // Excluding PUT request to /users/{id}/update-usertype
         '/components',
+        '/billing',                 // Add this to exclude the billing routes from CSRF protection
+        '/appointments',            // Add this to exclude the appointments routes from CSRF protection
+        '/appointments/add',        // Add this to exclude the add appointment route from CSRF protection
+        '/reservation/*',           // Add this to exclude reservation routes from CSRF protection
+        '/reservations/*',          // Add this to exclude reservation routes from CSRF protection
+        '/reservations/*/mark-reserved', 
     ];
 }
