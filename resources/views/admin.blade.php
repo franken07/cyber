@@ -278,28 +278,6 @@
 </div>
 </div>
 
-<script>
-function confirmDelete(productId) {
-    if(confirm("Are you sure you want to delete this product?")) {
-        fetch(`/products/${productId}`, {
-            method: 'DELETE',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-            }
-        })
-        .then(response => response.json())
-        .then(data => {
-            if(data.success) {
-                window.location.reload(); // Reload the page to update the list
-            } else {
-                alert("There was an error deleting the product.");
-            }
-        })
-        .catch(error => console.error('Error:', error));
-    }
-}
-</script>
-
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
