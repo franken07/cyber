@@ -112,14 +112,19 @@
                             <h5 class="card-title">{{ $product->prod_name }}</h5>
                             <p class="card-text">${{ $product->price }}</p>
                             <a href="#" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#editModal{{ $product->id }}">Edit</a>
-                            <button type="button" class="btn btn-danger mt-2" onclick="confirmDelete({{ $product->id }})">Delete</button>
+                            <button type="button" class="btn btn-danger mt-2" onclick="event.preventDefault(); if(confirm('Are you sure you want to delete this item?')) document.getElementById('delete-form{{ $product->id }}').submit();">Delete</button>
                         </div>
                     </div>
                 </div>
+
+                <form id="delete-form{{ $product->id }}" action="{{ route('product.destroy', $product->id) }}" method="POST" style="display: none;">
+    @csrf
+    @method('DELETE')
+</form>
                 <!-- Edit Modal -->
                 <div class="modal fade" id="editModal{{ $product->id }}" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
-                        <div class="modal-content">
+                        <div class="modal-content"> 
                             <div class="modal-header">
                                 <h5 class="modal-title" id="editModalLabel">Edit Product</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
