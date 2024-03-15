@@ -378,8 +378,29 @@
 </div>
 
 <script>
-function confirmDelete() {
-    return confirm('Are you sure you want to delete this product?');
+function confirmDelete(productId) {
+    if (confirm('Are you sure you want to delete this product?')) {
+        fetch('/delete_product.php', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ id: productId }),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if(data.success) {
+                alert('Product deleted successfully!');
+    
+            } else {
+                alert('There was a problem with the deletion.');
+            }
+        })
+        .catch((error) => {
+            console.error('Error:', error);
+            alert('An error occurred while deleting the product.');
+        });
+    }
 }
 </script>
 
