@@ -112,7 +112,11 @@
                             <h5 class="card-title">{{ $product->prod_name }}</h5>
                             <p class="card-text">${{ $product->price }}</p>
                             <a href="#" class="btn btn-primary mt-auto" data-toggle="modal" data-target="#editModal{{ $product->id }}">Edit</a>
-                            <button type="button" class="btn btn-danger mt-2" onclick="confirmDelete('{{ $product->id }}')">Delete</button>
+                            <form method="POST" action="{{ route('product.delete', $product->id) }}" class="d-inline" id="deleteForm{{ $product->id }}">
+                             @csrf
+                             @method('DELETE')
+                             <button type="button" class="btn btn-danger mt-2" onclick="confirmDelete('{{ $product->id }}')">Delete</button>
+                             </form>
                         </div>
                     </div>
                 </div>
