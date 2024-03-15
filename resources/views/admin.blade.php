@@ -37,15 +37,6 @@
         <li class="nav-item">
             <a class="nav-link" data-toggle="tab" href="#userPurchases">User Purchases</a>
         </li>
-        <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#user">Users</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#alladmin">Admin</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#statistic">Statistic</a>
-        </li>
     </ul>
     
     <!-- Tab panes -->
