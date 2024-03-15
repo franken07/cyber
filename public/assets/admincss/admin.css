@@ -143,3 +143,16 @@ tr:nth-child(even) {
 .modal-backdrop {
     display: none; /* Or adjust as necessary */
 }
+.content-container * {
+    margin: 0;
+    padding: 0;
+}
+
+/* Specific adjustments */
+.content-container > div, .content-container > nav, .content-container > footer {
+    margin-bottom: 20px; /* Adjust as needed */
+}
+
+img {
+    display: block; 
+}
