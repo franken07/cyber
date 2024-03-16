@@ -154,7 +154,7 @@ public function editprod($id)
     $product = Product::findOrFail($id);
     
     // Return the view with the product data
-    return view('include.editproduct', compact('product'));
+    return view('editproduct', compact('product'));
 }
 public function deleteProduct(Request $request, $productId)
 {
