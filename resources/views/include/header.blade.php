@@ -38,7 +38,7 @@
           @auth
           @if(auth()->user()->usertype == 1) <!-- Check if user type is 1 (admin) -->
           <li class="nav-item"> <!-- Add admin link -->
-            <a class="nav-link link text-black display-4" href="{{ route('admin.dashboard') }}">Admin</a>
+            <a class="nav-link link text-black display-4" href="{{ route('edit_delete_products') }}">Admin</a>
           </li>
           @endif
           @endauth
