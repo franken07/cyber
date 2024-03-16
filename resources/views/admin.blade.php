@@ -43,12 +43,6 @@
         <li class="nav-item">
         <a class="nav-link" data-toggle="tab" href="#reserverations">Reservation</a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#alladmin">Admin</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#statistic">Statistic</a>
-        </li>
     </ul>
     
     <!-- Tab panes -->
